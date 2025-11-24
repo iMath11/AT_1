@@ -1,0 +1,816 @@
+% \section{Standard Maps between Cells and Spheres}
+% \begin{definition}
+% \begin{enumerate}
+%     \item The standard $n-$ball
+%     \[\B^n = \{x \in \R^n: \norm{x} \leq 1\}.\]
+    
+%     \item The standard $n-$phere
+%     \[\mathbb{S}^n= \partial(\B^{n+1}) = \{x \in \R^{n+1}: \norm{x} =1\}.\]
+
+%     \item The standard $n-$cell is a topological space that is homeomorphic to the open unit ball 
+%     \[\Int(\B^n) = \{x \in \R^n: \norm{x} < 1\}.\]
+% \end{enumerate}
+% \end{definition}
+
+
+% \begin{proposition}[Stereographic projection]
+%     For $n \geq 0$, denote 
+%     \[N=(0,\ldots,0,1),~S=(0,\ldots,0,-1)\in \mathbb{S}^n\]
+%     called the north pole and the south pole of $\mathbb{S}^n$, respectively. Then $\mathbb{S}^n\setminus\{S\}$ and $\mathbb{S}^n\setminus\{N\}$ are homeomorphic to $\R^n$.
+% \end{proposition}
+
+% \begin{proof}
+%     Consider the continuous maps
+%     \[
+%         f:\mathbb{S}^n\setminus\{N\}\to \R^n,~
+%         x=(a,t) \in \mathbb{S}^n\setminus\{N\} \cap \R^n \times \R\mapsto \dfrac{1}{1-t}a,
+%     \]
+%     \[
+%         g:\R^n\to \mathbb{S}^n\setminus\{N\}, \quad 
+%         y \mapsto (\phi(y)\cdot y,1-\phi(y)),
+%     \]
+%     where $\phi(y)=\dfrac{2}{1+\|y\|^2}$.
+
+%     For every $x=(a,t)\in \mathbb{S}^n$, we compute
+%     \[
+%         \phi(f(x))=\phi\left(\dfrac{1}{1-t}a\right)=\dfrac{2}{1+\dfrac{1}{(1-t)^2}\norm{a}^2}
+%         =1-t,
+%     \]
+%     hence
+%     \begin{align*}
+%         (g\circ f)(x)
+%         &=g\left(\dfrac{1}{1-t}a\right)\\
+%         &=\left(\phi(f(x))\cdot f(x),1-\phi(f(x))\right)\\
+%         &=(a,t)=x.
+%     \end{align*}
+
+%     For every $y\in \R^n$, we have
+%     \begin{align*}
+%         (f\circ g)(y)
+%         &=f(\phi(y)\cdot y,1-\phi(y))\\
+%         &= \dfrac{1}{1-(1-\phi(y))}\left(\phi(y)\cdot y\right)\\
+%         &=y.
+%     \end{align*}
+
+%     Therefore $f$ is a continuous bijection with continuous inverse $f^{-1}=g$, i.e.\ $f$ is a homeomorphism between $\mathbb{S}^n\setminus\{N\}$ and $\R^n$.
+
+%     On the other hand, there is also a homeomorphism.
+%     \[
+%         \mathbb{S}^n\setminus\{N\}\to \mathbb{S}^n\setminus\{S\}, \quad 
+%         (a,t)\mapsto (a,-t).
+%     \]
+% \end{proof}
+
+% \begin{proposition}
+%     The open unit ball $\Int(\B^n)$ 
+%     is homeomorphic to $\R^n$.
+% \end{proposition}
+
+% \begin{proof}
+%     We have constructed explicit continuous maps
+%     \[
+%         \varphi:\Int(\B^n)\to \R^n, \quad x \mapsto \dfrac{x}{1-\norm{x}}, 
+%     \]
+%     and
+%     \[
+%         \psi:\R^n\to \Int(\B^n), \quad y \mapsto \dfrac{y}{1+\|y\|}.
+%     \]
+%     Both $\varphi$ and $\psi$ are continuous and
+%     $\psi\circ \varphi =\Id_{\Int(\B^n)},~ \varphi\circ \psi=\Id_{\R^n}$. 
+    
+%     Hence $\varphi$ is a homeomorphism
+%     \[
+%         \Int(\B^n) \approx \R^n
+%     \]
+    
+% \end{proof}
+
+% \begin{remark}
+%     \begin{enumerate}
+%         \item From propositions 1.2 and 1.3, we obtain the homeomorphisms
+%         \[\Int(\B^n) \xlongrightarrow[\varphi]{\approx}\R^n \xlongrightarrow[g]{\approx} \mathbb{S}^n\setminus\{N\}.\]
+    
+%         \item Since 
+%         \[\B^n = \Int(\B^n) \sqcup \partial(\B^n)=\Int(\B^n) \sqcup \mathbb{S}^{n-1}\] and 
+%         \[\mathbb{S}^n = \mathbb{S}^n\setminus\{N\} \sqcup \{N\}.\]
+%         Naturally, we want to define a map
+%         \[\pi: \B^n \to \mathbb{S}^n, \]
+%         such that 
+%         \[\pi(\Int(\B^n)) = \mathbb{S}^{n}\setminus \{N\}= (g \circ \varphi)(\Int(\B^n)),\quad  \pi(\mathbb{S}^{n-1}) = \{N\}.\]
+%         With $x \in \Int(\B^n),~y = \varphi(x) = \dfrac{x}{1-\norm{x}}$, so 
+%         \begin{align*}
+%             \phi(y)&=\dfrac{2}{1+\norm{y}^2}\\
+%             &=\dfrac{2}{1+\dfrac{\norm{x}^2}{(1-\norm{x})^2}} \\
+%             &= \dfrac{2(1-\norm{x})^2}{\norm{x}^2 + (1-\norm{x})^2}
+%         \end{align*}
+%         \begin{align*}
+%         (g\circ \varphi)(x) &= g\left(y\right)\\
+%             &= \left(\phi(y)\cdot y, 1-\phi(y)\right)\\
+%             &=\dfrac{1}{\norm{x}^2+(1-\norm{x})^2}\left(2(1-\norm{x})x, 2\norm{x}-1\right) \in \mathbb{S}^n.
+%         \end{align*}.
+%         \end{enumerate}
+%     Moreover, with $z = (a,t) \in \mathbb{S}^n\setminus\{N\} \cap \R^n \times \R$
+%     \begin{align*}
+%         (g\circ \varphi)^{-1}(z)
+%         &=(\psi\circ f)(z)\\
+%         &=\psi\left(\dfrac{1}{1-t}a\right)\\
+%         &= \dfrac{a}{(1-t)+\norm{a}} \in \Int(\B^n).
+%     \end{align*}
+% \end{remark}
+% Hence, we have a definition, also a proposition following:
+% \begin{proposition}
+%     The map 
+%     \[\pi:(\B^n, \mathbb{S}^{n-1})\to (\mathbb{S}^n,N),~x \mapsto \dfrac{1}{\norm{x}^2+(1-\norm{x})^2}\left(2(1-\norm{x})x, 2\norm{x}-1\right)\]
+%     induces a homeomorphism \[\overline{\pi}:\B^n/\mathbb{S}^{n-1} \approx \mathbb{S}^n.\]
+    
+%     Moreover, $\pi \mid_{\Int(\B^n)}: \Int(\B^n) \approx \mathbb{S}^n\setminus\{N\}$ is a homeomorphism and the inverse of $\pi \mid_{\Int(\B^n)}$ is
+%     \[\rho = \psi \circ f: \mathbb{S}^n\setminus\{N\} \to \Int(\B^n),~\]
+% \end{proposition}
+
+% \begin{remark}
+%     $\B^n/\mathbb{S}^{n-1} = \B^n/\sim$, where $x\sim y$ if $x = y$ or $x,y\in \mathbb{S}^{n-1}$. 
+% \end{remark}
+
+% Now, we will show that simplices, cubes and their products are homeomorphic with balls.
+
+% \begin{lemma}[Normalization]
+%     Let $B\subset \R^n$ be a closed $n$--ball of radius $r>0$ centered at $c\in\R^n$. 
+%     Then there exists an affine homeomorphism 
+%     \[
+%         T:\R^n \to \R^n
+%     \]
+%     such that 
+%     \[
+%         T(B) = \B^n \quad \text{and} \quad T(\partial B) = \partial \B^n.
+%     \]
+%     Consequently, 
+%     \[
+%         (B,\partial B)\approx (\B^n,\partial \B^n).
+%     \]
+% \end{lemma}
+
+% \begin{proof}
+%     Define 
+%     \[
+%         T:\R^n \to \R^n, \qquad T(x) = \dfrac{1}{r}(x-c).
+%     \]
+%     This is the composition of a translation by $-c$ and a dilation by factor $1/r$, 
+%     hence a homeomorphism of $\R^n$ onto itself. 
+
+%     For $x\in B$ we have $\|x-c\|\le r$, so 
+%     \[
+%         \|T(x)\| = \left\|\dfrac{x-c}{r}\right\|\le 1,
+%     \]
+%     i.e.\ $T(x)\in \B^n$. Conversely, if $y\in \B^n$, then $\|y\|\le 1$ and 
+%     $x = r y + c\in B$, so $T(B)=\B^n$. The same argument shows 
+%     $T(\partial B)=\partial \B^n$. 
+
+%     Therefore $T$ restricts to a homeomorphism of pairs 
+%     $(B,\partial B)\approx (\B^n,\partial \B^n)$.
+% \end{proof}
+
+% \begin{proposition}
+%     If $K$ is a compact convex subset of $\R^n$ which contains an $n-$ball $B$ then there is a standard homeomorphism $(B,\partial(B)) \approx (K,\partial(K))$. 
+% \end{proposition}
+% \begin{proof}
+%     Using the lemma 1.7, we only need prove $(\B^n,\partial(\B^n)) \approx (K,\partial(K))$.
+
+%     For each $u\in\mathbb{S}^{n-1}$, put
+%     \[
+%         \lambda(u) :=\sup\{ t\ge 0 : tu\in K\},
+%     \]
+%     then 
+%     \[1 \leq \lambda(u) < \infty.\] 
+%     Indeed, the compactness of $K$ implies there exists  $R>0$ such that $\norm{x}\leq R$ for all $x\in K$, hence $\lambda(u) <\infty$. Moreover, $\lambda(u)\ge 1$, since
+%     \[[0,1]\cdot u = \{tu: t\in [0,1]\}\subset \B^n \subset K.\]
+
+%     By the definition, $\lambda(u)u$ is the \textit{furthest point of} $K$ along the ray $\{tu:t\geq 0\}$ and cannot be outside $K$, because all points $tu$ with $t < \lambda(u)$ are in $K$ and $K$ is closed (compact). 
+    
+%     If $\lambda(u)u \in \Int(K)$, there exists $\varepsilon > 0$ such that $(\lambda(u) + \varepsilon)u \in K$, a contradiction of the definition of $\lambda(u)$. So $\lambda(u)u \in \partial K$ and is the unique intersection of the ray $\{t u:t\ge 0\}$ with $\partial K$.
+
+%     Now, we prove that $\lambda$ is continuous. 
+    
+%     Let $u_k\to u$ in $\mathbb{S}^{n-1}$ and put $t_k=\lambda(u_k)$.
+%     Since $K$ is compact, $(t_k)$ is bounded; pass to a convergent subsequence
+%     $t_k\to t$. Because $K$ is closed, $t u=\lim t_k u_k\in K$, hence $t\le \lambda(u)$.
+%     For the reverse inequality, fix $\varepsilon>0$. Then
+%     $(\lambda(u)-\varepsilon)u \in \Int(K)$; by openness there is a neighborhood
+%     $U$ of $u$ with $(\lambda(u)-\varepsilon) v\in K$ for all $v\in U$, hence
+%     $\lambda(v)\ge \lambda(u)-\varepsilon$ for $v\in U$. Taking $v=u_k$ close to $u$ gives
+%     $\liminf t_k\ge \lambda(u)-\varepsilon$. Since $\varepsilon>0$ is arbitrary,
+%     $\liminf t_k\ge \lambda(u)$. Thus $t=\lambda(u)$, so $\lambda$ is continuous.
+    
+%     Finally, we contruct a homeomorphim between $\B^n$ and $K$. 
+    
+%     For all $x\in\B^n$, can be written uniquely as $x=ru$ with $u\in\mathbb{S}^{n-1}$ and
+%     $r\in[0,1]$. Define
+%     \[
+%         F:\B^n\longrightarrow K,\qquad x= r u \mapsto r\lambda(u)u.
+%     \]
+%     This is well-defined and continuous (product of continuous functions on the
+%     polar coordinates). It is bijective with inverse
+%     \[
+%         F^{-1}:K\longrightarrow \B^n,\qquad 
+%         F^{-1}(s v)= \dfrac{s}{\lambda(v)}\,v\quad\bigl(v\in\mathbb{S}^{n-1},\ s\in[0,\lambda(v)]\bigr),
+%     \]
+%     which is also continuous by continuity of $\lambda$. Hence $F$ is a homeomorphism.
+    
+%     In particular, if $r=1$ then $F(u)=\lambda(u)u\in\partial K$; if $r<1$ then $F(r u)$ lies on the
+%     segment between $0$ and $\lambda(u)u$ and hence in $\Int(K)$.
+%     Therefore $F(\partial\B^n)=\partial K$ and $F(\Int\,\B^n)=\Int(K)$. Thus $F:(\B^n,\partial\B^n)\approx (K,\partial K)$.
+% \end{proof}
+
+% \begin{corollary}
+%     The cube \(I^n=[-1,1]^n\subset\R^n\) is homeomorphic to the (closed) unit ball
+% \(\B^n=\{x\in\R^n:\|x\|\le 1\}\). Moreover, this homeomorphism sends
+% \(\partial I^n\) onto \(\mathbb{S}^{n-1}=\partial(\B^n)\)
+% \end{corollary}
+% \begin{proof}
+%     Since $\norm{x} \leq 1$ implies $|x_j|\le 1$ for each coordinate $x_j$. Thus $I^n$ is a compact convex set of $\R^n$ containing the unit $n$–ball. 
+    
+%     Proposition 1.8 applies with $K=I^n$ and $B=\B^n$, yielding a standard homeomorphism
+%     \[
+%         F:(\B^n,\mathbb{S}^{n-1})\xrightarrow{\ \approx\ }(I^n,\partial I^n),~
+%         ru \mapsto r\,\lambda(u)\,u 
+%         \qquad (u \in \mathbb{S}^{n-1}, r \in [0,1]).
+%     \]
+% Fix $u\in\mathbb{S}^{n-1}$, for $t\ge 0$,
+% \[
+% tu\in I^n 
+% \iff t u_i \in I,~\forall i
+% \iff |t u_i|\le 1,~\forall i
+% \iff t\le \dfrac{1}{|u_i|}\ \text{whenever }u_i\neq 0.
+% \]
+% Hence the set 
+% \[\{t\ge 0: tu\in I^n\}=
+% \Bigl[\,0,\ \min_{1\le i\le n,\,u_i\neq 0}\dfrac{1}{|u_i|}\,\Bigr],
+% \]
+% so its supremum is
+% \[
+% \lambda(u)=\min_{1\le i\le n,\,u_i\neq 0}\dfrac{1}{|u_i|}
+% =\dfrac{1}{\max_{1\le i\le n}|u_i|}
+% =\dfrac{1}{\|u\|_\infty}.
+% \]
+% Taking $t=\dfrac{1}{\|u\|_\infty}$ gives 
+% $|t u_i|=\dfrac{|u_i|}{\|u\|_\infty}\le 1$ for all $i$, with equality for at least one index attaining the maximum of $|u_i|$. Thus $tu\in\partial I^n$, so the supremum is attained and the intersection with $\partial I^n$ is exactly at $u/\|u\|_\infty$.
+
+% Consequently, its inverse \(F^{-1}:I^n\to\B^n\) is
+% \[
+% F^{-1}(x)=
+% \begin{cases}
+% 0, & x=0,\\[4pt]
+% \dfrac{\norm{x}_\infty}{\norm{x}}\,x, & x\neq 0,
+% \end{cases}
+% \]
+% which is continuous on \(I^n\) and bijective with continuous inverse.
+
+% Finally, if \(x\in\partial I^n\) then \(\norm{x}_\infty=1\), so
+% \(\|F^{-1}(x)\|=\norm{x}_\infty=1\) and hence \(F^{-1}(x)\in\mathbb{S}^{n-1}\).  
+% If \(\norm{x}_\infty<1\) (i.e. \(x\in \Int I^n\)), then
+% \(\|F^{-1}\|=\norm{x}_\infty<1\), so \(F^{-1}(x)\in \Int\B^n\).
+% Therefore \(F^{-1}(\partial I^n)=\mathbb{S}^{n-1}\) and
+% \(F^{-1}(\Int I^n)=\Int\B^n\), completing the proof.
+% \end{proof}
+
+% \begin{corollary}
+%     Let the standard $n$–simplex be
+%     \[
+%         \Delta_n=\Bigl\{(t_0,\dots,t_n)\in\mathbb{R}^{n+1}_{\ge 0}\ :\ \sum_{i=0}^n t_i=1\Bigr\},
+%     \]
+%     and let $\partial \Delta_n=\{t\in\Delta_n:\ t_i=0\ \text{for some }i\}$ be its boundary.
+    
+%     There exists a linear embedding $i:\Delta_n\hookrightarrow\mathbb{R}^n$ such that $K:=\imath (\Delta_n)$ is a compact convex set containing a Euclidean $n$–ball. Consequently, by radial projection there is a \emph{standard} homeomorphism
+%     \[
+%         \Phi_\Delta:(\Delta_n,\partial \Delta_n)\;\xrightarrow{\ \cong\ }\;(\B^{\,n},\mathbb{S}^{n-1}).
+%     \]
+% \end{corollary}
+
+% \begin{proof}
+%     Define a linear embedding $\imath:\Delta_n\to\mathbb{R}^n$ by sending the vertices as follows:
+% for $0\le j\le n-1$ let $v_j=e_j$ (the $j$th standard basis vector of $\mathbb{R}^n$) and let
+% \[
+%    v_n=-\sum_{j=0}^{n-1} e_j.
+% \]
+% On barycentric coordinates $t=(t_0,\dots,t_n)\in\Delta_n$ we put
+% \[
+%    \imath(t)=\sum_{j=0}^n t_j v_j\in\mathbb{R}^n.
+% \]
+% Then $K:=\imath(\Delta_n)=\operatorname{conv}\{v_0,\dots,v_n\}$ is a compact convex polytope in $\mathbb{R}^n$. We have two claims following
+% \begin{itemize}
+%     \item $0\in\Int(K)$.
+    
+% Indeed,
+% \[
+%    \frac{1}{n+1}\sum_{j=0}^n v_j
+%    =\frac{1}{n+1}\Bigl(\sum_{j=0}^{n-1} e_j - \sum_{j=0}^{n-1} e_j\Bigr)=0,
+% \]
+% so $0$ is a convex combination of the vertices with all coefficients equal to $1/(n+1)>0$; hence $0$ lies in the (relative) interior of $K$.
+
+% \item \textit{$K$ contains a Euclidean $n$–ball around $0$.}
+
+% Since $K$ is compact and $0\notin\partial K$, the continuous function $x\mapsto\|x\|$ attains a positive minimum on the compact set $\partial K$:
+% \[
+%    r:=\min\{\|x\|:\ x\in\partial K\}>0.
+% \]
+% Therefore the closed ball $\overline B(0,r)\subset K$.
+
+% By Proposition 1.8 applied to $K$ (with the ball $\overline B(0,r)$ found above), there is a standard homeomorphism
+% \[
+%    \Psi:(K,\partial K)\xrightarrow{\approx}( \B^{\,n},\mathbb{S}^{n-1})
+% \]
+% that sends each $y\in\partial K$ to $y/\|y\|$ and extends linearly on the radial segments from $0$.
+% \end{itemize}
+% Finally, set $\Phi_\Delta:=\Psi\circ \imath:\Delta_n \to \B^{n}$. Since $i$ is a homeomorphism from $\Delta_n$ onto $K$ and $\Psi$ is a homeomorphism from $K$ onto $\B^{\,n}$, $\Phi_\Delta$ is a homeomorphism.
+
+% It remains to check the boundary correspondence. 
+
+% A point $t\in\Delta_n$ lies in $\partial \Delta_n$ iff at least one barycentric coordinate is $0$, say $t_j=0$; equivalently, $i(t)$ lies in the facet $\operatorname{conv}\{v_0,\dots,\widehat{v_j},\dots,v_n\}\subset\partial K$. Thus $i(\partial \Delta_n)=\partial K$, and hence
+% \[
+%    \Phi_\Delta(\partial \Delta_n)=\Psi(\partial K)=\mathbb{S}^{n-1}.
+% \]
+% \end{proof}
+
+% \begin{remark}
+% We collect several definitions related to convex sets in $\mathbb{R}^n$ below.
+% \end{remark}
+
+% \begin{definition}[Relative interior]
+% For $K\subset\R^n$, with affine hull $\aff(K)$, the \emph{relative interior} is
+% \[
+% \ri(K):=\Int_{\aff(K)}(K).
+% \]
+% If $\aff(K)=\mathbb{R}^n$ then $\ri(K)=\Int(K)$; otherwise $\ri(K)$ is the interior of $K$ taken in its own affine hull $\aff(K)$.
+% \end{definition}
+
+% \begin{proposition}[Convex characterization ]
+% If $K\subset\R^n$ is convex and $x\in K$, the following are equivalent:
+% \begin{enumerate}
+% \item $x\in\ri(K)$.
+% \item There exists $\varepsilon>0$ with $x+\varepsilon(B\cap V)\subset K$, where
+% $B=\{y:\|y\|\le 1\}$ and $V=\Span(K-K)$.
+% \item No supporting hyperplane of $K$ is active at $x$ (i.e.\ $x$ lies on no proper face).
+% \end{enumerate}
+% \end{proposition}
+
+% \begin{lemma}
+% If $K=\conv\{v_0,\dots,v_m\}$ and $x=\displaystyle \sum_{i=0}^m \lambda_i v_i$ with all
+% $\lambda_i>0$, $\displaystyle\sum_i\lambda_i=1$, then $x\in\ri(K)$ (hence not on any proper face).
+% \end{lemma}
+% \begin{proof}
+% Suppose, for a contradiction, that $x\notin\ri(K)$. Then there exists a supporting
+% hyperplane $H=\{y\in\aff(K): a\cdot y=b\}$ of $K$ such that $K\subset\{a\cdot y\le b\}$
+% and $x\in H$ (i.e.\ the supporting inequality is \emph{active} at $x$).
+
+% The corresponding face is $F:=K\cap H$, which is a proper face of $K$.
+
+% Because $K=\conv\{v_0,\dots,v_m\}$, the face $F$ is the convex hull of those
+% vertices lying on $H$:
+% \[
+% I:=\{\,i:\ a\cdot v_i=b\,\},\qquad F=\conv\{v_i:\ i\in I\}.
+% \]
+% Since $F$ is proper, $I\subsetneq\{0,\dots,m\}$,
+% so there exists $j$ with $a\cdot v_j<b$.
+
+% On the other hand
+% \[
+% a\cdot x=\sum_{i=0}^m \lambda_i\, a\cdot v_i
+% =\sum_{i\in I}\lambda_i\, b \;+\; \sum_{i\notin I}\lambda_i\, a\cdot v_i
+% < \Bigl(\sum_{i=0}^m \lambda_i\Bigr)b \;=\; b,
+% \]
+% since at least one index with $a\cdot v_i<b$ has $\lambda_i>0$.
+% This contradicts $x\in H$ (which requires $a\cdot x=b$).
+
+% Hence no supporting hyperplane of $K$ is active at $x$, i.e.\ $x$ lies on no
+% proper face. By the standard characterization of relative interior in convex
+% sets, this is equivalent to $x\in\ri(K)$.
+% \end{proof}
+
+% \begin{definition}[Convex hull]
+% For $S\subset\R^n$,
+% \[
+% \conv(S)=\bigcap\{\,C\supset S:\ C\text{ convex}\,\}
+% =\left\{\sum_{i=1}^m \lambda_i x_i:\ x_i\in S,\ \lambda_i\ge 0,\ \sum_i\lambda_i=1\right\}.
+% \]
+% \end{definition}
+
+% \begin{definition}[Finitely generated cone and basic types]
+% Given $v_1,\dots,v_m\in\R^n$,
+% \[
+% \cone(v_1,\dots,v_m):=\Bigl\{\sum_{i=1}^m \alpha_i v_i:\ \alpha_i\ge 0\Bigr\}.
+% \]
+% For a cone $C$, set $\lin(C):=\{x:\ x,-x\in C\}$ and $\Span(C):=\Span\{C\}$.
+% Its dimension is $\dim C:=\dim(\Span(C))$. The cone is \emph{pointed} if
+% $\lin(C)=\{0\}$, and \emph{simplicial} if its generators spanning $\Span(C)$
+% are linearly independent (then $\dim C$ equals their number).
+% \end{definition}
+
+% \begin{definition}[Dimension of a finitely generated cone]
+% If $C=\cone(v_1,\dots,v_m)$ and $V=[v_1\ \cdots\ v_m]$, then
+% \[
+% \dim C:=\dim\Span\{v_1,\dots,v_m\}=\rank(V).
+% \]
+% \end{definition}
+
+\section{Standard Maps between Cells and Spheres}\label{sec:cells-spheres}
+
+\begin{definition}\label{def:std-ball-sphere-cell}
+\begin{enumerate}
+    \item The standard $n$-ball
+    \[\B^n = \{x \in \R^n: \norm{x} \leq 1\}.\]
+    
+    \item The standard $n$-sphere
+    \[\mathbb{S}^n= \partial(\B^{n+1}) = \{x \in \R^{n+1}: \norm{x} =1\}.\]
+
+    \item The standard $n$-cell is a topological space that is homeomorphic to the open unit ball 
+    \[\Int(\B^n) = \{x \in \R^n: \norm{x} < 1\}.\]
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Stereographic projection]\label{prop:stereo}
+    For $n \geq 0$, denote 
+    \[N=(0,\ldots,0,1),~S=(0,\ldots,0,-1)\in \mathbb{S}^n\]
+    called the north pole and the south pole of $\mathbb{S}^n$, respectively. Then $\mathbb{S}^n\setminus\{S\}$ and $\mathbb{S}^n\setminus\{N\}$ are homeomorphic to $\R^n$.
+\end{proposition}
+
+\begin{proof}
+    Consider the continuous maps
+    \[
+        f:\mathbb{S}^n\setminus\{N\}\to \R^n,~
+        x=(a,t) \in \mathbb{S}^n\setminus\{N\} \cap \R^n \times \R\mapsto \dfrac{1}{1-t}a,
+    \]
+    \[
+        g:\R^n\to \mathbb{S}^n\setminus\{N\}, \quad 
+        y \mapsto (\phi(y)\cdot y,1-\phi(y)),
+    \]
+    where $\phi(y)=\dfrac{2}{1+\|y\|^2}$.
+
+    For every $x=(a,t)\in \mathbb{S}^n$, we compute
+    \[
+        \phi(f(x))=\phi\left(\dfrac{1}{1-t}a\right)=\dfrac{2}{1+\dfrac{1}{(1-t)^2}\norm{a}^2} = \dfrac{(1-t)^2}{1-2t+t^2+\norm{a}^2}=\dfrac{(1-t)^2}{2-2t}
+        =1-t,
+    \]
+    hence
+        \[(g\circ f)(x)
+        =g\left(\dfrac{1}{1-t}a\right)
+        =\left(\phi(f(x))\cdot f(x),1-\phi(f(x))\right)
+        =(a,t)=x.\]
+
+    For every $y\in \R^n$, we have
+        \[(f\circ g)(y)
+        =f(\phi(y)\cdot y,1-\phi(y))
+        = \dfrac{1}{1-(1-\phi(y))}\left(\phi(y)\cdot y\right)
+        =y.\]
+
+    Therefore $f$ is a continuous bijection with continuous inverse $f^{-1}=g$, i.e.\ $f$ is a homeomorphism between $\mathbb{S}^n\setminus\{N\}$ and $\R^n$.
+
+    On the other hand, there is also a homeomorphism.
+    \[
+        \mathbb{S}^n\setminus\{N\}\to \mathbb{S}^n\setminus\{S\}, \quad 
+        (a,t)\mapsto (a,-t).
+    \]
+\end{proof}
+
+\begin{proposition}\label{prop:open-ball-Rn}
+    The open unit ball $\Int(\B^n)$ 
+    is homeomorphic to $\R^n$.
+\end{proposition}
+
+\begin{proof}
+    We have constructed explicit continuous maps
+    \[
+        \varphi:\Int(\B^n)\to \R^n, \quad x \mapsto \dfrac{x}{1-\norm{x}}, 
+    \]
+    and
+    \[
+        \psi:\R^n\to \Int(\B^n), \quad y \mapsto \dfrac{y}{1+\|y\|}.
+    \]
+    Both $\varphi$ and $\psi$ are continuous and
+    $\psi\circ \varphi =\Id_{\Int(\B^n)},~ \varphi\circ \psi=\Id_{\R^n}$. 
+    
+    Hence $\varphi$ is a homeomorphism
+    \[
+        \Int(\B^n) \approx \R^n
+    \]
+\end{proof}
+
+\begin{remark}\label{rmk:pi-assembly}
+    \begin{enumerate}
+        \item From \Cref{prop:open-ball-Rn,prop:stereo}, we obtain the homeomorphisms
+        \[\Int(\B^n) \xlongrightarrow[\varphi]{\approx}\R^n \xlongrightarrow[g]{\approx} \mathbb{S}^n\setminus\{N\}.\]
+    
+        \item Since 
+        \[\B^n = \Int(\B^n) \sqcup \partial(\B^n)=\Int(\B^n) \sqcup \mathbb{S}^{n-1}\] and 
+        \[\mathbb{S}^n = \mathbb{S}^n\setminus\{N\} \sqcup \{N\}.\]
+        Naturally, we want to define a map
+        \[\pi: \B^n \to \mathbb{S}^n, \]
+        such that 
+        \[\pi(\Int(\B^n)) = \mathbb{S}^{n}\setminus \{N\}= (g \circ \varphi)(\Int(\B^n)),\quad  \pi(\mathbb{S}^{n-1}) = \{N\}.\]
+        With $x \in \Int(\B^n),~y = \varphi(x) = \dfrac{x}{1-\norm{x}}$, so 
+            \[\phi(y)=\dfrac{2}{1+\norm{y}^2}
+            =\dfrac{2}{1+\dfrac{\norm{x}^2}{(1-\norm{x})^2}} 
+            = \dfrac{2(1-\norm{x})^2}{\norm{x}^2 + (1-\norm{x})^2}\]
+        
+       \[(g\circ \varphi)(x)
+            = \left(\phi(y)\cdot y, 1-\phi(y)\right)
+            =\dfrac{1}{\norm{x}^2+(1-\norm{x})^2}\left(2(1-\norm{x})x, 2\norm{x}-1\right) \in \mathbb{S}^n.\]
+        \end{enumerate}
+    Moreover, with $z = (a,t) \in \mathbb{S}^n\setminus\{N\} \cap \R^n \times \R$
+        \[(g\circ \varphi)^{-1}(z)
+        =(\psi\circ f)(z)
+        =\psi\left(\dfrac{1}{1-t}a\right)
+        = \dfrac{a}{(1-t)+\norm{a}} \in \Int(\B^n).\]
+\end{remark}
+
+Hence, we have a definition, also a proposition following:
+\begin{proposition}\label{prop:quotient-pi}
+    The map 
+    \[\pi:(\B^n, \mathbb{S}^{n-1})\to (\mathbb{S}^n,N),~x \mapsto \dfrac{1}{\norm{x}^2+(1-\norm{x})^2}\left(2(1-\norm{x})x, 2\norm{x}-1\right)\]
+    induces a homeomorphism \[\overline{\pi}:\B^n/\mathbb{S}^{n-1} \approx \mathbb{S}^n.\]
+    
+    Moreover, $\pi \mid_{\Int(\B^n)}: \Int(\B^n) \approx \mathbb{S}^n\setminus\{N\}$ is a homeomorphism and the inverse of $\pi \mid_{\Int(\B^n)}$ is
+    \[\rho = \psi \circ f: \mathbb{S}^n\setminus\{N\} \to \Int(\B^n),~\]
+\end{proposition}
+
+\begin{remark}\label{rmk:quotient-remark}
+    $\B^n/\mathbb{S}^{n-1} = \B^n/\sim$, where $x\sim y$ if $x = y$ or $x,y\in \mathbb{S}^{n-1}$. 
+\end{remark}
+
+Now, we will show that simplices, cubes and their products are homeomorphic with balls.
+
+\begin{lemma}[Normalization]\label{lem:normalization}
+    Let $B\subset \R^n$ be a closed $n$--ball of radius $r>0$ centered at $c\in\R^n$. 
+    Then there exists an affine homeomorphism 
+    \[
+        T:\R^n \to \R^n
+    \]
+    such that 
+    \[
+        T(B) = \B^n \quad \text{and} \quad T(\partial B) = \partial \B^n.
+    \]
+    Consequently, 
+    \[
+        (B,\partial B)\approx (\B^n,\partial \B^n).
+    \]
+\end{lemma}
+
+\begin{proof}
+    Define 
+    \[
+        T:\R^n \to \R^n, \qquad T(x) = \dfrac{1}{r}(x-c).
+    \]
+    This is the composition of a translation by $-c$ and a dilation by factor $1/r$, 
+    hence a homeomorphism of $\R^n$ onto itself. 
+
+    For $x\in B$ we have $\|x-c\|\le r$, so 
+    \[
+        \|T(x)\| = \left\|\dfrac{x-c}{r}\right\|\le 1,
+    \]
+    i.e.\ $T(x)\in \B^n$. Conversely, if $y\in \B^n$, then $\|y\|\le 1$ and 
+    $x = r y + c\in B$, so $T(B)=\B^n$. The same argument shows 
+    $T(\partial B)=\partial \B^n$. 
+
+    Therefore $T$ restricts to a homeomorphism of pairs 
+    $(B,\partial B)\approx (\B^n,\partial \B^n)$.
+\end{proof}
+
+\begin{proposition}\label{prop:convex-standard}
+    If $K$ is a compact convex subset of $\R^n$ which contains an $n$-ball $B$ then there is a standard homeomorphism $(B,\partial(B)) \approx (K,\partial(K))$. 
+\end{proposition}
+\begin{proof}
+    Using the \Cref{lem:normalization}, we only need prove $(\B^n,\partial(\B^n)) \approx (K,\partial(K))$.
+
+    For each $u\in\mathbb{S}^{n-1}$, put
+    \[
+        \lambda(u) :=\sup\{ t\ge 0 : tu\in K\},
+    \]
+    then 
+    \[1 \leq \lambda(u) < \infty.\] 
+    Indeed, the compactness of $K$ implies there exists  $R>0$ such that $\norm{x}\leq R$ for all $x\in K$, hence $\lambda(u) <\infty$. Moreover, $\lambda(u)\ge 1$, since
+    \[[0,1]\cdot u = \{tu: t\in [0,1]\}\subset \B^n \subset K.\]
+
+    By the definition, $\lambda(u)u$ is the \textit{furthest point of} $K$ along the ray $\{tu:t\geq 0\}$ and cannot be outside $K$, because all points $tu$ with $t < \lambda(u)$ are in $K$ and $K$ is closed (compact). 
+    
+    If $\lambda(u)u \in \Int(K)$, there exists $\varepsilon > 0$ such that $(\lambda(u) + \varepsilon)u \in K$, a contradiction of the definition of $\lambda(u)$. So $\lambda(u)u \in \partial K$ and is the unique intersection of the ray $\{t u:t\ge 0\}$ with $\partial K$.
+
+    Now, we prove that $\lambda$ is continuous. 
+    
+    Let $u_k\to u$ in $\mathbb{S}^{n-1}$ and put $t_k=\lambda(u_k)$.
+    Since $K$ is compact, $(t_k)$ is bounded; pass to a convergent subsequence
+    $t_k\to t$. Because $K$ is closed, $t u=\lim t_k u_k\in K$, hence $t\le \lambda(u)$.
+    For the reverse inequality, fix $\varepsilon>0$. Then
+    $(\lambda(u)-\varepsilon)u \in \Int(K)$; by openness there is a neighborhood
+    $U$ of $u$ with $(\lambda(u)-\varepsilon) v\in K$ for all $v\in U$, hence
+    $\lambda(v)\ge \lambda(u)-\varepsilon$ for $v\in U$. Taking $v=u_k$ close to $u$ gives
+    $\liminf t_k\ge \lambda(u)-\varepsilon$. Since $\varepsilon>0$ is arbitrary,
+    $\liminf t_k\ge \lambda(u)$. Thus $t=\lambda(u)$, so $\lambda$ is continuous.
+    
+    Finally, we contruct a homeomorphim between $\B^n$ and $K$. 
+    
+    For all $x\in\B^n$, can be written uniquely as $x=ru$ with $u\in\mathbb{S}^{n-1}$ and
+    $r\in[0,1]$. Define
+    \[
+        F:\B^n\longrightarrow K,\qquad x= r u \mapsto r\lambda(u)u.
+    \]
+    This is well-defined and continuous (product of continuous functions on the
+    polar coordinates). It is bijective with inverse
+    \[
+        F^{-1}:K\longrightarrow \B^n,\qquad 
+        F^{-1}(s v)= \dfrac{s}{\lambda(v)}\,v\quad\bigl(v\in\mathbb{S}^{n-1},\ s\in[0,\lambda(v)]\bigr),
+    \]
+    which is also continuous by continuity of $\lambda$. Hence $F$ is a homeomorphism.
+    
+    In particular, if $r=1$ then $F(u)=\lambda(u)u\in\partial K$; if $r<1$ then $F(r u)$ lies on the
+    segment between $0$ and $\lambda(u)u$ and hence in $\Int(K)$.
+    Therefore $F(\partial\B^n)=\partial K$ and $F(\Int\,\B^n)=\Int(K)$. Thus $F:(\B^n,\partial\B^n)\approx (K,\partial K)$.
+\end{proof}
+
+\begin{corollary}\label{cor:cube-ball}
+    The cube \(I^n=[-1,1]^n\subset\R^n\) is homeomorphic to the (closed) unit ball
+\(\B^n=\{x\in\R^n:\|x\|\le 1\}\). Moreover, this homeomorphism sends
+\(\partial I^n\) onto \(\mathbb{S}^{n-1}=\partial(\B^n)\)
+\end{corollary}
+\begin{proof}
+    Since $\norm{x} \leq 1$ implies $|x_j|\le 1$ for each coordinate $x_j$. Thus $I^n$ is a compact convex set of $\R^n$ containing the unit $n$–ball. 
+    
+    \Cref{prop:convex-standard} applies with $K=I^n$ and $B=\B^n$, yielding a standard homeomorphism
+    \[
+        F:(\B^n,\mathbb{S}^{n-1})\xrightarrow{\ \approx\ }(I^n,\partial I^n),~
+        ru \mapsto r\,\lambda(u)\,u 
+        \qquad (u \in \mathbb{S}^{n-1}, r \in [0,1]).
+    \]
+Fix $u\in\mathbb{S}^{n-1}$, for $t\ge 0$,
+\[
+tu\in I^n 
+\iff t u_i \in I,~\forall i
+\iff |t u_i|\le 1,~\forall i
+\iff t\le \dfrac{1}{|u_i|}\ \text{whenever }u_i\neq 0.
+\]
+Hence the set 
+\[\{t\ge 0: tu\in I^n\}=
+\Bigl[\,0,\ \min_{1\le i\le n,\,u_i\neq 0}\dfrac{1}{|u_i|}\,\Bigr],
+\]
+so its supremum is
+\[
+\lambda(u)=\min_{1\le i\le n,\,u_i\neq 0}\dfrac{1}{|u_i|}
+=\dfrac{1}{\max_{1\le i\le n}|u_i|}
+=\dfrac{1}{\|u\|_\infty}.
+\]
+Taking $t=\dfrac{1}{\|u\|_\infty}$ gives 
+$|t u_i|=\dfrac{|u_i|}{\|u\|_\infty}\le 1$ for all $i$, with equality for at least one index attaining the maximum of $|u_i|$. Thus $tu\in\partial I^n$, so the supremum is attained and the intersection with $\partial I^n$ is exactly at $u/\|u\|_\infty$.
+
+Consequently, its inverse \(F^{-1}:I^n\to\B^n\) is
+\[
+F^{-1}(x)=
+\begin{cases}
+0, & x=0,\\[4pt]
+\dfrac{\norm{x}_\infty}{\norm{x}}\,x, & x\neq 0,
+\end{cases}
+\]
+which is continuous on \(I^n\) and bijective with continuous inverse.
+
+Finally, if \(x\in\partial I^n\) then \(\norm{x}_\infty=1\), so
+\(\|F^{-1}(x)\|=\norm{x}_\infty=1\) and hence \(F^{-1}(x)\in\mathbb{S}^{n-1}\).  
+If \(\norm{x}_\infty<1\) (i.e. \(x\in \Int I^n\)), then
+\(\|F^{-1}\|=\norm{x}_\infty<1\), so \(F^{-1}(x)\in \Int\B^n\).
+Therefore \(F^{-1}(\partial I^n)=\mathbb{S}^{n-1}\) and
+\(F^{-1}(\Int I^n)=\Int\B^n\), completing the proof.
+\end{proof}
+
+\begin{corollary}\label{cor:simplex-ball}
+    Let the standard $n$–simplex be
+    \[
+        \Delta_n=\Bigl\{(t_0,\dots,t_n)\in\mathbb{R}^{n+1}_{\ge 0}\ :\ \sum_{i=0}^n t_i=1\Bigr\},
+    \]
+    and let $\partial \Delta_n=\{t\in\Delta_n:\ t_i=0\ \text{for some }i\}$ be its boundary.
+    
+    There exists a linear embedding $i:\Delta_n\hookrightarrow\mathbb{R}^n$ such that $K:=\imath (\Delta_n)$ is a compact convex set containing a Euclidean $n$–ball. Consequently, by radial projection there is a \emph{standard} homeomorphism
+    \[
+        \Phi_\Delta:(\Delta_n,\partial \Delta_n)\;\xrightarrow{\ \cong\ }\;(\B^{\,n},\mathbb{S}^{n-1}).
+    \]
+\end{corollary}
+
+\begin{proof}
+    Define a linear embedding $\imath:\Delta_n\to\mathbb{R}^n$ by sending the vertices as follows:
+for $0\le j\le n-1$ let $v_j=e_j$ (the $j$th standard basis vector of $\mathbb{R}^n$) and let
+\[
+   v_n=-\sum_{j=0}^{n-1} e_j.
+\]
+On barycentric coordinates $t=(t_0,\dots,t_n)\in\Delta_n$ we put
+\[
+   \imath(t)=\sum_{j=0}^n t_j v_j\in\mathbb{R}^n.
+\]
+Then $K:=\imath(\Delta_n)=\operatorname{conv}\{v_0,\dots,v_n\}$ is a compact convex polytope in $\mathbb{R}^n$. We have two claims following
+\begin{itemize}
+    \item $0\in\Int(K)$.
+    
+Indeed,
+\[
+   \frac{1}{n+1}\sum_{j=0}^n v_j
+   =\frac{1}{n+1}\Bigl(\sum_{j=0}^{n-1} e_j - \sum_{j=0}^{n-1} e_j\Bigr)=0,
+\]
+so $0$ is a convex combination of the vertices with all coefficients equal to $1/(n+1)>0$; hence $0$ lies in the (relative) interior of $K$.
+
+\item \textit{$K$ contains a Euclidean $n$–ball around $0$.}
+
+Since $K$ is compact and $0\notin\partial K$, the continuous function $x\mapsto\|x\|$ attains a positive minimum on the compact set $\partial K$:
+\[
+   r:=\min\{\|x\|:\ x\in\partial K\}>0.
+\]
+Therefore the closed ball $\overline B(0,r)\subset K$.
+
+By \Cref{prop:convex-standard} applied to $K$ (with the ball $\overline B(0,r)$ found above), there is a standard homeomorphism
+\[
+   \Psi:(K,\partial K)\xrightarrow{\approx}( \B^{\,n},\mathbb{S}^{n-1})
+\]
+that sends each $y\in\partial K$ to $y/\|y\|$ and extends linearly on the radial segments from $0$.
+\end{itemize}
+Finally, set $\Phi_\Delta:=\Psi\circ \imath:\Delta_n \to \B^{n}$. Since $i$ is a homeomorphism from $\Delta_n$ onto $K$ and $\Psi$ is a homeomorphism from $K$ onto $\B^{\,n}$, $\Phi_\Delta$ is a homeomorphism.
+
+It remains to check the boundary correspondence. 
+
+A point $t\in\Delta_n$ lies in $\partial \Delta_n$ iff at least one barycentric coordinate is $0$, say $t_j=0$; equivalently, $i(t)$ lies in the facet $\operatorname{conv}\{v_0,\dots,\widehat{v_j},\dots,v_n\}\subset\partial K$. Thus $i(\partial \Delta_n)=\partial K$, and hence
+\[
+   \Phi_\Delta(\partial \Delta_n)=\Psi(\partial K)=\mathbb{S}^{n-1}.
+\]
+\end{proof}
+
+\begin{remark}\label{rmk:convex-collect}
+We collect several definitions related to convex sets in $\mathbb{R}^n$ below.
+\end{remark}
+
+\begin{definition}[Relative interior]\label{def:ri}
+For $K\subset\R^n$, with affine hull $\aff(K)$, the \emph{relative interior} is
+\[
+\ri(K):=\Int_{\aff(K)}(K).
+\]
+If $\aff(K)=\mathbb{R}^n$ then $\ri(K)=\Int(K)$; otherwise $\ri(K)$ is the interior of $K$ taken in its own affine hull $\aff(K)$.
+\end{definition}
+
+\begin{proposition}[Convex characterization]\label{prop:ri-equiv}
+If $K\subset\R^n$ is convex and $x\in K$, the following are equivalent:
+\begin{enumerate}
+\item $x\in\ri(K)$.
+\item There exists $\varepsilon>0$ with $x+\varepsilon(B\cap V)\subset K$, where
+$B=\{y:\|y\|\le 1\}$ and $V=\Span(K-K)$.
+\item No supporting hyperplane of $K$ is active at $x$ (i.e.\ $x$ lies on no proper face).
+\end{enumerate}
+\end{proposition}
+
+\begin{lemma}\label{lem:ri-barycentric}
+If $K=\conv\{v_0,\dots,v_m\}$ and $x=\displaystyle \sum_{i=0}^m \lambda_i v_i$ with all
+$\lambda_i>0$, $\displaystyle\sum_i\lambda_i=1$, then $x\in\ri(K)$ (hence not on any proper face).
+\end{lemma}
+\begin{proof}
+Suppose, for a contradiction, that $x\notin\ri(K)$. Then there exists a supporting
+hyperplane $H=\{y\in\aff(K): a\cdot y=b\}$ of $K$ such that $K\subset\{a\cdot y\le b\}$
+and $x\in H$ (i.e.\ the supporting inequality is \emph{active} at $x$).
+
+The corresponding face is $F:=K\cap H$, which is a proper face of $K$.
+
+Because $K=\conv\{v_0,\dots,v_m\}$, the face $F$ is the convex hull of those
+vertices lying on $H$:
+\[
+I:=\{\,i:\ a\cdot v_i=b\,\},\qquad F=\conv\{v_i:\ i\in I\}.
+\]
+Since $F$ is proper, $I\subsetneq\{0,\dots,m\}$,
+so there exists $j$ with $a\cdot v_j<b$.
+
+On the other hand
+\[
+a\cdot x=\sum_{i=0}^m \lambda_i\, a\cdot v_i
+=\sum_{i\in I}\lambda_i\, b \;+\; \sum_{i\notin I}\lambda_i\, a\cdot v_i
+< \Bigl(\sum_{i=0}^m \lambda_i\Bigr)b \;=\; b,
+\]
+since at least one index with $a\cdot v_i<b$ has $\lambda_i>0$.
+This contradicts $x\in H$ (which requires $a\cdot x=b$).
+
+Hence no supporting hyperplane of $K$ is active at $x$, i.e.\ $x$ lies on no
+proper face. By the standard characterization of relative interior in convex
+sets, this is equivalent to $x\in\ri(K)$.
+\end{proof}
+
+\begin{definition}[Convex hull]\label{def:conv-hull}
+For $S\subset\R^n$,
+\[
+\conv(S)=\bigcap_{C \supset S}\{C:\ C\text{ convex}\,\}
+=\left\{\sum_{i=1}^m \lambda_i x_i:\ x_i\in S,\ \lambda_i\ge 0,\ \sum_i\lambda_i=1\right\}.
+\]
+\end{definition}
+
+\begin{definition}[Finitely generated cone and basic types]\label{def:cone}
+Given $v_1,\dots,v_m\in\R^n$,
+\[
+\cone(v_1,\dots,v_m):=\Bigl\{\sum_{i=1}^m \alpha_i v_i:\ \alpha_i\ge 0\Bigr\}.
+\]
+For a cone $C$, set $\lin(C):=\{x:\ x,-x\in C\}$ and $\Span(C):=\Span\{C\}$.
+Its dimension is $\dim C:=\dim(\Span(C))$. The cone is \emph{pointed} if
+$\lin(C)=\{0\}$, and \emph{simplicial} if its generators spanning $\Span(C)$
+are linearly independent (then $\dim C$ equals their number).
+\end{definition}
+
+\begin{definition}[Dimension of a finitely generated cone]\label{def:cone-dim}
+If $C=\cone(v_1,\dots,v_m)$ and $V=[v_1\ \cdots\ v_m]$, then
+\[
+\dim C:=\dim\Span\{v_1,\dots,v_m\}=\rank(V).
+\]
+\end{definition}

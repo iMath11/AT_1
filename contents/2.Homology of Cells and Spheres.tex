@@ -1,0 +1,1418 @@
+\section{Homology of Cells and Spheres}
+\begin{remark}\label{remark 2.1}
+Homology emerged in the late 19th–early 20th century (Betti, Poincar\'e) as a way to build algebraic invariants that detect \emph{holes} in topological spaces. From Betti numbers and Poincar\'e’s insights grew singular, simplicial, and cellular homology, later unified by the Eilenberg--Steenrod axioms.
+
+In this landscape, the disk $\B^n$ and the sphere $\mathbb{S}^n$ are minimal test objects: $\B^n$ is contractible, whereas $\mathbb{S}^n$ carries exactly one nontrivial top class. This contrast furnishes a compact laboratory for what an $n$–dimensional \emph{hole} means.
+
+Several consequences flow naturally from this picture. Because homology is \emph{homotopy invariant} and \emph{functorial}, continuous maps induce group homomorphisms, reducing geometric comparison to algebraic comparison.
+
+Moreover, $\B^n$ and $\mathbb{S}^n$ admit tiny CW structures, so computations are transparent: via the long exact sequence of the pair $(\B^n,\mathbb{S}^{n-1})$ or via cellular homology one obtains the model calculation
+\[
+H_k(\mathbb{S}^n)\cong
+\begin{cases}
+\mathbb{Z},& k=0,n,\\
+0,& \text{otherwise}.
+\end{cases}
+\]
+
+Here the \emph{relative} viewpoint is pivotal: the pair $(\B^n,\mathbb{S}^{n-1})$ realizes an $n$–cell attached along its boundary; thus $H_n(\B^n,\mathbb{S}^{n-1})\cong\mathbb{Z}$ plays the role of an \emph{oriented $n$–volume}, and the connecting map identifies it with $H_{n-1}(\mathbb{S}^{n-1})$. Knowing the relative group \emph{therefore implies} the formula for the sphere.
+
+\textbf{Why start with cells and spheres?}
+
+Not only because they are simple: in the CW setting, large spaces are \emph{built from the ground up} by attaching cells. Attaching an $n$–cell either creates a new cycle or kills an old one; the long exact sequence records precisely this passage, so local data \emph{propagate to} global information.
+
+\textbf{Two complementary computations:}
+\begin{enumerate}
+    \item \emph{Relative/quotient:} use $\B^n/\mathbb{S}^{n-1}\cong \mathbb{S}^n$ together with the contractibility of $\B^n$ to run the long exact sequence for $(\B^n,\mathbb{S}^{n-1})$ and conclude as above.
+    \item \emph{Cellular:} view $\mathbb{S}^n$ as a CW complex with one $0$–cell and one $n$–cell; the cellular chain complex then has only two nonzero groups and zero differential, \emph{whence} the result.
+\end{enumerate}
+
+\textbf{Applications.}
+
+From the sphere calculation, a cascade of classical theorems follows.
+First, \emph{degree theory}: for $f:\mathbb{S}^n \to \mathbb{S}^n$, the induced map
+\[
+f_*:H_n(\mathbb{S}^n)\cong\mathbb{Z}\longrightarrow\mathbb{Z}
+\]
+is multiplication by $\deg(f)$, and the degree is homotopy invariant. This, in turn, supports \emph{Brouwer’s fixed point theorem} and the \emph{no–retraction} statement (there is no retraction $\B^n\to\mathbb{S}^{n-1}$). It further \emph{implies} Borsuk--Ulam and Jordan--Brouwer separation (an embedded $\mathbb{S}^{n-1}$ separates $\mathbb{R}^n$).
+
+On the enumerative side, cellular homology yields
+\[
+\chi(X)=\sum_k(-1)^k\,\#\{\text{$k$–cells}\},
+\]
+and for wedges of spheres the homology is a direct sum of copies of $\mathbb{Z}$ in the corresponding degrees.
+
+For manifolds, the top group $H_n(M)$ detects orientability and provides the \emph{fundamental class}, paving the way to Poincar\'e duality.
+
+Finally, ``no–go'' statements such as the \emph{Hairy Ball} theorem on $\mathbb{S}^{2m}$ \emph{follow from} the (non)vanishing of specific homology groups.
+
+\textbf{Canonical examples.}
+
+From the contractibility of $\B^n$ we get $H_k(\B^n)=0$ for $k>0$ and $H_0(\B^n)\cong\mathbb{Z}$ (equivalently, $\widetilde{H}_k(\B^n)=0$ for all $k$). Conversely, $\mathbb{S}^n$ has a single top class: $H_n(\mathbb{S}^n)\cong\mathbb{Z}$ and $H_0(\mathbb{S}^n)\cong\mathbb{Z}$, while $\widetilde{H}_k(\mathbb{S}^n)$ vanishes for $k\neq n$. 
+
+For a wedge $X=\bigvee_\alpha \mathbb{S}^{n_\alpha}$ it \emph{follows} that
+\[
+H_k(X)\cong \bigoplus_{n_\alpha=k}\mathbb{Z}.
+\]
+
+Cells are the bricks from which spaces are assembled; spheres are the gauges that detect $n$–dimensional features. Homology translates these geometric facts into algebra, where exact sequences, degrees, and cellular chain complexes render global problems \emph{computable} and \emph{coherent}—each step \emph{implying} the next in a natural flow.
+\end{remark}
+
+\begin{lemma}\label{lem 2.2}
+Let 
+\begin{itemize}
+    \item $\Delta_n=\left\{(x_0,\dots,x_n)\in\mathbb{R}^{n+1}_{\geq 0}\mid \sum_{i=0}^n x_i=1\right\}$ be the standard $n$–simplex,
+
+    \item $\partial \Delta_n=\{x\in\Delta_n\mid x_j=0 \text{ for some } j\in\{0,\dots,n\}\}$ (its boundary),
+    
+    \item $\Lambda_n=\{x\in\Delta_n\mid x_j=0 \text{ for some } j\in\{1,\dots,n\}\}$ (the union of all faces but the face opposite the vertex $e^0=(1,0,\dots,0)$).
+\end{itemize}
+Then for $n>0$ and all $k$ there are natural isomorphisms
+\[
+H_k(\Delta_n,\partial \Delta_n)\ \xrightarrow[\cong]{\ \partial_*\ }\ 
+H_{k-1}(\partial \Delta_n,\Lambda_n)\ \xrightarrow[\cong]{\ i_*\ }\ 
+H_{k-1}(\partial \Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\})
+\ \xrightarrow[\cong]{\ (\varepsilon^0)_* }\ 
+H_{k-1}(\Delta_{n-1},\partial \Delta_{n-1}),
+\]
+where $i$ is the inclusion and $\varepsilon^0:\Delta_{n-1}\hookrightarrow \Delta_n$ is the inclusion of the $0$-th face (given by $x_0=0$).
+\end{lemma}
+
+\begin{proposition}\label{prop 2.3}
+$H_k(\Delta_n,\partial \Delta_n)\cong H_{k-1}(\partial \Delta_n,\Lambda_n)$.
+\end{proposition}
+
+\begin{proof}
+Firstly, we claim that 
+\[
+H:\Delta_n\times I\longrightarrow \Delta_n,\qquad
+H(x,t)=(1-t)x+t\,e^0.
+\]
+is a homotopy of pairs
+\[
+H:(\Delta_n,\Lambda_n)\times I\longrightarrow(\Delta_n,\Lambda_n),
+\]
+from $\Id_{\Delta_n}$ to the constant map $c_{e^0}$ at $e^0$.
+
+By coordinates,
+\[
+H_i(x,t)=
+\begin{cases}
+(1-t)x_0+t, & i=0,\\[2pt]
+(1-t)x_i,   & i\ge 1.
+\end{cases}
+\]
+Thus $H_i(x,t)\ge0$ and
+\[
+\sum_{i=0}^n H_i(x,t)=(1-t)\sum_{i=0}^n x_i+t=(1-t)\cdot1+t=1,
+\]
+so $H(x,t)\in\Delta_n$ for all $(x,t)$; continuity is clear.
+
+If $x\in\Lambda_n$, there exists $j\ge1$ with $x_j=0$, hence
+\[
+H_j(x,t)=(1-t)x_j=0\quad\text{for all }t\in I,
+\]
+so $H(x,t)\in F_j=\{x\in\Delta_n:x_j=0\}\subset\Lambda_n$. 
+
+Therefore for each $t$,
+$H_t:=H(\,\cdot\,,t)$ maps $\Lambda_n$ into itself, and $H$ is a homotopy of pairs.
+
+Finally, $H(\,\cdot\,,0)=\Id_{\Delta_n}$ and $H(\,\cdot\,,1)=c_{e^0}$.
+Moreover $H(e^0,t)=e^0$ for all $t$, so this is in fact a deformation retraction of
+pairs from $(\Delta_n,\Lambda_n)$ onto $(e^0,e^0)$.
+
+So \textbf{$(\Delta_n,\Lambda_n)$ }\textbf{deformation retracts to $(e^0,e^0)$.}
+
+Therefore $H_q(\Delta_n,\Lambda_n)=H_q(e^0,e^0)=0$ for all $q$.
+
+Consider the long exact sequence of the triple $(\Delta_n,\partial \Delta_n,\Lambda_n)$; the relevant segment is
+\[
+\cdots \to \underbrace{H_q(\Delta_n,\Lambda_n)}_{=\, 0} \to H_k(\Delta_n,\partial \Delta_n)
+\xrightarrow{\ \partial_*\ } H_{k-1}(\partial \Delta_n,\Lambda_n)
+\to \underbrace{H_{k-1}(\Delta_n,\Lambda_n)}_{=\,0} \to \cdots
+\]
+so $H_k(\Delta_n,\partial \Delta_n)\xrightarrow{\partial_*} H_{k-1}(\partial \Delta_n,\Lambda_n)$ is an isomorphism.
+\end{proof}
+
+\begin{proposition}\label{prop 2.4}
+    $H_{k-1}(\partial \Delta_n,\Lambda_n)\ \cong
+H_{k-1}(\partial \Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\})$.
+\end{proposition}
+
+\begin{lemma}[Relative interior at the apex]\label{lem:relint-apex}
+Let $\partial\Delta_n=\{x\in\Delta_n:\; x_j=0\ \text{for some }j\}$ and
+$\Lambda_n=\bigcup_{j=1}^n\{x\in\Delta_n:\; x_j=0\}$.
+Then $e^0\in\operatorname{relint}_{\partial\Delta_n}(\Lambda_n)$.
+\end{lemma}
+
+\begin{proof}
+For $x=(x_0,\dots,x_n)\in \Delta_n$,
+fix $\varepsilon\in(0,\tfrac12)$ and consider the (relative) neighborhood
+\[
+U\ :=\ \bigl\{x\in\partial\Delta_n:\ x_0>1-\varepsilon\bigr\}.
+\]
+This is open in the subspace topology of $\partial\Delta_n$. For any $x\in U$ we have $x_0>1/2$, hence among the coordinates $x_1,\dots,x_n$ at least one must be $0$
+(because $x\in\partial\Delta_n$ and the only way to have a zero coordinate near $e^0$ while keeping the sum $1$ and all coordinates nonnegative is that the zero occurs among indices $j\ge1$; $x_0$ cannot be $0$ here).
+
+Thus $U\subset\Lambda_n$. Since $U$ is a neighborhood of $e^0$ inside $\partial\Delta_n$ contained in $\Lambda_n$,
+we have $e^0\in\operatorname{relint}_{\partial\Delta_n}(\Lambda_n)$.
+\end{proof}
+
+\begin{proof}(Proposition 2.4).
+
+Let $X=\partial\Delta_n$, $A=\Lambda_n$, and $Z=\{e^0\}\subset A$.
+Then the inclusion of pairs
+\[
+j:\ (X\setminus Z,\ A\setminus Z)\ \hookrightarrow\ (X,\ A)
+\]
+induces isomorphisms on relative homology in all degrees:
+\[
+j_*:\ H_k\bigl(X\setminus Z,\ A\setminus Z\bigr)\ \xrightarrow{\ \cong\ }\ H_k(X,A)\qquad(\forall k).
+\]
+Equivalently, there is a canonical isomorphism
+\[
+H_k(X,A)\ \cong\ H_k\bigl(X\setminus\{e^0\},\ A\setminus\{e^0\}\bigr).
+\]
+
+By Lemma~\ref{lem:relint-apex}, $e^0\in\operatorname{relint}_X(A)$.
+The Excision Theorem says:
+if $Z\subset A\subset X$ and $\overline{Z}\subset\operatorname{int}_X(A)$,
+then the inclusion $(X\setminus Z,\ A\setminus Z)\hookrightarrow (X,A)$ induces isomorphisms in relative homology.
+Here $Z=\{e^0\}$ is closed and $\overline{Z}=Z\subset\operatorname{int}_X(A)$ by Lemma~\ref{lem:relint-apex},
+so the hypotheses are satisfied and the conclusion follows.
+\end{proof}
+
+% \begin{remark}[Direction of the arrow]\label{rmk:direction}
+% The excision isomorphism is induced by the inclusion
+% \[
+% j:\ (X\setminus Z,\ A\setminus Z)\hookrightarrow (X,A),
+% \]
+% hence it goes from $H_k(X\setminus Z, A\setminus Z)$ \emph{to} $H_k(X,A)$.
+% If one prefers an arrow in the opposite direction (from $H_k(X,A)$ to $H_k(X\setminus Z, A\setminus Z)$),
+% one should explicitly write the inverse isomorphism $j_*^{-1}$; it is \emph{not} induced by an inclusion
+% (because there is no inclusion $(X,A)\hookrightarrow (X\setminus Z,A\setminus Z)$).
+% \end{remark}
+
+
+\begin{proposition}\label{prop 2.6}
+    $H_{k-1}(\partial \Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\})
+\underset{(\varepsilon^0)_* }{\cong}
+H_{k-1}(\Delta_{n-1},\partial \Delta_{n-1}).$
+\end{proposition}
+% \begin{proof}
+% Define a deformation retraction
+% \[
+% R:\ (\Delta_n\setminus\{e^0\})\times[0,1]\longrightarrow \Delta_n\setminus\{e^0\}
+% \]
+% by the coordinate formulas, for $x=(x_0,\dots,x_n)\ne e^0$ (so $x_0<1$),
+% \[
+% x_0(t)=(1-t)x_0,\qquad
+% x_j(t)=\dfrac{1-(1-t)x_0}{\,1-x_0\,}\,x_j \quad (j\ge 1).
+% \]
+% Then $R(x,0)=x$, $R(x,1)$ satisfies $x_0(1)=0$ and $x_j(1)=x_j/(1-x_0)$, hence $R(x,1)\in \{x_0=0\}=\varepsilon^0(\Delta_{n-1})$.
+% If $x\in \Lambda_n\setminus\{e^0\}$, some $x_j=0$ with $j\ge 1$, and the same holds along the homotopy, so
+% $R$ restricts to a deformation retraction of pairs
+% \[
+% (\Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\})\ \searrow\
+% (\varepsilon^0(\Delta_{n-1}),\ \varepsilon^0(\partial \Delta_{n-1})).
+% \]
+% Therefore $(\varepsilon^0)_*: H_{k-1}(\partial \Delta_n\setminus\{e^0\},\Lambda_n\setminus\{e^0\})
+% \to H_{k-1}(\Delta_{n-1},\partial \Delta_{n-1})$ is an isomorphism.
+
+\begin{lemma}[Deformation retraction onto the $0$-th face]\label{lem:DR-face0}
+
+Let \[F_0=\{x\in\Delta_n:x_0=0\}\cong \Delta_{n-1}\] and let
+\[
+R:\ \bigl(\Delta_n\setminus\{e^0\}\bigr)\times[0,1]\longrightarrow \Delta_n\setminus\{e^0\}
+\]
+be defined for $x=(x_0,\dots,x_n)\neq e^0$ (so $x_0<1$) by
+\[
+x_0(t)=(1-t)\,x_0,\qquad
+x_j(t)=\dfrac{1-(1-t)x_0}{\,1-x_0\,}\,x_j\quad (j\ge 1).
+\]
+Then $R$ is a strong deformation retraction of pairs
+\[
+\bigl(\Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\}\bigr)\ \searrow\
+\bigl(F_0,\ F_0\cap\Lambda_n\bigr)=\bigl(F_0,\ \partial\Delta_{n-1}\bigr),
+\]
+hence induces isomorphisms
+\[
+H_k\!\bigl(\Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\}\bigr)\ \cong\
+H_k\!\bigl(\Delta_{n-1},\ \partial\Delta_{n-1}\bigr)\quad \text{for all }k .
+\]
+\end{lemma}
+
+\begin{proof}
+\textbf{image in the simplex.}
+
+Write
+\[
+s(t):=\dfrac{1-(1-t)x_0}{\,1-x_0\,}=\dfrac{(1-x_0)+t x_0}{1-x_0}=1+\dfrac{t\,x_0}{1-x_0}\ \ge\ 1 .
+\]
+Then for $j\ge 1$ we have $x_j(t)=s(t)\,x_j\ge 0$, and clearly $x_0(t)\ge 0$.
+
+Moreover,
+\[
+x_0(t)+\sum_{j\ge 1}x_j(t)=(1-t)x_0 + s(t)\sum_{j\ge 1}x_j
+= (1-t)x_0 + s(t)\,(1-x_0)
+= (1-t)x_0 + \bigl(1-(1-t)x_0\bigr)=1,
+\]
+so $R(x,t)\in\Delta_n$ for all $(x,t)$.
+
+\textbf{The image avoids the apex $e^0$.}
+
+If $t>0$, then $x_0(t)=(1-t)x_0< x_0\le 1$, hence $x_0(t)<1$, so $R(x,t)\neq e^0$.
+For $t=0$ we have $R(x,0)=x\neq e^0$ by hypothesis. Thus $R$ indeed maps into $\Delta_n\setminus\{e^0\}$.
+
+\textbf{Endpoints and fixed subset.}
+
+By definition $R(x,0)=x$.
+At $t=1$ one has $x_0(1)=0$ and $x_j(1)=x_j/(1-x_0)$, hence $R(x,1)\in F_0$.
+If $y\in F_0$ (i.e.\ $y_0=0$), then $s(t)=1$ for all $t$, so
+\[
+R(y,t)=(0,y_1,\dots,y_n)=y.
+\]
+Therefore $R$ is a \emph{strong} deformation retraction onto $F_0$ (it fixes $F_0$ pointwise).
+
+\textbf{Preservation of $\Lambda_n$.}
+
+If $x\in \Lambda_n\setminus\{e^0\}$, then there exists $j\ge 1$ with $x_j=0$.
+Along the homotopy one has $x_j(t)=s(t)\,x_j=0$ for all $t$, hence $R(x,t)\in F_j\subset \Lambda_n$.
+Thus each time-slice $R_t$ maps $\Lambda_n\setminus\{e^0\}$ into itself, and
+$R$ is a homotopy \emph{of pairs}
+\[
+R:\ \bigl(\Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\}\bigr)\times I
+\longrightarrow \bigl(\Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\}\bigr).
+\]
+
+\textbf{Identification of the target pair.}
+
+We have $F_0=\{x_0=0\}\cong \Delta_{n-1}$ via the inclusion $\varepsilon^0:\Delta_{n-1}\hookrightarrow \Delta_n$,
+and
+\[
+F_0\cap \Lambda_n
+=\Bigl(\bigcup_{j=1}^n F_j\Bigr)\cap F_0
+=\bigcup_{j=1}^n (F_j\cap F_0)
+\cong \partial\Delta_{n-1}=\partial\Delta_{n-1}.
+\]
+Hence the target pair is $\bigl(\varepsilon^0(\Delta_{n-1}),\ \varepsilon^0(\partial\Delta_{n-1})\bigr)$,
+naturally identified with $(\Delta_{n-1},\partial\Delta_{n-1})$.
+
+\textbf{Conclusion on homology.}
+
+Since $R$ is a strong deformation retraction of pairs, it induces isomorphisms on
+relative homology:
+\[
+H_k\!\bigl(\Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\}\bigr)
+\ \xrightarrow[\cong]{\ R_* \ }
+H_k\!\bigl(F_0,\ F_0\cap\Lambda_n\bigr)
+\ \cong\ H_k\!\bigl(\Delta_{n-1},\ \partial\Delta_{n-1}\bigr).
+\]
+\end{proof}
+
+\begin{proposition}\label{prop:Sn-Bn-Rn}
+% For $n\ge 1$ and all $k\in\Bbb Z$:
+\begin{enumerate}
+\item[(a)] $\displaystyle \widetilde H_k(\mathbb{S}^n)\cong
+\begin{cases}
+\Bbb Z,& k=n,\\
+0,& k\ne n;
+\end{cases}$
+\smallskip
+\item[(b)] $\displaystyle H_k(\B^n,\mathbb{S}^{n-1})\cong
+\begin{cases}
+\Bbb Z,& k=n,\\
+0,& k\ne n;
+\end{cases}$
+\smallskip
+\item[(c)] For every point $P\in\Bbb R^n$, 
+$\displaystyle H_k(\Bbb R^n,\,\Bbb R^n\!-\!\{P\})\cong
+\begin{cases}
+\Bbb Z,& k=n,\\
+0,& k\ne n.
+\end{cases}$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We proceed in the order (b) $\Rightarrow$ (a), then (b) $\Rightarrow$ (c).
+
+\smallskip
+\noindent\textbf{Compute $H_k(\B^n,\mathbb{S}^{n-1})$.}
+
+Identify $(\B^n,\mathbb{S}^{n-1})$ with the pair $(\Delta_n,\partial \Delta_n)$ by a standard homeomorphism 
+between the closed $n$–ball and the standard $n$–simplex that carries boundary to boundary.
+By Lemma 2.2, there are natural isomorphisms
+\[
+H_k(\Delta_n,\partial \Delta_n)
+\;\cong\; H_{k-1}(\Delta_{n-1},\partial \Delta_{n-1})
+\;\cong\;\cdots\;\cong\; H_{k-n}(\Delta_0,\partial \Delta_0).
+\]
+Now $(\Delta_0,\partial \Delta_0)=(\{\text{pt}\},\varnothing)$, so
+\[
+H_m(\Delta_0,\partial \Delta_0)\;\cong\;
+\begin{cases}
+\Bbb Z,& m=0,\\
+0,& m\ne 0.
+\end{cases}
+\]
+Therefore
+\[
+H_k(\Delta_n,\partial \Delta_n)\cong
+\begin{cases}
+\Bbb Z,& k-n=0\ \Leftrightarrow\ k=n,\\
+0,& k\ne n.
+\end{cases}
+\]
+Transporting back to $(\B^n,\mathbb{S}^{n-1})$ gives (b).
+
+\smallskip
+\noindent\textbf{Deduce $\widetilde H_k(\mathbb{S}^n)$ from (b).}
+
+Consider the long exact sequence in homology for the pair $(\B^{n+1},\mathbb{S}^n)$:
+\[
+\cdots\to H_{k+1}(\B^{n+1},\mathbb{S}^n)\xrightarrow{\ \partial\ } \widetilde H_k(\mathbb{S}^n)
+\to \widetilde H_k(\B^{n+1}) \to \widetilde H_k(\B^{n+1},\mathbb{S}^n)\to \cdots .
+\]
+Since $\B^{n+1}$ is contractible, $\widetilde H_k(\B^{n+1})=0$ for all $k$, so the boundary map
+\[
+\partial:\ H_{k+1}(\B^{n+1},\mathbb{S}^n)\xrightarrow{\ \cong\ }\widetilde H_k(\mathbb{S}^n)
+\]
+is an isomorphism. Applying (b) with $n$ replaced by $n+1$,
+\[
+H_{k+1}(\B^{n+1},\mathbb{S}^n)\cong
+\begin{cases}
+\Bbb Z,& k+1=n+1 \iff k=n,\\
+0,& k\ne n.
+\end{cases}
+\]
+Hence
+\[
+\widetilde H_k(\mathbb{S}^n)\cong
+\begin{cases}
+\Bbb Z,& k=n,\\
+0,& k\ne n,
+\end{cases}
+\]
+which is (a).
+
+\smallskip
+\noindent\textbf{Pass from $(\B^n,\mathbb{S}^{n-1})$ to $(\Bbb R^n,\Bbb R^n\!-\!\{P\})$.}
+
+By translation we may assume $P=0$. Consider the inclusion of pairs
+\[
+i:\ (\B^n,\mathbb{S}^{n-1})\hookrightarrow (\Bbb R^n,\Bbb R^n\!-\!\{0\}).
+\]
+We claim $i_*$ is an isomorphism on relative homology. We have the commutative diagram of long exact sequences of pairs with vertical maps induced by inclusion:
+\[
+\begin{tikzcd}[column sep=small]
+\cdots \ar[r] & H_k(\mathbb{S}^{n-1}) \ar[r] \ar[d,"{\alpha_k}"'] 
+& H_k(B^n) \ar[r] \ar[d,"{\beta_k}"'] 
+& H_k(B^n,\mathbb{S}^{n-1}) \ar[r] \ar[d,"{i_*}"] 
+& H_{k-1}(\mathbb{S}^{n-1}) \ar[r] \ar[d,"{\alpha_{k-1}}"'] 
+& \cdots \\
+\cdots \ar[r] & H_k(\Bbb R^n\!-\!\{0\}) \ar[r] 
+& H_k(\Bbb R^n) \ar[r] 
+& H_k(\Bbb R^n,\Bbb R^n\!-\!\{0\}) \ar[r] 
+& H_{k-1}(\Bbb R^n\!-\!\{0\}) \ar[r] 
+& \cdots
+\end{tikzcd}
+\]
+Now:
+\begin{itemize}
+\item $\B^n$ and $\Bbb R^n$ are both contractible, so 
+\[\beta_k:H_k(\B^n)\to H_k(\Bbb R^n)\] 
+is an isomorphism for all $k$.
+
+\item $\Bbb R^n\!-\!\{0\}$ deformation retracts onto $\mathbb{S}^{n-1}$ by radial projection,
+so 
+\[\alpha_k:H_k(\mathbb{S}^{n-1})\to H_k(\Bbb R^n\!-\!\{0\})\] 
+is an isomorphism for all $k$.
+\end{itemize}
+By exactness and the Five Lemma, the middle vertical map
+\[
+i_*:\ H_k(\B^n,\mathbb{S}^{n-1}) \xrightarrow{\ \cong\ } H_k(\Bbb R^n,\Bbb R^n\!-\!\{0\})
+\]
+is an isomorphism for all $k$. Combining this with (b) yields (c).
+\end{proof}
+
+% ===========================
+% Corollaries 2.3–2.5 (details)
+% ===========================
+
+\begin{corollary}\label{cor:2.9}
+Spheres of different dimensions are not homeomorphic; likewise, Euclidean
+spaces of different dimensions are not homeomorphic.
+\end{corollary}
+
+\begin{proof}
+By Prop.~\ref{prop:Sn-Bn-Rn}(a) we have
+$\widetilde H_k(\mathbb{S}^n)\cong \Bbb Z$ if $k=n$ and $0$ otherwise. Hence if
+$\mathbb{S}^m\cong \mathbb{S}^n$, all reduced homology groups must agree, forcing $m=n$.
+
+For Euclidean spaces, suppose $h:\Bbb R^m\!\to\!\Bbb R^n$ is a homeomorphism.
+Then $h$ restricts to a homeomorphism
+\[
+(\Bbb R^m,\ \Bbb R^m\!-\!\{0\}) \;\cong\; (\Bbb R^n,\ \Bbb R^n\!-\!h(0)).
+\]
+By Prop.~\ref{prop:Sn-Bn-Rn}(c),
+\[
+H_k(\Bbb R^m,\Bbb R^m\!-\!\{0\})
+\cong\begin{cases}\Bbb Z,& k=m,\\ 0,& k\neq m,\end{cases}\]
+and
+\[
+H_k(\Bbb R^n,\Bbb R^n\!-\!\{h(0)\})
+\cong\begin{cases}\Bbb Z,& k=n,\\ 0,& k\neq n.\end{cases}
+\]
+Isomorphic relative groups imply $m=n$.
+\end{proof}
+
+\begin{corollary}\label{cor:2.10}
+$\mathbb{S}^{n-1}$ is not a retract of $\B^n$.
+\end{corollary}
+
+\begin{proof}
+Assume there is a retraction $r:\B^n\to \mathbb{S}^{n-1}$ with $r\circ i=\Id_{\mathbb{S}^{n-1}}$
+for the inclusion $i:\mathbb{S}^{n-1}\hookrightarrow \B^n$. In reduced homology, the composite
+\[
+\widetilde H_{n-1}(\mathbb{S}^{n-1}) \xrightarrow{i_*}
+\widetilde H_{n-1}(\B^n) \xrightarrow{r_*} \widetilde H_{n-1}(\mathbb{S}^{n-1})
+\]
+equals $(r\circ i)_*=\Id$.
+But $\widetilde H_{n-1}(\B^n)=0$ because $\B^n$ is contractible, so the composite is
+the zero map, a contradiction since $\widetilde H_{n-1}(\mathbb{S}^{n-1})\cong\Bbb Z\neq 0$
+by Prop.~\ref{prop:Sn-Bn-Rn}(a).
+\end{proof}
+
+\begin{corollary}\label{cor:2.11}
+If $f:\B^n\to\Bbb R^n$ is continuous, then either $f(y)=0$ for some $y\in \B^n$,
+or there exist $z\in \mathbb{S}^{n-1}$ and $\lambda>0$ with $f(z)=\lambda z$.
+\end{corollary}
+% -----------------------------------------------------
+\begin{proof}
+Define a continuous map $\rho:\B^n\to\Bbb R^n$ by the radial piecewise formula
+(writing $r=\|x\|$ and $u=x/\|x\|$ for $x\neq 0$):
+\[
+\rho(x)=
+\begin{cases}
+-\,f\bigl(4r\,x\bigr), & 0\le r\le \tfrac12,\\[4pt]
+(2r-1)\,x\ -\ (2-2r)\,f(u), & \tfrac12\le r\le 1.
+\end{cases}
+\tag{$*$}\label{eq:rho}
+\]
+\textbf{Continuity at $r=\tfrac12$.}
+
+If $r=\tfrac12$, then $4r\,x=2x$ and
+$\|2x\|=1$, so $2x\in \mathbb{S}^{n-1}$ and $u=2x$. Thus both branches give
+\[\rho(x)=-f(2x)\] and \[\rho(x)=(2\cdot\tfrac12-1)x-(2-2\cdot\tfrac12)f(u)
+=0\cdot x-1\cdot f(2x)=-f(2x),\] 
+hence $\rho$ is continuous. Also
+for $z\in \mathbb{S}^{n-1}$ (so $r=1$) we have $\rho(z)=z$.
+
+If $\rho$ never vanished on $\B^n$, then the map
+\[
+R(x)=\dfrac{\rho(x)}{\|\rho(x)\|}\ :\ \B^n\longrightarrow \mathbb{S}^{n-1}
+\]
+would be a continuous retraction with $R|_{\mathbb{S}^{n-1}}=\Id$ (since
+$\rho(z)=z$ for $z\in \mathbb{S}^{n-1}$), contradicting Cor.~\ref{cor:2.4}.
+Hence there exists $x\in B^n$ with $\rho(x)=0$.
+
+\smallskip
+\textbf{Case analysis.}
+\begin{itemize}
+\item If $\|x\|\le \tfrac12$, then by \eqref{eq:rho} we have
+$\rho(x)= -\,f(4\|x\|\,x)=0$, so $f(y)=0$ where $y=4\|x\|\,x\in \B^n$.
+
+\item If $\tfrac12<\|x\|\le 1$, write $r=\|x\|$ and $z=u=x/\|x\| \in \mathbb{S}^{n-1}$.
+Then $\rho(x)=0$ gives
+\[
+(2r-1)\,x=(2-2r)\,f(z).
+\]
+Taking norms and using $x=r z$, we obtain
+\[
+(2r-1)\,r=\,(2-2r)\,\|f(z)\|\quad\Longrightarrow\quad
+\|f(z)\|=\dfrac{2r-1}{\,2-2r\,}\,r\ >0
+\]
+(because $r>\tfrac12$). The vector identity itself reads
+\[
+f(z)=\dfrac{2r-1}{\,2-2r\,}\,x=\underbrace{\dfrac{2r-1}{\,2-2r\,}\,r}_{\displaystyle \lambda}\, z
+\]
+with $\lambda>0$. Thus $f(z)=\lambda z$ for some $z\in \mathbb{S}^{n-1}$.
+\end{itemize}
+\end{proof}
+
+\begin{corollary}[Brouwer fixed point theorem]\label{cor:2.12}
+If $g:\B^n\to\Bbb R^n$ is continuous, then either
+\[
+\exists\,y\in \B^n\ \text{ with }\ g(y)=y,
+\quad\text{or}\quad
+\exists\,z\in \mathbb{S}^{n-1},\ \mu>1\ \text{ with }\ g(z)=\mu\,z .
+\]
+\end{corollary}
+
+\begin{proof}
+Apply Corollary~\ref{cor:2.5} to the continuous map
+\[
+f:\B^n\longrightarrow\Bbb R^n,\qquad x \mapsto g(x)-x .
+\]
+By Corollary~\ref{cor:2.5}, either
+
+\smallskip
+\emph{(i)} there exists $y\in B^n$ with $f(y)=0$, in which case $g(y)=y$ is a fixed point; or
+
+\smallskip
+\emph{(ii)} there exist $z\in \mathbb{S}^{n-1}$ and $\lambda>0$ with $f(z)=\lambda z$.
+In this second case,
+\[
+g(z)=f(z)+z=\lambda z+z=(1+\lambda)\,z=: \mu z,
+\]
+and $\mu=1+\lambda>1$, as claimed.
+\end{proof}
+
+\begin{remark}\label{remark 2.13}
+If in addition $g(\B^n)\subseteq \B^n$, the second alternative is impossible, since
+for $z\in \mathbb{S}^{n-1}$ we would have $\|g(z)\|=\|\mu z\|=\mu>1$, contradicting
+$g(z)\in \B^n$. Hence $g$ must have a fixed point in $\B^n$.
+\end{remark}
+
+\begin{proposition}[Fundamental cycles on the simplex]\label{prop:fundamental-cycle}
+Let $i_n:\Delta_n\to\Delta_n$ be the identity singular $n$–simplex.
+Then $i_n$ is a cycle modulo $\partial \Delta_n$ and its relative homology class
+\[
+[i_n]\in H_n(\Delta_n,\partial \Delta_n)\cong \Bbb Z
+\]
+is a generator. Moreover, its boundary $\partial i_n$ is a cycle in
+$\partial \Delta_n$ whose reduced homology class generates
+$\widetilde H_{n-1}(\partial \Delta_n)\cong\Bbb Z$.
+\end{proposition}
+
+\begin{proof}
+Since the connecting morphism
+\[
+\partial_*:\ H_n(\Delta_n,\partial \Delta_n)\xrightarrow{\ \cong\ }
+\widetilde H_{\,n-1}(\partial \Delta_n)
+\]
+is an isomorphism (by the long exact sequence of the pair and
+$\widetilde H_*(\Delta_n)=0$), it suffices to prove that
+$\partial_*[i_n]=[\partial i_n]$ is a generator of
+$\widetilde H_{n-1}(\partial \Delta_n)$. We proceed by induction on $n$.
+
+\smallskip
+\emph{Base $n=0$.} Here $(\Delta_0,\partial \Delta_0)=(\{\ast\},\varnothing)$ and $[i_0]$
+generates $H_0(\Delta_0,\partial \Delta_0)\cong\Bbb Z$.
+
+\smallskip
+\emph{Inductive step.}
+Let $F_0=\{x_0=0\}\subset \partial \Delta_n$ be the face opposite $e^0$ and
+$\varepsilon^0:\Delta_{n-1}\hookrightarrow \Delta_n$ its standard inclusion
+(the $0$–th face). With the standard orientation on $\Delta_n$ we have the
+usual boundary formula
+\[
+\partial i_n \ =\ \sum_{j=0}^{n}(-1)^j\,\varepsilon^j\circ i_{n-1}.
+\]
+Passing to the relative group $H_{n-1}(\partial \Delta_n,\Lambda_n)$ (notation of
+Lemma~2.1), all faces $\varepsilon^j(\Delta_{n-1})$ with $j\ge1$ vanish
+because they lie in $\Lambda_n$, whereas the face $F_0=\varepsilon^0(\Delta_{n-1})$
+survives with sign $+1$. Hence \emph{as a class in}
+$H_{n-1}(\partial \Delta_n,\Lambda_n)$,
+\[
+\partial_*[i_n]\ =\ [\varepsilon^0\circ i_{n-1}].
+\tag{$\ast$}\label{eq:star}
+\]
+
+Now apply the canonical isomorphisms of Lemma 2.2:
+\[
+H_n(\Delta_n,\partial \Delta_n)\xrightarrow[\cong]{\ \partial_*\ }
+H_{n-1}(\partial \Delta_n,\Lambda_n)
+\xrightarrow[\cong]{\ i_*\ }
+H_{n-1}(\partial \Delta_n\!\setminus\!\{e^0\},\ \Lambda_n\!\setminus\!\{e^0\})
+\xrightarrow[\cong]{\ (\varepsilon^0)_* }
+H_{n-1}(\Delta_{n-1},\partial \Delta_{n-1}).
+\]
+Under $i_*$, the class $[\varepsilon^0\circ i_{n-1}]$ is still represented by
+the same singular simplex (removing $e^0$ does not affect the image of $\varepsilon^0$).
+Under $(\varepsilon^0)_*$—the deformation retraction of Step~3—the class represented by
+$\varepsilon^0\circ i_{n-1}$ is carried to the class $[i_{n-1}]$ in
+$H_{n-1}(\Delta_{n-1},\partial \Delta_{n-1})$. Thus the composite isomorphism sends
+$[i_n]$ to $[i_{n-1}]$:
+\[
+(\varepsilon^0)_*\, i_*\,\partial_*[i_n]\ =\ [i_{n-1}]. \tag{$\dagger$}
+\]
+By the induction hypothesis, $[i_{n-1}]$ generates
+$H_{n-1}(\Delta_{n-1},\partial \Delta_{n-1})\cong\Bbb Z$. Since the map
+$(\varepsilon^0)_*\, i_*\,\partial_*$ is an isomorphism, its preimage $[i_n]$
+must generate $H_n(\Delta_n,\partial \Delta_n)\cong\Bbb Z$. This proves the first
+assertion.
+
+Finally, because $\partial_*$ is an isomorphism, $\partial_*[i_n]=[\partial i_n]$
+generates $\widetilde H_{n-1}(\partial \Delta_n)$, yielding the second assertion.
+\end{proof}
+
+\begin{remark}[{Fundamental cycles}]\label{remark 2.15}
+    
+It is often convenient to exhibit an explicit (relative) singular cycle whose
+homology class generates the top homology group of a manifold with boundary.
+In our setting we want classes generating
+\[
+H_n(\B^n,\mathbb{S}^{n-1}) \qquad\text{and}\qquad \widetilde H_n(\mathbb{S}^n),
+\]
+and we call such representatives \emph{fundamental cycles}.
+There is a very simple choice:
+
+\begin{itemize}
+\item For the pair $(\Delta_n,\partial\Delta_n)\cong(\B^n,\mathbb{S}^{n-1})$,
+the identity singular simplex
+\[
+i_n:\Delta_n\longrightarrow \Delta_n
+\]
+is a relative cycle (i.e.\ $\partial i_n\in S_{n-1}(\partial\Delta_n)$), and its
+class
+\[
+[i_n]\in H_n(\Delta_n,\partial\Delta_n)\cong H_n(B^n,\mathbb{S}^{n-1})\cong\Bbb Z
+\]
+is a generator. We call $i_n$ the \emph{fundamental relative $n$–cycle}.
+\item Its boundary
+\[
+\partial i_n=\sum_{j=0}^n (-1)^j\,\varepsilon^j\circ i_{n-1}\in S_{n-1}(\partial\Delta_n)
+\]
+is a cycle in $\partial\Delta_n$ whose reduced homology class generates
+\(
+\widetilde H_{n-1}(\partial\Delta_n)\cong \Bbb Z.
+\)
+\item Using the connecting isomorphism
+\(
+\partial_*:H_{n+1}(\B^{n+1},\mathbb{S}^n)\xrightarrow{\;\cong\;}\widetilde H_n(\mathbb{S}^n),
+\)
+the image $\partial_*[i_{n+1}]$ is a generator of $\widetilde H_n(\mathbb{S}^n)$;
+we call it the \emph{fundamental $n$–cycle} of $\mathbb{S}^n$.
+\end{itemize}
+
+\noindent
+These choices are compatible with orientations and with the isomorphisms of
+Lemma 2.2 (boundary $\to$ excision $\to$ deformation retraction), so that
+the fundamental class descends from $(\Delta_n,\partial\Delta_n)$ to
+$(\Delta_{n-1},\partial\Delta_{n-1})$ by the face inclusion $\varepsilon^0$.
+\end{remark}
+
+% \begin{proposition}[Fundamental cycles on the simplex]
+% Let $i_n:\Delta_n\to\Delta_n$ be the identity singular $n$--simplex.
+% Then $i_n$ is a relative cycle modulo $\partial\Delta_n$, and its class
+% \[
+% [i_n]\in H_n(\Delta_n,\partial\Delta_n)\cong\mathbb Z
+% \]
+% is a generator. Moreover, its boundary $\partial i_n$ is a cycle in
+% $\partial\Delta_n$ whose reduced homology class generates
+% $\widetilde H_{n-1}(\partial\Delta_n)\cong\mathbb Z$.
+% \end{proposition}
+
+% \begin{proof}[Detailed proof]
+% We begin with the short exact sequence of singular chain complexes
+% \[
+% 0\longrightarrow C_*(\partial\Delta_n)\xrightarrow{\ \iota\ }
+% C_*(\Delta_n)\xrightarrow{\ \pi\ }C_*(\Delta_n,\partial\Delta_n)
+% \longrightarrow 0.
+% \]
+% The connecting morphism in homology
+% \[
+% \partial_*:\ H_k(\Delta_n,\partial\Delta_n)\longrightarrow
+% H_{k-1}(\partial\Delta_n)
+% \]
+% is given explicitly as follows:
+
+% \begin{lemma}[Chain-level description of $\partial_*$]
+% If $[c]\in H_k(\Delta_n,\partial\Delta_n)$ is represented by a chain
+% $c\in C_k(\Delta_n)$ such that $\partial c\in C_{k-1}(\partial\Delta_n)$,
+% then
+% \[
+% \partial_*[c]=[\partial c]\in H_{k-1}(\partial\Delta_n).
+% \]
+% \end{lemma}
+
+% Applying this to $c=i_n$, we have $\partial_*[i_n]=[\partial i_n]$.
+% Since $\widetilde H_*(\Delta_n)=0$, the long exact sequence of the pair
+% implies that
+% \[
+% \partial_*:\ H_n(\Delta_n,\partial\Delta_n)
+% \;\xrightarrow{\;\cong\;}\;
+% \widetilde H_{n-1}(\partial\Delta_n)
+% \]
+% is an isomorphism. Therefore, it suffices to show that
+% $[\partial i_n]$ generates $\widetilde H_{n-1}(\partial\Delta_n)$.
+% We do this by induction on $n$.
+
+% \smallskip
+% \textbf{Base case $n=0$.}
+% The pair $(\Delta_0,\partial\Delta_0)=(\{\ast\},\varnothing)$ has
+% $H_0(\Delta_0,\partial\Delta_0)\cong\mathbb Z$, generated by $[i_0]$.
+
+% \smallskip
+% \textbf{Inductive step.}
+% For the standard orientation on $\Delta_n$, the boundary formula reads
+% \[
+% \partial i_n=\sum_{j=0}^{n}(-1)^j\,\varepsilon^j\circ i_{n-1},
+% \]
+% where $\varepsilon^j:\Delta_{n-1}\hookrightarrow\Delta_n$
+% is the inclusion of the $j$-th face.
+% Let $F_0=\varepsilon^0(\Delta_{n-1})$ and
+% $\Lambda_n=\bigcup_{j=1}^{n}\varepsilon^j(\Delta_{n-1})$.
+% Then
+% \[
+% \partial\Delta_n=F_0\cup\Lambda_n,
+% \quad\text{and}\quad
+% F_0\cap\Lambda_n=\partial F_0=\partial\Delta_{n-1}.
+% \]
+% In the relative group $H_{n-1}(\partial\Delta_n,\Lambda_n)$, all faces
+% $\varepsilon^j(\Delta_{n-1})$ with $j\ge1$ vanish because they lie in
+% $\Lambda_n$, so only the face $F_0=\varepsilon^0(\Delta_{n-1})$
+% survives with sign $+1$. Therefore,
+% \[
+% [\partial i_n]=[\varepsilon^0\circ i_{n-1}]
+% \quad\text{in }H_{n-1}(\partial\Delta_n,\Lambda_n).
+% \tag{$\star$}
+% \]
+
+% \smallskip
+% \textbf{Step 1: Excision.}
+% Choose a small neighborhood $U$ of the vertex $e^0$ contained in
+% $\operatorname{int}(\Lambda_n)$.
+% By the Excision Theorem, the inclusion induces an isomorphism
+% \[
+% H_{*}(\partial\Delta_n,\Lambda_n)\;\xrightarrow{\cong}\;
+% H_{*}(\partial\Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\}).
+% \]
+
+% \smallskip
+% \textbf{Step 2: Deformation retraction.}
+% Write a point of $\partial\Delta_n$ in barycentric coordinates
+% $y=(\lambda_0,\ldots,\lambda_n)$ with $\lambda_j\ge0$,
+% $\sum\lambda_j=1$.
+% Define
+% \[
+% R_t(\lambda_0,\ldots,\lambda_n)
+% =\Bigl(
+% (1-t)\lambda_0,\,
+% (1+\tfrac{t\lambda_0}{1-\lambda_0})\lambda_1,\ldots,
+% (1+\tfrac{t\lambda_0}{1-\lambda_0})\lambda_n
+% \Bigr),\quad 0\le t\le1.
+% \]
+% Then $R_t$ is a strong deformation retraction of
+% $\partial\Delta_n\setminus\{e^0\}$ onto the face
+% $F_0=\varepsilon^0(\Delta_{n-1})$.
+% Consequently, the pair
+% $(\partial\Delta_n\setminus\{e^0\},\Lambda_n\setminus\{e^0\})$
+% is homotopy equivalent to
+% $(F_0,F_0\cap\Lambda_n)=(\Delta_{n-1},\partial\Delta_{n-1})$,
+% and the induced map in homology is $(\varepsilon^0)_*$.
+
+% \smallskip
+% \textbf{Step 3: Composition of isomorphisms.}
+% We now have a natural chain of isomorphisms
+% \[
+% H_n(\Delta_n,\partial\Delta_n)
+% \xrightarrow[\cong]{\ \partial_*\ }
+% H_{n-1}(\partial\Delta_n,\Lambda_n)
+% \xrightarrow[\cong]{\ \text{excision}\ }
+% H_{n-1}(\partial\Delta_n\!\setminus\!\{e^0\},
+% \Lambda_n\!\setminus\!\{e^0\})
+% \xrightarrow[\cong]{\ (\varepsilon^0)_*\ }
+% H_{n-1}(\Delta_{n-1},\partial\Delta_{n-1}).
+% \tag{$\dagger$}
+% \]
+% By $(\star)$, the image of $[i_n]$ under $\partial_*$ is represented by
+% $\varepsilon^0\circ i_{n-1}$, which passes through excision and
+% $(\varepsilon^0)_*$ to become $[i_{n-1}]$ in
+% $H_{n-1}(\Delta_{n-1},\partial\Delta_{n-1})$.
+% Hence
+% \[
+% (\varepsilon^0)_*\;\partial_*[i_n]=[i_{n-1}].
+% \tag{$\ddagger$}
+% \]
+
+% \smallskip
+% \textbf{Step 4: Inductive conclusion.}
+% By the inductive hypothesis, $[i_{n-1}]$ generates
+% $H_{n-1}(\Delta_{n-1},\partial\Delta_{n-1})\cong\mathbb Z$.
+% Since the composite in $(\dagger)$ is an isomorphism,
+% its preimage $[i_n]$ must generate
+% $H_n(\Delta_n,\partial\Delta_n)\cong\mathbb Z$.
+
+% \smallskip
+% \textbf{Step 5: Boundary class.}
+% Finally, because $\partial_*$ is an isomorphism and
+% $\partial_*[i_n]=[\partial i_n]$, we conclude that
+% $[\partial i_n]$ generates
+% $\widetilde H_{n-1}(\partial\Delta_n)\cong\mathbb Z$.
+
+% \smallskip
+% \textbf{Geometric interpretation.}
+% The class $[i_n]$ is the \emph{fundamental class} (or orientation class)
+% of $(\Delta_n,\partial\Delta_n)$,
+% and its boundary $[\partial i_n]$ is the fundamental class of
+% the boundary sphere $\partial\Delta_n$.
+% Symbolically:
+% \[
+% \boxed{
+% \text{The boundary of the orientation class of the $n$--disk
+% is the orientation class of its boundary $(n-1)$--sphere.}
+% }
+% \]
+% \end{proof}
+% \begin{proposition}[Fundamental cycles on the simplex]\label{prop:fundamental-cycle}
+% Let $i_n:\Delta^n\to\Delta^n$ be the identity singular $n$–simplex.
+% Then $i_n$ is a cycle modulo $\partial \Delta^n$ and its relative homology class
+% \[
+% [i_n]\in H_n(\Delta^n,\partial \Delta^n)\cong \mathbb{Z}
+% \]
+% is a generator. Moreover, its boundary $\partial i_n$ is a cycle in
+% $\partial \Delta^n$ whose reduced homology class generates
+% $\widetilde H_{n-1}(\partial \Delta^n)\cong\mathbb{Z}$.
+% \end{proposition}
+
+% \begin{proof}
+% Fix the standard ordering of the vertices of the standard simplex
+% $\Delta^n=\mathrm{conv}(e_0,\dots,e_n)\subset\mathbb{R}^{n+1}$ and orient $\Delta^n$
+% accordingly. Let $C_\ast(-)$ denote the singular chain complex with integer
+% coefficients, and $C_\ast(X,A)=C_\ast(X)/C_\ast(A)$ the relative chain complex
+% of a pair $(X,A)$.
+
+% \smallskip
+
+% \emph{Step 1: $i_n$ is a relative cycle.}
+% Recall the singular boundary formula
+% \[
+% \partial i_n \;=\; \sum_{j=0}^{n}(-1)^j\, i_n\!\circ\varepsilon_j,
+% \]
+% where $\varepsilon_j:\Delta^{n-1}\hookrightarrow\Delta^n$ is the $j$-th face
+% inclusion. Each composite $i_n\!\circ\varepsilon_j$ is exactly the inclusion
+% of the $j$-th $(n-1)$–face of $\Delta^n$ into $\partial\Delta^n$. Hence
+% $\partial i_n\in C_{n-1}(\partial\Delta^n)\subset C_{n-1}(\Delta^n)$.
+% By definition of the relative boundary on $C_\ast(\Delta^n,\partial\Delta^n)$,
+% the class of $\partial i_n$ vanishes:
+% \[
+% \partial\,[i_n]\;=\;[\partial i_n]\;=\;0\in C_{n-1}(\Delta^n,\partial\Delta^n).
+% \]
+% Thus $[i_n]\in Z_n(\Delta^n,\partial\Delta^n)$ is a relative cycle.
+
+% \smallskip
+
+% \emph{Step 2: The connecting homomorphism is an isomorphism in degree $n$.}
+% The long exact sequence of the pair $(\Delta^n,\partial\Delta^n)$ is
+% \[
+% \cdots\to H_k(\partial\Delta^n)\xrightarrow{\;\iota_\ast\;}
+% H_k(\Delta^n)\to H_k(\Delta^n,\partial\Delta^n)
+% \xrightarrow{\;\partial_\ast\;}
+% H_{k-1}(\partial\Delta^n)\to H_{k-1}(\Delta^n)\to\cdots
+% \]
+% Since $\Delta^n$ is contractible, $H_k(\Delta^n)=0$ for $k>0$ and
+% $H_0(\Delta^n)\cong\mathbb{Z}$. For $k=n$ this yields a short exact segment
+% \[
+% 0\;\longrightarrow\; H_n(\Delta^n,\partial\Delta^n)
+% \xrightarrow{\;\partial_\ast\;}
+% H_{n-1}(\partial\Delta^n)\;\longrightarrow\;0,
+% \]
+% i.e.\ $\partial_\ast: H_n(\Delta^n,\partial\Delta^n)\xrightarrow{\cong}
+% \widetilde H_{n-1}(\partial\Delta^n)$ is an isomorphism (we may replace
+% $H_{n-1}$ by $\widetilde H_{n-1}$ since $n-1\ge 0$).
+
+% \smallskip
+
+% \emph{Step 3: Identifying the generators by a collapse map.}
+% Consider the quotient map of pairs
+% \[
+% q:\ (\Delta^n,\partial\Delta^n)\ \longrightarrow\ (\Delta^n/\partial\Delta^n,\;\ast),
+% \]
+% which collapses $\partial\Delta^n$ to a point. The quotient space
+% $\Delta^n/\partial\Delta^n$ is homeomorphic to $S^n$, so $q$ induces an
+% isomorphism
+% \[
+% q_\ast:\ H_n(\Delta^n,\partial\Delta^n)\xrightarrow{\ \cong\ }
+% \widetilde H_n(S^n)\ \cong\ \mathbb{Z}.
+% \]
+% On singular chains, $q_\ast$ sends the relative class of $i_n$ to the class of the
+% singular $n$–simplex $\bar i_n:\Delta^n\to S^n$ obtained by composing $i_n$ with the
+% quotient $q$. The image $[\bar i_n]\in \widetilde H_n(S^n)$ is a generator (it is
+% the fundamental class determined by the chosen orientation). Consequently,
+% $[i_n]\in H_n(\Delta^n,\partial\Delta^n)$ is a generator as well.
+
+% \smallskip
+
+% \emph{Step 4: The boundary $\partial i_n$ is the fundamental cycle of
+% $\partial\Delta^n$.}
+% By Step~2, the connecting isomorphism $\partial_\ast$ sends the generator
+% $[i_n]\in H_n(\Delta^n,\partial\Delta^n)$ to a generator of
+% $\widetilde H_{n-1}(\partial\Delta^n)$. By naturality of $\partial_\ast$ and
+% the definition of the connecting map, we have
+% \[
+% \partial_\ast[i_n]\;=\;[\partial i_n]\ \in\ \widetilde H_{n-1}(\partial\Delta^n).
+% \]
+% But $\partial i_n=\sum_{j=0}^n(-1)^j\,i_n\circ\varepsilon_j$ is precisely the
+% alternating sum of the oriented $(n-1)$–faces of $\Delta^n$, viewed as a chain in
+% $\partial\Delta^n$. This chain is a cycle (its boundary cancels pairwise along
+% the $(n-2)$–faces with opposite orientations), and it cannot be a boundary in
+% $C_\ast(\partial\Delta^n)$ because there are no $n$–simplices in $\partial\Delta^n$.
+% Hence $[\partial i_n]\neq 0$ and, by Step~2, it must generate
+% $\widetilde H_{n-1}(\partial\Delta^n)\cong\mathbb{Z}$.
+
+% \smallskip
+
+% Combining the steps: $i_n$ is a relative cycle, its class $[i_n]$ generates
+% $H_n(\Delta^n,\partial\Delta^n)\cong\mathbb{Z}$, and its boundary $\partial i_n$
+% represents the fundamental class of the boundary sphere
+% $\partial\Delta^n\cong S^{n-1}$ in reduced homology. This completes the proof.
+% \end{proof}
+
+% =========================
+% Proposition 2.8 and Corollary 2.10 (detailed)
+% =========================
+
+\begin{proposition}\label{prop:2.16}
+Let $P\in \mathbb{S}^n$ and let $Y$ be any space. There are natural isomorphisms
+\begin{enumerate}
+\item $H_k(\mathbb{S}^n\times Y,\ P\times Y)\ \cong\ H_{k-n}(Y)$,
+\item $H_k(\B^n\times Y,\ \mathbb{S}^{n-1}\times Y)\ \cong\ H_{k-n}(Y)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We prove (b) first; (a) will follow from a triple and the boundary isomorphism.
+
+\smallskip
+\textbf{The shift lemma with a dummy factor $Y$.}
+
+Write the notation of Lemma 2.2 for simplices: $\Delta_n$, $\partial \Delta_n$,
+$\Lambda_n$ and the vertex $e^0$.
+Exactly the same maps as in Lemma 2.2 applied \emph{productwise with} $Y$ give
+natural isomorphisms
+\begin{equation}\label{eq:shiftY}
+\begin{aligned}
+H_k\big((\Delta_n,\partial \Delta_n)\times Y\big)
+&\xrightarrow[\cong]{\ \partial_*\ } H_{k-1}\big((\partial \Delta_n,\Lambda_n)\times Y\big)\\
+&\xrightarrow[\cong]{\ i_* }
+H_{k-1}\big((\partial \Delta_n\setminus\{e^0\},\ \Lambda_n\setminus\{e^0\})\times Y\big)\\
+&\xrightarrow[\cong]{\ (\varepsilon^0)_* }
+H_{k-1}\big((\Delta_{n-1},\partial \Delta_{n-1})\times Y\big).
+\end{aligned}
+\end{equation}
+Here:
+\begin{itemize}
+\item the first is the connecting map in the long exact sequence of the \emph{triple}
+$((\Delta_n,\partial \Delta_n,\Lambda_n)\times Y)$;
+\item the second is excision (since $e^0$ lies in the relative interior of $\Lambda_n$
+inside $\partial \Delta_n$, hence $e^0\times Y$ lies in the relative interior of
+$\Lambda_n\times Y$ inside $\partial \Delta_n\times Y$);
+\item the third comes from the deformation retraction
+$(\Delta_n\setminus\{e^0\})\times Y \searrow \Delta_{n-1}\times Y$
+of pairs, obtained by taking the retraction from Step 3 of Lemma~2.2 and multiplying by $Y$.
+\end{itemize}
+Iterating \eqref{eq:shiftY} $n$ times yields
+\[
+H_k\big((\Delta_n,\partial \Delta_n)\times Y\big)\ \cong\
+H_{k-n}\big((\Delta_0,\partial \Delta_0)\times Y\big)
+\ \cong\ H_{k-n}(Y).
+\]
+Since $(\Delta_n,\partial \Delta_n)\cong(B^n,\mathbb{S}^{n-1})$, this proves (b).
+
+\smallskip
+\textbf{From (b) to (a).}
+
+Consider the triple $(\B^{n+1}\times Y,\ \mathbb{S}^n\times Y,\ P\times Y)$.
+Because $\B^{n+1}\times Y\ \simeq\ P\times Y$ (deformation retract via projection to the
+first factor followed by contracting the ball), we have
+$H_*(\B^{n+1}\times Y,\ P\times Y)=0$. The long exact sequence of the triple gives the
+boundary isomorphism
+\[
+\partial_*:\ H_{k+1}(\B^{n+1}\times Y,\ \mathbb{S}^n\times Y)\ \xrightarrow{\ \cong\ }\
+H_k(\mathbb{S}^n\times Y,\ P\times Y).
+\]
+Applying (b) with $n$ replaced by $n{+}1$,
+\[
+H_{k+1}(\B^{n+1}\times Y,\ \mathbb{S}^n\times Y)\ \cong\ H_{k+1-(n+1)}(Y)=H_{k-n}(Y),
+\]
+and composing with $\partial_*$ yields the isomorphism in (a).
+\end{proof}
+
+\begin{corollary}\label{cor:2.17}
+There are natural isomorphisms
+\[
+(p,q_*)\ :\ H_k(\mathbb{S}^n\times Y)\ \xrightarrow{\ \cong\ }\
+H_{k-n}(Y)\ \oplus\ H_k(Y),
+\]
+where \[q:\mathbb{S}^n\times Y\to Y\] is the projection $q(x,y)=y$, and
+\[p:H_k(\mathbb{S}^n\times Y)\twoheadrightarrow H_k(\mathbb{S}^n\times Y,\ P\times Y)\cong H_{k-n}(Y)\]
+is the quotient map in the long exact sequence for the pair.
+\end{corollary}
+
+\begin{proof}
+Let $i:P\times Y\hookrightarrow \mathbb{S}^n\times Y$ be the inclusion and let
+$r=p_0\times \Id_Y:\mathbb{S}^n\times Y\to P\times Y$ be the retraction
+($p_0:\mathbb{S}^n\to P$ is the constant map). Then $r\circ i=\Id$.
+The long exact sequence for the pair $(\mathbb{S}^n\times Y,\ P\times Y)$ splits into short exact
+sequences (see e.g.\ III, 4.16):
+\[
+0\longrightarrow H_k(P\times Y)
+\xrightarrow{i_*} H_k(\mathbb{S}^n\times Y)
+\xrightarrow{p} H_k(\mathbb{S}^n\times Y,\ P\times Y)
+\longrightarrow 0,
+\]
+because $i_*$ admits a left inverse $(r)_*:H_k(\mathbb{S}^n\times Y)\to H_k(P\times Y)$.
+Using $P\times Y\cong Y$, we identify $H_k(P\times Y)\cong H_k(Y)$, and by
+Proposition~\ref{prop:2.8}(a),
+$H_k(\mathbb{S}^n\times Y,\ P\times Y)\cong H_{k-n}(Y)$.
+
+Finally, the projection $q:\mathbb{S}^n\times Y\to Y$ satisfies $q\circ i=\Id_Y$, hence
+$q_*:H_k(\mathbb{S}^n\times Y)\to H_k(Y)$ splits the injection $i_*$. Therefore the map
+\[
+(p,q_*):\ H_k(\mathbb{S}^n\times Y)\ \longrightarrow\ H_{k-n}(Y)\oplus H_k(Y)
+\]
+is an isomorphism, natural in $Y$.
+\end{proof}
+
+% =========================
+% Proposition 2.12 (details)
+% =========================
+
+\begin{proposition}\label{prop:2.18}
+Fix $P\in \mathbb{S}^n$. Let
+\[
+i_1,i_2:\mathbb{S}^n\longrightarrow \mathbb{S}^n\times \mathbb{S}^n,\qquad
+i_1(x)=(x,P),\ \ i_2(x)=(P,x),
+\]
+and let $p_1,p_2:\mathbb{S}^n\times \mathbb{S}^n\to \mathbb{S}^n$ be the projections.
+Then the homomorphisms
+\[
+H_n\mathbb{S}^n\oplus H_n\mathbb{S}^n
+\ \xrightarrow{\ (i_{1*},\,i_{2*})\ }\ 
+H_n(\mathbb{S}^n\times \mathbb{S}^n)
+\ \xrightarrow{\ (p_{1*},\,p_{2*})\ }\ 
+H_n\mathbb{S}^n\oplus H_n\mathbb{S}^n
+\tag{2.11}\label{eq:2.11}
+\]
+are isomorphisms (and mutually inverse).
+\end{proposition}
+
+\begin{proof}
+% \textbf{Rank computation of $H_n(\mathbb{S}^n\times \mathbb{S}^n)$.}
+
+Apply Corollary~2.17 with $Y=\mathbb{S}^n$ and $k=n$:
+\[
+H_n(\mathbb{S}^n\times \mathbb{S}^n)\ \cong\ H_{n-n}(\mathbb{S}^n)\ \oplus\ H_n(\mathbb{S}^n)
+\ \cong\ H_0(\mathbb{S}^n)\oplus H_n(\mathbb{S}^n)\ \cong\ \Bbb Z\oplus\Bbb Z .
+\tag{$\ast$}\label{eq:rank}
+\]
+
+The composite $(p_{1*},p_{2*})\circ(i_{1*},i_{2*})$ is the identity. Indeed,
+\[
+p_1\circ i_1=\Id_{\mathbb{S}^n},\qquad
+p_2\circ i_2=\Id_{\mathbb{S}^n},\qquad
+p_1\circ i_2 \text{ and } p_2\circ i_1 \text{ are constant at }P .
+\]
+
+On $H_n(\mathbb{S}^n)\cong\Bbb Z$ a constant map induces $0$, hence
+\[
+(p_{1*},~p_{2*})\circ(i_{1*},~i_{2*})
+=\begin{pmatrix} p_{1*}i_{1*} & p_{1*}i_{2*}\\[2pt]
+                  p_{2*}i_{1*} & p_{2*}i_{2*}\end{pmatrix}
+=\begin{pmatrix} \Id & 0\\ 0 & \Id\end{pmatrix}
+=\Id_{H_n\mathbb{S}^n\oplus H_n\mathbb{S}^n}.
+\tag{$\dagger$}\label{eq:comp-id}
+\]
+
+So $(i_{1*},i_{2*})$ is an isomorphism.
+
+From \eqref{eq:comp-id}, $(i_{1*},i_{2*})$ is injective and its image is a direct
+summand of $H_n(\mathbb{S}^n\times \mathbb{S}^n)$. By \eqref{eq:rank} both domain and codomain are
+free abelian of rank $2$, so an injective map onto a direct summand must be
+surjective; hence $(i_{1*},i_{2*})$ is an isomorphism.
+
+\textbf{$(p_{1*},~p_{2*})$ is an isomorphism.}
+
+Since the composite in \eqref{eq:comp-id} is the identity, $(p_{1*},p_{2*})$
+is the inverse of $(i_{1*},i_{2*})$, hence also an isomorphism.
+
+\end{proof}
+
+\begin{remark}[Generators and naturality]\label{remark 2.19}
+Under the isomorphism $(i_{1*},i_{2*})$, the two basis elements of
+$H_n\mathbb{S}^n\oplus H_n\mathbb{S}^n\cong\Bbb Z\oplus\Bbb Z$ are carried to the “fundamental
+classes of the factors” inside $H_n(\mathbb{S}^n\times \mathbb{S}^n)$, and $(p_{1*},p_{2*})$
+recovers them. This identification is compatible with the natural splitting
+of Corollary~2.17 and with the symmetry exchanging the two factors.
+\end{remark}
+
+% ===============================
+% Exercises 2.13: detailed solutions
+% ===============================
+
+\begin{exercise}[2.13.1]
+Compute $H_*(\Bbb R^n\setminus F)$ where $F$ is a finite set of $m$ points.
+(Hint: first compute $H_*(\Bbb R^n,\ \Bbb R^n\setminus F)$ by excision.)
+\end{exercise}
+
+\begin{solution}
+Let $F=\{P_1,\dots,P_m\}$ with $m\ge 1$. Choose disjoint closed $n$–balls
+$B_i$ around $P_i$. By excision,
+\[
+H_k(\Bbb R^n,\ \Bbb R^n\setminus F)\ \cong\
+\bigoplus_{i=1}^m H_k(B_i,\ B_i\setminus\{P_i\})
+\ \cong\ \bigoplus_{i=1}^m H_k(\B^n,\ \B^n\setminus\{0\}).
+\]
+By Prop.\ 2.2(c)
+$H_k(\B^n,\ \B^n\setminus\{0\})\cong \Bbb Z$ for $k=n$ and $0$ otherwise, hence
+\[
+H_k(\Bbb R^n,\ \Bbb R^n\setminus F)\ \cong\
+\begin{cases}
+\Bbb Z^{\,m},& k=n,\\
+0,& k\ne n.
+\end{cases}
+\]
+Now use the long exact sequence of the pair $(\Bbb R^n,\ \Bbb R^n\setminus F)$.
+
+For $n\ge 2$, both $H_{n-1}(\Bbb R^n)$ and $H_n(\Bbb R^n)$ vanish, so we get an
+isomorphism
+\[
+H_{n-1}(\Bbb R^n\setminus F)\ \cong\ H_n(\Bbb R^n,\ \Bbb R^n\setminus F)
+\ \cong\ \Bbb Z^{\,m}.
+\]
+All other reduced groups in positive degrees vanish, and
+$H_0(\Bbb R^n\setminus F)\cong\Bbb Z$ since $\Bbb R^n\setminus F$ is connected for $n\ge 2$.
+Thus for $n\ge 2$,
+\[
+H_k(\Bbb R^n\setminus F)\ \cong\
+\begin{cases}
+\Bbb Z,& k=0,\\
+\Bbb Z^{\,m},& k=n-1,\\
+0,& \text{otherwise.}
+\end{cases}
+\]
+Equivalently, $\Bbb R^n\setminus F\simeq \bigvee_{i=1}^{m} \mathbb{S}^{n-1}$ (a wedge of $m$ spheres).
+
+For $n=1$, $\Bbb R\setminus F$ is a disjoint union of $m{+}1$ open intervals, hence
+
+\[H_0(\Bbb R\setminus F)\cong \Bbb Z^{\,m+1}\]
+and $H_k=0$ for $k\ge 1$.
+\end{solution}
+
+\bigskip
+
+\begin{exercise}[2.13.2]
+If $g:\B^n\to\Bbb R^n$ ($n>1$) has no fixed point ($g(x)\ne x$ for all $x$), show that
+the angle $\angle(0,z,g(z))$ assumes every value in $[0,\pi]$ as $z$ varies in $\mathbb{S}^{n-1}$.
+\end{exercise}
+
+\begin{solution}
+Consider the continuous function
+\[
+\Theta:\mathbb{S}^{n-1}\longrightarrow [0,\pi],\qquad
+\Theta(z)=\angle(0,z,g(z))=\arccos\!\Big(\dfrac{\langle z,g(z)\rangle}{\|g(z)\|}\Big),
+\]
+well-defined since $g(z)\ne 0$ whenever $g$ has no fixed point on $\mathbb{S}^{n-1}$.
+(If $g(z)=0$ for some $z\in \mathbb{S}^{n-1}$ then $\Theta(z)=\dfrac\pi2$ already.)
+
+By Cor.\ 2.12 applied to $g$, since $g$ has no fixed point in $\B^n$ there exists
+$z_0\in \mathbb{S}^{n-1}$ and $\mu_0>1$ with $g(z_0)=\mu_0\,z_0$, so $\Theta(z_0)=0$.
+
+Apply Cor.\ 2.12 to $-g$.
+Either $\exists\,y$ with $-g(y)=y$ (i.e.\ $g(y)=-y$), or else
+$\exists\,z_1\in \mathbb{S}^{n-1}$, $\mu_1>1$ with $-g(z_1)=\mu_1 z_1$, i.e.\ $g(z_1)=-\mu_1 z_1$.
+In both subcases we get some $z_1\in \mathbb{S}^{n-1}$ with $\Theta(z_1)=\pi$.
+
+Since $n>1$, $\mathbb{S}^{n-1}$ is connected and $\Theta$ is continuous, the image
+$\Theta(\mathbb{S}^{n-1})$ is a connected set of $[0,\pi]$ containing $0$ and $\pi$, hence
+$\Theta(\mathbb{S}^{n-1})=[0,\pi]$.
+\end{solution}
+
+\bigskip
+
+\begin{exercise}[2.13.3]
+Prove that the $k$-th homology group of the $n$-torus
+$\mathbb{T}^n=(\mathbb{S}^1)^n$ is a free abelian group of rank $\binom{n}{k}$.
+\end{exercise}
+
+\begin{solution}
+We use Cor.\ 2.17 with $\mathbb{S}^1$:
+for any space $Y$ and any $k$,
+\[
+H_k(\mathbb{S}^1\times Y)\ \cong\ H_{k-1}(Y)\ \oplus\ H_k(Y).
+\tag{$\ast$}
+\]
+Let $\mathbb{T}^n=(\mathbb{S}^1)^n$ and put $b_k(n):=\operatorname{rank} H_k(\mathbb{T}^n)$.
+We prove by induction on $n$ that \[H_k(\mathbb{T}^n)\cong \Bbb Z^{\,\binom{n}{k}}.\]
+
+For $n=0$, $\mathbb{T}^0=\{\ast\}$ so $H_k(\mathbb{T}^0)\cong \Bbb Z$ for $k=0$ and $0$ otherwise,
+matching $\binom{0}{k}$.
+
+Assume the statement for $\mathbb{T}^{n-1}$. Using $(\ast)$ with $Y=\mathbb{T}^{n-1}$ we get
+\[
+H_k(\mathbb{T}^n)=H_k(\mathbb{S}^1\times \mathbb{T}^{n-1})
+\ \cong\ H_{k-1}(\mathbb{T}^{n-1})\ \oplus\ H_k(\mathbb{T}^{n-1}).
+\]
+Taking ranks and the induction hypothesis,
+\[
+b_k(n)=b_{k-1}(n-1)+b_k(n-1)
+=\binom{n-1}{k-1}+\binom{n-1}{k}=\binom{n}{k}.
+\]
+Moreover all these groups are free abelian because they are built from free groups
+by direct sums. Thus $H_k(\mathbb{T}^n)\cong \Bbb Z^{\,\binom{n}{k}}$.
+\end{solution}
+
+\begin{exercise}[Homology of the genus-$g$ surface]\label{ex:genusg}
+Let $\Dg$ be the closed $2$–disk $B^2$ with the interiors of $g$ disjoint
+(closed) disks removed. Thus $\Bd \Dg$ is a disjoint union of $g{+}1$ circles.
+Take two copies $\Dg^+$ and $\Dg^-$ and identify their boundaries
+(by the identity) to obtain the closed orientable surface of genus $g$:
+\[
+\Sg \ :=\ \Dg^+ \cup_{\Bd \Dg} \Dg^- .
+\]
+Prove that
+\[
+H_0(\Sg)\cong \Z \cong H_2(\Sg),\qquad
+H_1(\Sg)\cong \Z^{\,2g},\qquad
+H_i(\Sg)=0\ (i>2).
+\]
+Describe generators of $H_1(\Sg)$.
+\end{exercise}
+
+\begin{solution}
+Set $A=\Dg^+$, $B=\Dg^-$, and $C=A\cap B=\Bd \Dg=\bigsqcup_{j=0}^g C_j$ (disjoint
+union of $g{+}1$ circles).
+We will use the Mayer--Vietoris long exact sequence for the cover $\Sg=A\cup B$.
+
+% \medskip\noindent\textbf{Homology of the pieces.}
+
+Each of $A,B$ deformation retracts to a wedge of $g$ circles (a ``rose''), hence
+\[
+H_0(A)\cong H_0(B)\cong \Z,\quad H_1(A)\cong H_1(B)\cong \Z^{\,g},\quad
+H_i(A)=H_i(B)=0\ (i\ge 2).
+\]
+The intersection $C$ is a disjoint union of $g{+}1$ circles, so
+\[
+H_0(C)\cong \Z^{\,g+1},\qquad H_1(C)\cong \Z^{\,g+1},\qquad H_i(C)=0\ (i\ge 2).
+\]
+
+% \medskip\noindent\textbf{The part of Mayer--Vietoris we need.}
+
+Since $H_2(A)=H_2(B)=H_2(C)=0$, the beginning of the MV sequence is
+\[
+0 \longrightarrow H_2(\Sg)
+\longrightarrow H_1(C)\xrightarrow{\ \phi\ } H_1(A)\oplus H_1(B)
+\longrightarrow H_1(\Sg)
+\longrightarrow H_0(C)\xrightarrow{\ \psi\ } H_0(A)\oplus H_0(B)
+\longrightarrow H_0(\Sg)\longrightarrow 0.
+\tag{MV}\label{eq:MV}
+\]
+
+\medskip\noindent\textbf{The map on $H_0$.}
+
+The map $\psi$ is induced by the two inclusions $C\to A$ and $C\to B$
+(with the usual sign convention); on $H_0$ it sends
+\[
+\psi:\ \Z^{\,g+1}\ni (t_0,\dots,t_g)\ \longmapsto\ (\sum t_j,\ -\sum t_j)\in \Z\oplus\Z.
+\]
+Hence $\mathrm{rank}\,\mathrm{im}\,\psi=1$, $\ker\psi\cong \Z^{\,g}$, and exactness
+in \eqref{eq:MV} yields
+\[
+H_0(\Sg)\cong \mathrm{coker}\,\psi \cong \Z
+\quad\text{and}\quad
+\mathrm{rank}\,\mathrm{im}\big(H_1(\Sg)\to H_0(C)\big)=g.
+\tag{$\dagger$}
+\]
+
+\medskip\noindent\textbf{The map on $H_1$.}
+
+Write $\phi=(i_*, -j_*)$ where $i_*,j_*$ are induced by $C\hookrightarrow A$ and $C\hookrightarrow B$.
+For a compact connected surface with boundary $\Dg$, the map
+\[
+H_1(\Bd\Dg)=H_1(C)\ \xrightarrow{\ i_*\ } H_1(A)
+\]
+is surjective and its kernel is generated by the \emph{total boundary class}
+\(
+[C_0]+\cdots+[C_g]
+\)
+(this can be seen from the long exact sequence of the pair $(\Dg,\Bd\Dg)$ or
+from the deformation retraction of $\Dg$ onto a rose with each boundary component
+mapping to the petal sum). The same holds for $j_*$. Consequently,
+\[
+\ker \phi \ =\ \langle [C_0]+\cdots+[C_g]\rangle \ \cong\ \Z,
+\qquad \mathrm{rank}\,\mathrm{im}\,\phi\ =\ (g{+}1)-1\ =\ g.
+\tag{$\ddagger$}
+\]
+By exactness of \eqref{eq:MV}, \(\;H_2(\Sg)\cong \ker\phi\cong \Z\).
+
+\medskip\noindent\textbf{Rank of $H_1(\Sg)$.}
+
+From \eqref{eq:MV} and $\ddagger$–$\ddagger$ we get
+\[
+\mathrm{rank}\,\mathrm{im}\big(H_1(A)\oplus H_1(B)\to H_1(\Sg)\big)
+= \mathrm{rank}\,(H_1(A)\oplus H_1(B)) - \mathrm{rank}\,\mathrm{im}\,\phi
+= 2g - g = g.
+\]
+Since the image of $H_1(\Sg)\to H_0(C)$ has rank $g$ (by $\ddagger$),
+we conclude
+\[
+\mathrm{rank}\,H_1(\Sg) \;=\; g \;+\; g \;=\; 2g.
+\]
+Combining all degrees, we have proven
+\[
+H_0(\Sg)\cong \Z,\qquad H_1(\Sg)\cong \Z^{\,2g},\qquad H_2(\Sg)\cong \Z,
+\qquad H_i(\Sg)=0\ (i>2).
+\]
+
+\medskip\noindent\textbf{Generators of $H_1(\Sg)$.}
+
+Choose a deformation retraction $r_A:A\searrow R_A$ and $r_B:B\searrow R_B$,
+where $R_A,R_B$ are roses with $g$ petals. Let
+\[
+a_1,\dots,a_g \in H_1(A),\qquad b_1,\dots,b_g\in H_1(B)
+\]
+be the loops represented by the petals. Their images in $H_1(\Sg)$ (under the
+inclusions $A\hookrightarrow \Sg$, $B\hookrightarrow \Sg$ and MV)
+form a set of $2g$ classes. The only relation among the boundary
+circles in $H_1(C)$ is $[C_0]+\cdots+[C_g]=0$; it accounts exactly for the single
+$\Z$ in $H_2(\Sg)$ and gives \emph{no} relation among the $a_i,b_j$.
+Thus the $2g$ classes $\{a_1,\dots,a_g,b_1,\dots,b_g\}$ form a free basis of $H_1(\Sg)$.
+\end{solution}
+
+\begin{remark}[Geometric picture]
+The classes $a_i$ and $b_i$ can be chosen as the standard ``meridian'' and
+``longitude'' loops of each handle; the fundamental class in $H_2(\Sg)$ is represented by
+$\Dg^+\cup \Dg^-$ with the gluing orientation.
+\end{remark}
+
+% =========================================================
+% Exercise 5: Higher-dimensional generalization
+% =========================================================
+
+\begin{exercise}[Higher dimensions]\label{ex:higherD}
+Repeat the construction with $\B^n$ ($n>2$): let $D_g^{(n)}$ be the $n$–ball
+with the interiors of $g$ disjoint $n$–balls removed, and set
+\[
+S_g^{(n)}\ :=\ D_g^{(n),+}\ \cup_{\ \partial D_g^{(n)}}\ D_g^{(n),-}.
+\]
+Show that
+\[
+H_0\!\big(S_g^{(n)}\big)\cong \Z \cong H_n\!\big(S_g^{(n)}\big),\qquad
+H_1\!\big(S_g^{(n)}\big)\cong \Z^{\,g},\qquad
+H_i\!\big(S_g^{(n)}\big)=0 \ (i\notin\{0,1,n\}).
+\]
+\end{exercise}
+
+\begin{solution}
+As before, let $A=D_g^{(n),+}$, $B=D_g^{(n),-}$, $C=\partial D_g^{(n)}\cong
+\bigsqcup_{j=0}^g \mathbb{S}^{n-1}$. Now $A$ (and $B$) deformation retracts to a wedge
+of $g$ circles when $n>2$ (push each ``tunnel'' to its core), hence
+\[
+H_1(A)\cong H_1(B)\cong \Z^{\,g},\quad
+H_i(A)=H_i(B)=0\ (2\le i\le n-1).
+\]
+Also $H_{n-1}(C)\cong \Z^{\,g+1}$ and other positive homology of $C$ vanishes.
+The Mayer--Vietoris sequence is identical to \eqref{eq:MV}, except that all groups
+$H_i$ with $2\le i\le n-1$ vanish in $A,B,C$.
+
+Exactly the same analysis as in Steps 3–5 above gives
+\[
+H_n\!\big(S_g^{(n)}\big)\cong \Z,\qquad
+H_1\!\big(S_g^{(n)}\big)\cong \Z^{\,g},\qquad
+H_i\!\big(S_g^{(n)}\big)=0\quad(1<i<n).
+\]
+Connectivity gives $H_0\cong \Z$, completing the proof.
+\end{solution}

@@ -1,0 +1,1237 @@
+% \section{Nhóm topo $S^1$}
+% Một phép nhân trong một không gian topo $X$ là ánh xạ $m:X\times X\to X$, ta kí hiệu $m(a,b)=a\cdot b$. Nếu phần tử $e\in X$ thoả mãn $e\cdot x = x\cdot e = x$ với mọi $x\in X$ thì ta gọi $e$ là phần tử trung lập của $X$. 
+
+% \begin{enumerate}
+%     \item Khi phép nhân trên $X$ là liên tục với phần tử trung lập $e$, ta có thể định nghĩa một luật kết hợp mới giữa hai đường cong $\alpha,\beta:I\to X$ là $\alpha \cdot \beta: I \to X, (\alpha\cdot\beta)(s):=\alpha(s)\cdot \beta(s)$ với mọi $s\in I$.
+
+%     Nếu $\alpha,\beta$ là các đường cong đóng chung điểm gốc tại điểm trung lập $e\in X$ thì $(\alpha\cdot\beta)(0)=\alpha(0)\cdot\beta(0)=e\cdot e=e$ và $(\alpha\cdot\beta)(1)=\alpha(1)\cdot\beta(1)=e\cdot e=e$, tức $\alpha\cdot \beta$ cũng là một đường cong đóng có điểm gốc $e$. 
+
+%     Hơn nữa, nếu $\alpha,\alpha',\beta,\beta'$ là các đường cong đóng trong $X$ chung điểm gốc $e$ thoả mãn $\alpha\simeq\alpha'$ và $\beta\simeq\beta'$ thì $\alpha\cdot \beta \simeq \alpha'\cdot \beta'$. Thật vậy, giả sử $H,K:I\times I\to X$ lần lượt là các phép đồng luân tương ứng giữa $\alpha$ với $\alpha'$ và $\beta$ với $\beta'$. Khi đó, ánh xạ 
+%     \[L:I\times I\to X, (s,t)\mapsto H(s,t)\cdot K(s,t)\]
+%     là liên tục và thoả mãn 
+%     \begin{itemize}
+%         \item $L(s,0)=H(s,0)\cdot K(s,0)=\alpha(s)\cdot \beta(s) = (\alpha\cdot\beta)(s)$
+
+%         \item $L(s,1)=H(s,1)\cdot K(s,1)=\alpha'(s)\cdot \beta'(s)=(\alpha'\cdot \beta')(s)$
+
+%         \item $L(0,t)=H(0,t)\cdot K(0,t)=e\cdot e = e$ và $L(0,1)=H(0,1)\cdot K(0,1)=e\cdot e = e$.
+%     \end{itemize}
+%     Do đó $L:\alpha\cdot \beta\simeq \alpha'\cdot \beta'$.
+
+%     \item Bây giờ, nếu $X$ được trang bị phép nhân liên tục, ta có thể định nghĩa một phép toán mới giữa các phần tử của nhóm cơ bản $\pi_1(X,e)$ là $[\alpha]\cdot[\beta]=[\alpha\cdot\beta]$. Từ chứng minh ở trên ta thấy phép nhân này không phụ thuộc vào việc chọn phần tử đại diện của lớp đồng luân tương đương $[\alpha],[\beta]$.
+% \end{enumerate}
+% \begin{definition}
+%     Một nhóm topo $G$ là một nhóm và là một không gian topo sao cho phép nhân trong nhóm $G\times G \ni (a,b) \mapsto ab\in G$ và phép lấy nghịch đảo $G\ni x\mapsto x^{-1} \in G$ là các ánh xạ liên tục.
+% \end{definition}
+% \begin{example}
+%     $S^1=\{(a,b)\in \R^2:a^2+b^2=1\}$ là một nhóm topo, với phép nhân $(a,b)\cdot (c,d):= (ad-bc,ac+bd)$, phần tử trung lập là $e=(1,0)$, nghịch đảo của $(a,b)$ là $(a,b)^{-1}=(a,-b)$.
+% \end{example}
+
+% \begin{lemma}
+%     Cho $X$ là một không gian topo được trang bị phép nhân liên tục và phần tử trung lập $e$. Nếu $\alpha,\beta:I\to X$ là các đường cong đóng tại điểm gốc $e$, thế thì 
+%     \[(\alpha*c_e) \cdot (c_e*\beta) = \alpha*\beta,\quad (c_e*\alpha)\cdot (\beta*c_e)= \beta * \alpha\]
+%     với $c_e:X\to X, x\mapsto e$.
+% \end{lemma}
+% \begin{proof}
+%     Thật vậy, với $s\in I$ ta có
+%     \begin{align*}
+%     ((\alpha*c_e) \cdot (c_e*\beta))(s)
+%     &=(\alpha*c_e)(s)\cdot (c_e*\beta)(s)\\
+%     &=\begin{cases}
+%         \alpha(2s)\cdot c_e(2s) =  \alpha(2s)\cdot e = \alpha(2s),\quad s\in [0,1/2]\\
+%         c_e(2s-1)\cdot \beta(2s-1) =  e\cdot \beta(2s-1) = \beta(2s-1),\quad s\in [1/2,1]
+%     \end{cases}\\
+%     &= (\alpha*\beta)(s)
+%     \end{align*}
+%     \begin{align*}
+%     ((c_e*\alpha) \cdot (\beta*c_e))(s)
+%     &=(c_e*\alpha)(s)\cdot (\beta*c_e)(s)\\
+%     &=\begin{cases}
+%         c_e(2s)\cdot \beta(2s) =  e\cdot \beta(2s) = \beta(2s),\quad s\in [0,1/2]\\
+%         \alpha(2s-1)\cdot c_e(2s-1) =  \alpha(2s-1)\cdot e = \alpha(2s-1),\quad s\in [1/2,1]
+%     \end{cases}\\
+%     &= (\beta*\alpha)(s)
+%     \end{align*}
+% \end{proof}
+% \begin{proposition}
+%     Cho $X$ là một không gian topo được trang bị phép nhân liên tục và có phần tử trung lập $e$. Khi đó nhóm cơ bản $\pi_1(X,e)$ là abel. Hơn nữa, với mọi $\omega = [\alpha], \omega' =  \beta]$ thì $\omega*\omega' = \omega \cdot \omega' = [\alpha*\beta]$.
+% \end{proposition}
+% \begin{proof}
+%     Với mọi đường cong đóng $\alpha,\beta: I\to X$ có điểm gốc tại $e$.
+%     khi đó
+%     \[\alpha*\beta = (\underbrace{\alpha*c_e}_{\simeq \alpha})\cdot (\underbrace{c_e*\beta}_{\simeq\beta}) \simeq \alpha\cdot\beta \simeq (\underbrace{c_e*\alpha}_{\simeq\alpha})\cdot (\underbrace{\beta*c_e}_{\simeq\beta}) = \beta*\alpha\]
+%     Từ đó suy ra 
+%     \[[\alpha*\beta] = [\alpha\cdot \beta] = [\beta*\alpha]\]
+%     tức \[[\alpha]*[\beta] = [\alpha]\cdot [\beta] =  [\beta]*[\alpha]\]
+% \end{proof}
+% \begin{corollary}
+%     Nhóm cơ bản của một nhóm topo là abel.
+% \end{corollary}
+% \begin{example}
+%     Nhóm cơ bản $\pi_1(S^1,1)$ của nhóm topo $S^1$ là abel.
+% \end{example}
+% \begin{definition}
+%     Hai đường cong đóng $\alpha,\beta:I\to X$ được gọi là đồng luân tự do (free homotopic) nếu tồn tại ánh xạ liên tục $H:I\times I\to X$ thoả mãn $H(s,0)=\alpha(s),H(s,1)=\beta(s)$ và $H(0,t)=H(1,t)$ với mọi $s,t\in I$. Kí hiệu: $\alpha \simeq_f \beta$.
+% \begin{remark}
+%     Với mỗi $t\in I$ thì đường cong $H_t:I\to X, H_t(s)=H(s,t)$ là đóng, hay đồng luân tự do không yêu cầu điểm gốc phải cố định trong suốt quá trình biến đổi.
+% \end{remark}
+% \end{definition}
+% \begin{proposition}
+%     Hai đường cong đóng $\alpha,\beta$ trong $S^1$ có cùng điểm gốc $x_0$ (với điểm gốc cố định) khi và chỉ khi $\alpha\simeq_{f}\beta$ là đồng luân tự do.
+% \end{proposition}
+% \begin{proof}
+%     Rõ ràng, theo định nghĩa thì hai đường cong đóng đồng luân với điểm gốc cố định thì là đồng luân tự do.
+
+%     Ngược lại, giả sử $\alpha \simeq_f \beta$, tức tồn tại $H:I\times I\to S^1$ sao cho $H(s,0)=\alpha(s),~H(s,1)=\beta(s)$ với mọi $s\in I$ và $c(t):=H(0,t)=H(1,t)$ với mọi $t\in I$. Khi đó $c$ là một đường cong đóng trong $S^1$ (vì $c(0)=H(0,0)=\alpha(0)=x_0$ và $c(1)=H(1,1)=\beta(1)=x_0$).
+
+%     Xét ánh xạ 
+%     \[F:I\times I\to S^1, (s,t)\mapsto H(s,t)\cdot c(t)^{-1}\cdot x_0\]
+%     Nhắc lại rằng $S^1$ cùng với phép nhân số phức tạo thành một nhóm topo, nên phép nhân và phép nghịch đảo trong $S^1$ là các ánh xạ liên tục, điều này chứng tỏ $F$ là liên tục. Hơn nữa,
+%     \begin{itemize}
+%         \item $F(s,0)=H(s,0)\cdot \beta(0)^{-1}\cdot x_0=\alpha(s)\cdot x_0^{-1}\cdot x_0=\alpha(s)$ với mọi $s\in I$.
+%         \item $F(s,1)=H(s,1)\cdot \beta(1)^{-1}\cdot x_0=\beta(s)\cdot x_0^{-1}\cdot x_0=\beta(s)$ với mọi $s\in I$.
+%         \item $F(0,t)=H(0,t)\cdot c(t)^{-1}\cdot x_0=c(t)\cdot c(t)^{-1}\cdot x_0=x_0$ với mọi $t\in I$
+%         \item $F(1,t)=H(1,t)\cdot c(t)^{-1}\cdot x_0=c(t)\cdot c(t)^{-1}\cdot x_0=x_0$ với mọi $t\in I$.
+%     \end{itemize}
+%     Vậy $F$ chính là đồng luân giữa $\alpha,\beta$ giữ điểm gốc cố định.     
+% \end{proof}
+
+% \section{Nhóm cơ bản của $S^n$}
+% \subsection{Nhóm cơ bản của đường tròn $S^1$}
+
+% Ta sẽ chứng minh nhóm cơ bản của đường tròn $S^1$ là một nhóm cyclic vô hạn bằng cách xây dựng một đẳng cấu giữa $\varphi: \pi_1(S^1)\to \Z, [\alpha]\mapsto \deg(\alpha)$, cụ thể ta sẽ lần lượt chỉ ra
+% \begin{itemize}
+%     \item Ánh xạ $\varphi$ được định nghĩa tốt, tức chỉ ra nếu $\alpha \simeq \beta$ thì $\deg(\alpha)=\deg(\beta)$.
+
+%     \item Ánh xạ $\varphi$ là một đồng cấu, tức chỉ ra $\deg(\alpha*\beta) =  \deg(\alpha) + \deg(\beta)$.
+
+%     \item Ánh xạ $\varphi$ đơn ánh, tức chỉ ra nếu $\deg(\alpha)=\deg(\beta)$ thì $\alpha\simeq \beta$, tức $[\alpha]=[\beta]$.
+    
+%     \item Ánh xạ $\varphi$ toàn ánh, tức chỉ ra với mỗi số nguyên $n$ đều là bậc của một đường cong đóng nào đó trong $S^1$. 
+% \end{itemize}
+
+
+% Để tính $\pi_1(S^1)$, ta xét ánh xạ liên tục \[\xi: \R \to S^1, \quad t\mapsto e^{it} \equiv (\cos t, \sin t).\] 
+% Ta thấy $\xi$ là một toàn cấu từ nhóm $(\R,+)$ lên nhóm nhân $S^1$, có hạt nhân $\ker(\xi)=2\pi\Z$. Do đó, với mỗi $u \in S^1$, tồn tại $t\in \R$ sao cho $u=\xi(t)$. Tức là $\xi^{-1}(u) = t + \ker(\xi) =  \{t + 2\pi n:  n \in \Z\}$.
+
+% \begin{remark} với $\xi(t) = u$ thì $t$ là góc (đơn vị radian) xác định hướng của $u$ so với trục hoành dương.
+% \end{remark}
+% Ta sẽ chỉ ra toàn cấu $\xi$ là một ánh xạ phủ.
+% \begin{lemma}
+%     $\xi$ là một ánh xạ mở.
+% \end{lemma}
+% \begin{proof}
+%     Giả sử $U \subset \R$ là một tập con mở, ta cần chỉ ra $\xi(U)$ là mở của $S^1$, hay chỉ ra $F = S^1 \setminus \xi(U)$ là tập đóng trong $S^1$. Thật vậy, với mỗi $t\in U$ thì $\xi^{-1}(\xi(t))=t+2\pi\Z =  \{t+2\pi n:n\in \Z\}$ nên 
+%     \begin{align*}
+%         \xi^{-1}(\xi(U)) &=  \{t\in \R: \xi(t)\in \xi(U)\} \\
+%         &= \{t\in \R: \exists u \in U, \xi(t)=\xi(u)\}\\
+%         &= \{t\in \R: \exists u\in U, t = u+2\pi n \in U+2\pi n, n\in \Z\}\\
+%         &=\bigcup_{n \in \Z} (U + 2\pi n)
+%     \end{align*}
+%     là tập mở trong $\R$ (do $U$ mở trong $\R$ và ánh xạ $\R\to \R, t\mapsto t+2\pi n$ là một phép đồng phôi nên $U+2\pi n$ là mở trong $\R$). Do đó phần bù $\R-\xi^{-1}(\xi(U))=\xi^{-1}(S^1)-\xi^{-1}(\xi(U))=\xi^{-1}(S^1-\xi(U))=\xi^{-1}(F)$ là đóng trong $\R$. 
+    
+%     Lại có ánh xạ $\xi|_{[0, 2\pi]}$ toàn ánh, nên với mỗi $x \in \R$ tồn tại $x' \in [0, 2\pi]$ sao cho $\xi(x') = \xi(x)$. Do đó nếu chứng minh được
+%     \[
+%         F = \xi(\xi^{-1}(F)) = \xi(\xi^{-1}(F) \cap [0, 2\pi])\quad (*)
+%     \]
+% thì tập $\xi^{-1}(F) \cap [0, 2\pi]$ là compact, nên ảnh của nó qua $\xi$ cũng compact; nghĩa là $F$ là compact, và do đó là tập đóng của $S^1$.
+
+% Ta chứng minh $(*)$
+% \begin{itemize}
+%     \item $F=\xi(\xi^{-1}(F))$
+%     \begin{itemize}
+%         \item Xét $z\in F$, vì $\xi$ là toàn ánh nên tồn tại $t\in \R$ sao cho $z=\xi(t)$. Lại có $F=S^1\setminus\xi(U)$ nên $\xi(t)\notin \xi(U)$, tức $t\in \xi^{-1}(F)$. Do đó $z=\xi(t)\in \xi(\xi^{-1}(F))$.
+
+%         \item Ngược lại, nếu $z\in \xi(\xi^{-1}(F))$ thì tồn tại $t\in \xi^{-1}(F)$ sao cho $z=\xi(t)$. Suy ra $z=\xi(t)\in F$. 
+%     \end{itemize}
+
+%     \item $\xi(\xi^{-1}(F)) = \xi(\xi^{-1}(F) \cap [0, 2\pi])$
+%     \begin{itemize}
+%         \item Xét $z\in \xi(\xi^{-1}(F))$, tồn tại $t\in \xi^{-1}(F)$ sao cho $z=\xi(t)$. Do $\xi(t+k2\pi)=\xi(t)$ với mọi $k\in \Z$ nên $z=\xi(t-2\pi n)$ với $n$ được chọn sao cho $t-2\pi n\in [0,2\pi]$. Đặt $x'=t-2\pi n \in [0,2\pi]$. Ta có $\xi(x')=\xi(t)\in F$ nên $x'\in \xi^{-1}(F)\cap [0,2\pi]$. Suy ra $z=\xi(x')\in \xi(\xi^{-1}(F)\cap [0,2\pi])$.
+
+%         \item Ngược lại, nếu $z\in \xi(\xi^{-1}(F) \cap [0, 2\pi])$ thì tồn tại $x'\in \xi^{-1}(F)\cap [0,2\pi]$ sao cho $z=\xi(x')$. Vì $x'\in \xi^{-1}(F)$ nên $z=\xi(x')\in \xi(\xi^{-1}(F))$.
+%     \end{itemize}
+% \end{itemize}
+% \end{proof}
+
+% \begin{proposition}
+%     Hạn chế của $\xi$ lên bất kỳ khoảng mở nào $(t, t + 2\pi)$ là một đồng phôi lên $S^1 \setminus \{\xi(t)\}$.
+% \end{proposition}
+% \begin{proof}
+%     Nhắc lại, một đồng phôi là một song ánh liên tục và là ánh xạ mở. Ta có ánh xạ $\xi|_{(t, t+2\pi)}$ là một song ánh liên tục lên $S^1 \setminus \{\xi(t)\}$, kết hợp ánh xạ mở $\xi$ là ánh xạ mở (theo Bổ đề 2.1) nên $\xi|_{(t,t+2\pi)}$ là mở, và do đó là một đồng phôi.
+% \end{proof}
+% \begin{corollary}
+% \textit{Mỗi điểm $u = \xi(t) \in S^1$ có một lân cận mở $V = S^1 \setminus \{u^*\}$, với $u^* = -u$, sao cho ảnh ngược $\xi^{-1}(V)$ là hợp rời rạc của các khoảng mở $I_n = (t + \pi(2n - 1), t + \pi(2n + 1))$, $n \in \Z$, và mỗi khoảng trong đó được ánh xạ đồng phôi bởi $\xi$ lên $V$.}
+% \end{corollary}
+% \begin{proof}
+%     Mỗi điểm $ u = \xi(t) = e^{it} \in S^1 $, $u$ có điểm đối cực $ u^* = e^{i(t+\pi)}  = -u\in S^1$, nên nó có một lân cận $ V = S^1 \setminus \{u^*\} $ là mở (vì $ S^1 $ là không gian Hausdorff và compact). Dẫn đến 
+%     \[\xi^{-1}(V)=\{s\in \R: e^{is} \neq e^{i(t + \pi)}\}=\{s\in \R: s \notin (t + \pi) +2\pi \Z\} = \bigsqcup_{n\in \Z} \underbrace{(t + \pi(2n - 1), t + \pi(2n + 1))}_{:=I_n}\]
+    
+%     Hơn nữa, mỗi hạn chế $\xi|_{I_n}: I_n \to V$ là một đồng phôi (theo mệnh đề 2.2).
+% \end{proof}
+
+% Vậy $\xi$ là một ánh xạ phủ.
+
+% Bây giờ, xét $\alpha: I \to S^1$ là một đường trong $S^1$. Với mỗi $s \in I$, tồn tại $\tilde{s} \in \R$ sao cho $\alpha(s) = \xi(\tilde{s}) = e^{i\tilde{s}}$. Nhận xét rằng $\tilde{s}$ là một cách xác định góc giữa $\alpha(s)$ và trục hoành dương nhưng $\tilde{s}$ không được xác định một cách duy nhất bởi $s$. Ta sẽ chỉ ra rằng, với mỗi $s \in I$, ta có thể chọn $\tilde{s}$ sao cho ánh xạ thực $s \mapsto \tilde{s}$ là liên tục, và thỏa: $a(s) = e^{i\tilde{s}}.$
+
+% \begin{proposition}
+% Cho ánh xạ liên tục $\alpha: J=[s_0,s_1]\subset \R \to S^1$ và một số thực $t_0$ sao cho $\alpha(s_0) = e^{it_0}$. Khi đó tồn tại duy nhất một ánh xạ liên tục $\tilde{\alpha}: J \to \R$ sao cho $\alpha(s) = (\xi \circ \tilde{\alpha})(s)=e^{i\tilde{\alpha}(s)}$ với mọi $s \in J$ và $\tilde{\alpha}(s_0) = t_0$.
+% \end{proposition}
+% \begin{proof}
+% \begin{enumerate}
+%     \item Chứng minh sự tồn tại
+%     \begin{itemize}
+%         \item Mệnh đề đúng trong trường hợp $a(J) \subset S^1 \setminus \{y\}$ với một điểm $y \in S^1$.
+    
+%         Thật vậy, vì $\alpha(s_0) = e^{it_0} \neq y$ nên tồn tại duy nhất $x \in \xi^{-1}(y)$ sao cho $t_0 \in (x, x + 2\pi)$. Kết hợp với $\xi_x := \xi|_{(x, x + 2\pi)}$ là một đồng phôi lên $S^1 \setminus \{y\}$ (theo mệnh đề 2.2), ta thu được $\tilde{\alpha} = \xi_x^{-1} \circ \alpha$ là ánh xạ cần tìm.
+    
+%         \item Bây giờ, giả sử $J = J_1 \cup J_2$ là hợp của hai khoảng con compact có điểm chung $s_*$, và mệnh đề đã đúng với các hạn chế $\alpha_1 = \alpha|_{J_1}$, $\alpha_2 = \alpha|_{J_2}$.
+%         Ta chọn $\tilde{\alpha}_1: J_1 \to \R$ sao cho $\tilde{\alpha}_1(s_0) = t_0$ và $\xi \circ \tilde{\alpha}_1 = \alpha_1$.
+%         Tiếp theo, chọn $\tilde{\alpha}_2: J_2 \to \R$ sao cho $\xi \circ \tilde{\alpha}_2 = \alpha_2$ và $\tilde{\alpha}_1(s_*) = \tilde{\alpha}_2(s_*)$, điều này khả thi vì $\xi(\tilde{\alpha}_1(s_*)) = \alpha_1(s_*) = \alpha_2(s_*) = \xi(\tilde{\alpha}_2(s_*))$.
+%         Cuối cùng, ta định nghĩa $\tilde{\alpha}: J \to \R$ bằng cách nối $\tilde{\alpha}_1$ và $\tilde{\alpha}_2$, tức
+%         \[
+%         \tilde{\alpha}|_{J_1} = \tilde{\alpha}_1, \quad \tilde{\alpha}|_{J_2} = \tilde{\alpha}_2.
+%         \]
+        
+%         \item Sự tồn tại của $\tilde{\alpha}$ trong trường hợp tổng quát được suy ra từ hai trường hợp đặc biệt ở trên, vì tính compact của $J$. Với mọi ánh xạ liên tục $a: J \to S^1$, tồn tại một phân hoạch $J = J_1 \cup \cdots \cup J_k$ thành các khoảng liên tiếp sao cho $a(J_i) \ne S^1$ với mọi $i = 1, 2, \dots, k$.
+%     \end{itemize}
+%     \item Chứng minh tính duy nhất.
+    
+%     Giả sử tồn tại hai ánh xạ liên tục $\tilde{\alpha}, \hat{\alpha}: J \to \R$ sao cho $e^{i\tilde{\alpha}(s)} = e^{i\hat{\alpha}(s)}$ với mọi $s \in J$. Khi đó ánh xạ $f:J\to \R, s\mapsto \dfrac{\hat{\alpha}(s) - \tilde{\alpha}(s)}{2\pi}$ là liên tục theo $s$ và 
+%     là ánh xạ nhận giá trị nguyên, nên $f$ là hằng. Hơn nữa, vì $\hat{\alpha}(s_0) = \tilde{\alpha}(s_0)$, nên $\hat{\alpha} = \tilde{\alpha}$.
+%     \end{enumerate}
+% \end{proof}
+% \begin{remark}
+%     Ánh xạ liên tục $\alpha$ trong mệnh đề trên thực chất là một đường trong $S^1$, và theo mệnh đề, với đường cong này ta có thể gán duy nhất một đường cong $\tilde{\alpha}$ trong $\R$. 
+    
+%     % (Ta nói rằng $\tilde{\alpha}$ là \textbf{phép nâng (lifting)} của $a$ qua ánh xạ mũ, và ánh xạ mũ có \textbf{tính chất nâng đường cong duy nhất})
+    
+%     Hàm $\tilde{\alpha}: J \to \R$ còn được gọi là \textbf{hàm đo góc} của đường cong $\alpha$.
+%     Khi cố định $t_0$ sao cho $\alpha(s_0) = \xi(t_0)$ và định nghĩa một hàm đo góc $\tilde{\alpha}$ với $\tilde{\alpha}(s_0) = t_0$, thì mọi hàm đo góc khác $\hat{\alpha}$ tương ứng với đường cong $\alpha$, phải bắt đầu tại điểm $t_0 + 2k\pi$, với $k \in \Z$ nào đó, và liên hệ với $\tilde{\alpha}$ theo công thức:
+%     \[
+%     \hat{\alpha}(s) = \tilde{\alpha}(s) + 2k\pi.
+%     \]
+% \end{remark}
+
+%     Bây giờ, với $\alpha:I\to S^1$ là một đường cong đóng, khi đó với mọi hàm đo góc $\tilde{\alpha}: I \to \R$ của $\alpha$ ta có 
+%     \[\xi(\tilde{\alpha}(0))=\alpha(0)=\alpha(1)=\xi(\tilde{\alpha}(1))\] dẫn đến  
+%     \[\frac{\tilde{\alpha}(1) - \tilde{\alpha}(0)}{2\pi} =k\in \Z\] 
+%     và giá trị này \textbf{không phụ thuộc} vào cách chọn hàm đo góc của $\alpha$ vì nếu chọn hàm đo góc $\widehat{\alpha}$ khác của $\alpha$ thì $\widehat{\alpha}(s)=\widetilde{\alpha}(s)+2n\pi$ với mọi $s\in I$ và $n\in \Z$ nào đó thì 
+%     \[\frac{\widehat{\alpha}(1) - \widehat{\alpha}(0)}{2\pi}= \frac{(\tilde{\alpha}(1)+2n\pi) - (\tilde{\alpha}(0)+2n\pi)}{2\pi}=\frac{\tilde{\alpha}(1) - \tilde{\alpha}(0)}{2\pi}.\]
+
+%     \begin{definition}
+%     Với $\alpha: I \to S^1$ là một đường cong \textbf{đóng}, với mọi hàm đo góc $\tilde{\alpha}: I \to \R$ của $\alpha$, ta định nghĩa:
+%     \[
+%     \deg(\alpha) := \frac{\tilde{\alpha}(1) - \tilde{\alpha}(0)}{2\pi}
+%     \]
+%     Số nguyên $\deg(\alpha)$ được gọi là \textbf{bậc} của đường cong $\alpha$.
+%     \end{definition}
+    
+%     % Nói thêm, bậc của một đường cong đóng $a: I \to S^1$ đo số lần quay "ròng" (net number of turns) mà điểm chuyển động $a(s)$ thực hiện khi di chuyển dọc theo $S^1$ khi $s$ chạy từ 0 đến 1.
+%     % Tính "ròng" ở đây nghĩa là: số lần quay \textbf{dương} (ngược chiều kim đồng hồ) trừ đi số lần quay \textbf{âm} (thuận chiều kim đồng hồ).
+
+
+% \begin{proposition}
+% Cho $\alpha, \beta: I \to S^1$ là hai đường cong đóng. Khi đó:
+
+% \begin{enumerate}
+% \item Nếu $\alpha$ và $\beta$ có cùng điểm gốc, thì:
+% \[
+% \deg(\alpha*\beta) = \deg(\alpha) + \deg(\beta).
+% \]
+
+% \item Nếu $\alpha$ và $\beta$ \textbf{đồng luân tự do} thì:
+% \[
+% \deg(\alpha) = \deg(\beta).
+% \]
+
+% \item Nếu $\deg(\alpha) = \deg(\beta)$, thì $\alpha$ và $\beta$ là {đồng luân tự do}. Hơn nữa, nếu $\alpha\simeq \beta$ (\textit{đồng luân cùng điểm gốc}), thì $\alpha \cong \beta$ (\textit{tương đương đồng luân giữ nguyên điểm gốc}).
+
+% \item Với mọi điểm $p \in S^1$ và mọi số nguyên $k \in \Z$, tồn tại một đường cong đóng $\alpha: I \to S^1$ với điểm gốc là $p$, sao cho $\deg(\alpha) = k$.
+% \end{enumerate}
+% \end{proposition}
+
+% \begin{proof}
+% \begin{enumerate}
+%     \item Giả sử $\alpha,\beta:I\to S^1$ có chung điểm gốc, tức $\alpha(0)=\alpha(1)=\beta(0)=\beta(1)$. 
+    
+%     % Với phép nối $(\alpha*\beta)(s)=\begin{cases}
+%     %     \alpha(2s),\quad s\in [0,1/2]\\
+%     %     \beta(2s-1), \quad s\in [1/2,1]
+%     % \end{cases}$.
+
+%     Theo mệnh đề 2.4, với $t_0\in \R$ thoả mãn $\alpha(0)=e^{it_0}$, tồn tại duy nhất một ánh xạ liên tục $\widetilde{\alpha}:I\to \R$ sao cho $\alpha(s)=(\xi\circ \widetilde{\alpha})(s)=e^{i\widetilde{\alpha}(s)}$ với mọi $s\in I$ và $\widetilde{\alpha}(0)=t_0$. Từ đó suy ra 
+%     \[\widetilde{\alpha}(1)=\widetilde{\alpha}(0)+2\pi\deg(\alpha)=t_0+2\pi\deg(\alpha).\]
+    
+%     Tương tự, với $t_0':=t_0+2\pi\deg(\alpha) \in \R$ thoả mãn $e^{it_0'}=e^{it_0}=\beta(0)$, tồn tại duy nhất ánh xạ liên tục $\widetilde{\beta}:I\to \R$ sao cho $\beta(s)=(\xi\circ \widetilde{\beta})(s)=e^{i\widetilde{\beta}(s)}$ với mọi $s\in I$ và $\widetilde{\beta}(0)=t_0'$.
+    
+%     Như vậy, ta có thể chọn các hàm đo góc tương ứng của $\alpha$ và $\beta$ là $\widetilde{\alpha}, \widetilde{\beta}: I \to \R$ sao cho: $\widetilde{\alpha}(1) = \widetilde{\beta}(0)$. Từ đó, ta định nghĩa được
+%     \[\widetilde{\alpha*\beta}: I \to \R, s\mapsto
+%     \begin{cases}
+%         \widetilde{\alpha}(2s),\quad s\in [0,1/2]\\
+%         \widetilde{\beta}(2s-1),\quad s\in [1/2,1]
+%     \end{cases}\] 
+%     là một ánh xạ liên tục thoả mãn 
+%     \[(\xi\circ \widetilde{\alpha*\beta})(s)=e^{i~ \widetilde{\alpha*\beta}(s)}=
+%         \begin{cases}
+%         e^{i~\widetilde{\alpha}(2s)},\quad s\in [0,1/2]\\
+%         e^{i~\widetilde{\beta}(2s-1)},\quad s\in [1/2,1]
+%     \end{cases}
+%     =\begin{cases}
+%         \alpha(2s),\quad s\in [0,1/2]\\
+%         \beta(2s-1),\quad s\in [1/2,1]
+%     \end{cases} = (\alpha*\beta)(s)
+%     \]
+%     Chứng tỏ $\widetilde{\alpha*\beta}$ là một hàm đo góc cho đường $\alpha*\beta$. Từ đó ta có
+%     \begin{align*}
+%         \deg(\alpha*\beta)&=\dfrac{\widetilde{\alpha*\beta}(1)-\widetilde{\alpha*\beta}(0)}{2\pi}\\
+%         &=\dfrac{\widetilde{\beta}(1)-\widetilde{\alpha}(0)}{2\pi}\\
+%         &=\dfrac{(\widetilde{\alpha}(1)-\widetilde{\alpha}(0))+(\widetilde{\beta}(1)-\widetilde{\beta}(0))}{2\pi}\quad (\text{vì } \widetilde{\beta}(0)= \widetilde{\alpha}(1))\\
+%         &= \deg(\alpha)+\deg(\beta).
+%     \end{align*}
+
+%     \item Giả sử $\alpha,\beta:I\to S^1$ là hai đường cong đóng đồng luân tự do. (Tức tồn tại phép đồng luân $H:I\times I\to S^1$ sao cho $H(s,0)=\alpha(s),H(s,1)=\beta(s)$ với mọi $s\in I$ và $H(0,t)=H(1,t)$ với mọi $t\in I$.)
+    
+%     Xét trường hợp $|\alpha(s) - \beta(s)| < 2$ với mọi $s \in I$; tức là các điểm $\alpha(s)$ và $\beta(s)$ không là đối cực của nhau trên đường tròn $S^1$. 
+    
+%     Nói riêng, $\alpha(0)$ và $\beta(0)$ không là đối cực của nhau nên tồn tại $s_0,t_0\in \R$ sao cho $|s_0-t_0|<\pi$ sao cho $\alpha(0)=e^{is_0}$ và $\beta(0)=e^{it_0}$. Theo mệnh đề 2.4, tồn tại các hàm góc $\widetilde{\alpha}, \widetilde{\beta}: I \to \R$ sao cho $\alpha(s)=e^{i\widetilde{\alpha}(s)},\beta(s)=e^{i\widetilde{\beta}(s)}$ với mọi $s\in I$ và $\widetilde{\alpha}(0) = s_0, \widetilde{\beta}(0) = t_0$.
+
+% Do $\alpha(s)$ và $\beta(s)$ không là đối cực của nhau, nên ta phải có $\widetilde{\alpha}(s) - \widetilde{\beta}(s) \notin \pi+2\pi\Z$ với mọi $s \in I$. 
+% Nếu chứng minh được
+% \[
+% |\widetilde{\alpha}(s) - \widetilde{\beta}(s)| < \pi, \quad \forall s\in I \quad (**)
+% \]
+% ta sẽ có
+% \begin{align*}
+%     |\deg(\alpha)-\deg(\beta)|
+%     &=\left|\dfrac{\widetilde{\alpha}(1) - \widetilde{\alpha}(0) - \widetilde{\beta}(1) + \widetilde{\beta}(0)}{2\pi}\right|\\
+%     &\leq \dfrac{|\widetilde{\alpha}(1) - \widetilde{\beta}(1)|}{2\pi}+\dfrac{|\widetilde{\alpha}(0) - \widetilde{\beta}(0)|}{2\pi}\\
+%     &<\dfrac{\pi}{2\pi} + \dfrac{\pi}{2\pi}=1.
+% \end{align*}
+% Kết hợp với $\deg(\alpha), \deg(\beta) \in \Z$, suy ra $\deg(\alpha) = \deg(\beta)$.
+
+% Ta đi chứng minh $(**)$.
+
+% Đặt $\theta(s)=\widetilde{\alpha}(s)-\widetilde{\beta}(s)~\forall s\in I$. Khi đó $\theta$ liên tục, thoả mãn $|\theta(0)|<\pi$ và $\theta(s)\notin \pi+2\pi\Z~\forall s\in I$. 
+
+% Ta cần chỉ ra $|\theta(s)|<\pi~\forall s\in I$. Giả sử phản chứng, tồn tại $s_0\in I$ sao cho $|\theta(s_0)|\geq \pi$. Ta có hai trường hợp sau
+% \begin{itemize}
+%     \item $\theta(s_0)\geq \pi$. 
+
+%     Do $\theta$ là liên tục trên $[0,\theta]$, kết hợp với $\theta(s_0)\geq \pi >\theta(0)$ theo định lý giá trị trung gian, tồn tại $s'\in [0,s_0]$ sao cho $\theta(s')=\pi \in \pi+2\pi\Z$, mâu thuẫn.
+
+%     \item $\theta(s_0)\leq -\pi$.
+
+%     Do $\theta$ là liên tục trên $[0,\theta]$, kết hợp với $\theta(s_0)\leq -\pi <\theta(0)$, theo định lý giá trị trung gian, tồn tại $s'\in [0,s_0]$ sao cho $\theta(s')=-\pi\in \pi+2\pi\Z$, mâu thuẫn
+% \end{itemize}
+% Bây giờ, ta xét trường hợp tổng quát của hai đường cong đóng $\alpha, \beta: I \to S^1$ đồng luân tự do rút về trường hợp đặc biệt trên. Thật vậy, do ánh xạ đồng luân $H: I \times I \to S^1$ là liên tục đều, nên tồn tại $\delta > 0$ sao cho nếu $|t - t'| < \delta$ thì:
+% \[
+% |H(s,t) - H(s,t')| < 2, \quad \forall s \in I.
+% \]
+% Xét dãy điểm $0 = t_0 < t_1 < \dots < t_k = 1$ sao cho $t_{i+1} - t_i < \delta$, và định nghĩa các đường cong đóng $\alpha_0 = \alpha, \alpha_1, \ldots, \alpha_k = \beta $ trong $ S^1$ bằng cách đặt $\alpha_i(s) = H(s, t_i)$.
+
+% Khi đó:
+% \[
+% |\alpha_i(s) - \alpha_{i+1}(s)| < 2 \quad \forall s \in I.
+% \]
+
+% Như ta đã chứng minh ở trên, điều này dẫn đến:
+
+% \[
+% \deg(\alpha) = \deg(\alpha_1) = \dots = \deg(\alpha_{k-1}) = \deg(\beta).
+% \]
+
+% \item Xét các hàm đo góc $\widetilde{\alpha}, \widetilde{\beta}: I \to \R$ cho hai đường cong đóng $\alpha$ và $\beta$. Giả thiết $\deg(\alpha) = \deg(\beta)$ cho ta:
+% \[
+% \widetilde{\alpha}(1) - \widetilde{\alpha}(0) = \widetilde{\beta}(1) - \widetilde{\beta}(0).
+% \]
+% Ta định nghĩa đồng luân $H: I \times I \to \R$ giữa $\widetilde{\alpha}$ và $\widetilde{\beta}$ bởi:
+% \[
+% H(s,t) = (1 - t)\widetilde{\alpha}(s) + t\widetilde{\beta}(s).
+% \]
+% Với mỗi $t \in I$, ta có:
+% \[
+% H(1,t) - H(0,t) = (1 - t)\left[ \widetilde{\alpha}(1) - \widetilde{\alpha}(0) \right] + t\left[ \widetilde{\beta}(1) - \widetilde{\beta}(0) \right] = (1 - t)\cdot 2\pi  n + t \cdot 2\pi n = 2\pi n,
+% \]
+% với $n := \deg(\alpha) = \deg(\beta)$.
+
+% Từ đó, bằng cách đặt $K = \xi \circ H$, kết hợp với $\xi: \R \to S^1$ là ánh xạ phủ, ta thu được ánh xạ liên tục $K: I \times I \to S^1$ thỏa mãn
+% \begin{itemize}
+%     \item $K(s, 0) = \alpha(s)\quad \forall s\in I$.
+%     \item $K(s, 1) = \beta(s)\quad \forall s\in I$.
+%     \item $K(0, t) = K(1, t)\quad \forall t \in I$.
+% \end{itemize}
+
+% Vì vậy, $K$ là một phép đồng luân tự do giữa hai đường cong đóng $\alpha$ và $\beta$. 
+
+% Hơn nữa, nếu $\alpha$ và $\beta$ có cùng điểm gốc $\alpha(0)=\alpha(1)=\beta(0)=\beta(1)$, ta chọn được các hàm đo góc tương ứng thoả mãn $\widetilde{\alpha}(0) = \widetilde{\beta}(0)$, khi đó:
+% \[
+% \widetilde{\alpha}(1) = \widetilde{\alpha}(0)+2\pi\deg(\alpha)=\widetilde{\beta}(0)+2\pi\deg(\beta)=\widetilde{\beta}(1),
+% \]
+% và do đó $K: \alpha \simeq \beta$ (đồng luân giữa nguyên điểm gốc).
+
+% \item Với mỗi $p\in S^1$, tồn tại $s_0 \in \R$ sao cho $\xi(s_0) = p$. Với mỗi $k\in \Z$, xét đường cong đóng 
+% \[
+% \alpha: I \to S^1, s\mapsto \left( \cos(s_0 + 2\pi ks), \sin(s_0 + 2\pi ks) \right)
+% \]
+% là một đường cong có điểm gốc tại điểm $p$, và nhận được một hàm đo góc:
+% \[
+% \widetilde{\alpha}(s) = s_0 + 2\pi k \cdot s.
+% \]
+% Vì vậy, bậc của $\alpha$ là 
+% \[
+% \deg(\alpha) = \frac{\widetilde{\alpha}(1) - \widetilde{\alpha}(0)}{2\pi} = k.
+% \]
+% \end{enumerate}
+% \end{proof}
+% Mệnh đề trên cho phép ta định nghĩa bậc của một \textbf{lớp đồng luân} $[\alpha]$ của một đường cong đóng $\alpha$ trong không gian $S^1$ mà không phụ thuộc vào phần tử đại diện. Vậy, ta có thể định nghĩa một ánh xạ:
+% \[
+% n: \pi_1(S^1) \to \Z, [\alpha]\mapsto \deg(\alpha)
+% \]
+
+% \begin{proposition}
+% Nhóm cơ bản của đường tròn $ S^1 $ đẳng cấu với nhóm cộng của các số nguyên $ \Z $.
+% \end{proposition}
+% \begin{proof}
+% Xét ánh xạ $ n: \pi_1(S^1) \to \Z $ liên kết với mỗi lớp đồng luân một bậc. Mục 1 của mệnh đề 2.6 cho chúng ta biết rằng $ n $ là một đồng cấu, mục 3 khẳng định rằng $ n $ là tính chất đơn ánh, và mục 4 cung cấp tính chất toàn ánh. Do đó, $ n $ là một đẳng cấu giữa $ \pi_1(S^1) $ và $ \Z $.
+% \end{proof}
+% \begin{corollary}
+%     Nhóm cơ bản của $B^2\setminus\{0\} \cong \Z$.
+% \end{corollary}
+% \begin{proof}
+%     Nhận thấy $S^1$ là một co rút của $B^2\setminus\{0\}$ bởi phép đồng luân co rút 
+%     \[H:B^2\setminus\{0\}\times I\to B^2\setminus\{0\}, (x,t)\mapsto (1-t)x+t\dfrac{x}{\norm{x}}.\]
+%     Cụ thể $H(x,0)=x, H(x,1)=\dfrac{x}{\norm{x}}, H(x,t)=x \forall x\in S^1$.
+%     Vậy $\pi_1(B^2\setminus\{0\})\cong \pi_1(S^1)\cong \Z$.
+% \end{proof}
+
+% \subsection{Nhóm cơ bản của $S^n$ với $(n\geq 2)$}
+% Ta sẽ chứng minh $\pi_1(S^n)\cong 0$ với $n\geq 2$, từ đó thu được $\pi_1(B^{n+1}\setminus\{0\})\cong \pi_1(S^n)=0$ (tương tự trên ta có đồng luân co rút từ $B^{n+1}$ về $S^n$ là \[H:B^{n+1}\setminus\{0\}\times I\to B^{n+1}\setminus\{0\}, (x,t)\mapsto (1-t)x+t\dfrac{x}{\norm{x}}.\]
+% Cụ thể $H(x,0)=x, H(x,1)=\dfrac{x}{\norm{x}}, H(x,t)=x ~\forall x\in S^n$.
+
+% \begin{definition}[Không gian đơn liên]
+%     Không gian topo $X$ được gọi là đơn liên nếu nó là liên thông đường và có nhóm cơ bản tầm thường.
+% \end{definition}
+% \begin{theorem}
+%     Cho $X=U\cup V$ với $U,V$ là các tập mở của không gian topo $X$ thoả mãn $U\cap V$ là liên thông đường và $x_0\in U\cap V$. Gọi $i:U\hookrightarrow X,~j:V\hookrightarrow X$ là các ánh xạ nhúng. Khi đó nhóm $\pi_1(X,x_0)$ sinh bởi ảnh của các đồng cấu cảm sinh 
+%     \[i_*:\pi_1(U,x_0)\to \pi_1(X,x_0)\text{ và } j_*:\pi_1(V,x_0)\to \pi_1(X,x_0).\]
+% \end{theorem}
+% Để chứng minh định lý trên ta cần hai bổ đề sau
+% \begin{lemma}[Phủ Lebesgue]
+%     Cho $ X $ là một không gian metric compact có $\mathcal{U} = \{U_\alpha\}_{\alpha\in I}$ là phủ mở. Khi đó tồn tại $\delta > 0$ sao cho với mọi tập con $ A \subset X $ với $\text{diam}(A) < \delta$ thì $ A \subset U_\alpha $  với $\alpha\in I$ nào đó.
+% \end{lemma}
+% \begin{lemma}
+%     Với mọi $\alpha:I\to X$ là một đường trong $X$ và  $P:0=t_0<t_1<\ldots<t_n=1$ là một phân hoạch của $I$. Với mỗi $a,b\in I$, ký hiệu $\lambda_{a,b}:I\to I, t\mapsto (1-t)a+tb$ và $\gamma_i = \alpha\circ \lambda_{t_{i-1},t_i}$. Khi đó \[\alpha\simeq\gamma_1*\gamma_2*\ldots*\gamma_n.\]
+% \end{lemma}
+% \begin{proof}
+%     Ta có 
+%     \begin{align*}
+%         \gamma_1*\gamma_2*\ldots*\gamma_n 
+%         &= (\alpha \circ \lambda_{t_0,t_1})*(\alpha \circ \lambda_{t_1,t_2})*\cdots*(\alpha \circ \lambda_{t_{n-1},t_n})\\
+%         &= \alpha \circ (\lambda_{t_0,t_1}*\lambda_{t_1,t_2}*\cdots*\lambda_{t_{n-1},t_n})\\
+%         &\simeq \alpha\circ \id_I = \alpha.
+%     \end{align*}
+% \end{proof}
+% Quay trở lại chứng minh Định lý 2.10.
+% \begin{proof}
+%     Giả sử $\alpha:I\to X=U\cup V$ là một đường cong đóng tại $x_0$. Ta cần chỉ ra 
+%     \[[\alpha]=[w_1]*\cdots*[w_n]\] 
+%     với $w_i:I\to X$ là các đường cong đóng tại $x_0$ và $w_i(I)$ chứa trong $U$ hoặc $V$. 
+
+%     Do $\alpha$ liên tục và $\{U,V\}$ là một phủ mở của $X$ nên $\alpha^{-1}(U), \alpha^{-1}(V)$ là một phủ mở của $I$. Mà $I$ là không gian metric compact, nên theo bổ đề phủ Lebesgue, tồn tại $\delta>0$ sao cho với mọi phân hoạch $P': 0=t'_0<t'_1<\ldots<t'_m=1$ của $I$ có đường kính $\text{diam}(P') <\delta$ thì với mọi $i$ ta có $[t'_{i-1},t'_i]$ chứa trong $\alpha^{-1}(U)$ hoặc $\alpha^{-1}(V)$, tức $\alpha([t'_{i-1},t'_i])$ chứa trong $U$ hoặc $V$. 
+    
+%     Gọi $P:0=t_0<t_1<\ldots<t_n=1$ là phân hoạch con của $P'$ thu được bằng cách hợp nhất các khoảng $[t'_{i-1},t'_i]$ và $[t'_i,t'_{i+1}]$ không còn hai tập ảnh liên tiếp $\alpha([t'_{i-1},t'_i])$ và $\alpha([t'_{i},t'_{i+1}])$ cùng nằm trong $U$ và cùng nằm trong $V$. Khi đó tại mỗi điểm nối $t_i$, nếu $\alpha([t_{i-1},t_i])\subset U$ thì $\alpha([t_i,t_{i+1}])\subset V$ và ngược lại. Dẫn đến $\alpha(t_i)\in \alpha([t_{i-1},t_i]) \cap \alpha([t_{i},t_{i+1}])\subset U\cap V$. 
+    
+%     Bây giờ, với $x_0 \in U\cap V$ là liên thông đường nên với mỗi $\alpha(t_i)$ nói trên, tồn tại một đường cong $\alpha_i:I\to U\cap V$ sao cho $\alpha_i(0)=x_0, \gamma_i(1)=\alpha(t_i)$. Hơn nữa, vì $\alpha(t_0)=x_0=\alpha(t_n)$ nên ta có thể chọn $\alpha_0,\alpha_n$ cùng là ánh xạ hằng $I\to U\cap V, t\mapsto x_0$. 
+
+%     Đặt $\gamma_i = \alpha\circ \lambda_{t_{i-1},t_i}$ và $\alpha_i^{-1}(s)=\alpha_i(1-s)~\forall s\in I$. Mỗi $g_i:=(\alpha_{i-1}*\gamma_i)*\alpha_i^{-1}: I\to X$ là đường cong đóng tại $x_0$ với ảnh chứa trong $U$ hoặc $V$. Khi đó $[g_i]\in \pi_1(U,x_0)$ hoặc $[g_i]\in \pi_1(V,x_0)$ và 
+%     \begin{align*}
+%         [g_1]*[g_2]*\ldots*[g_n]
+%         &=[\alpha_{0}*\gamma_i*\alpha_1^{-1}]*[\alpha_{1}*\gamma_i*\alpha_2^{-1}]*\cdots*[\alpha_{n-1}]*[\gamma_i]*[\alpha_n^{-1}]\\
+%         &=[\alpha_{0}]*[\gamma_i]*[\alpha_1^{-1}]*[\alpha_{1}]*[\gamma_i]*[\alpha_2^{-1}]*\cdots*[\alpha_{n-1}]*[\gamma_i]*[\alpha_n^{-1}]\\
+%         &=[\varepsilon_{x_0}]*[\gamma_1]*[\gamma_2]*\cdots*[\gamma_n]*[\varepsilon_{x_0}]\\
+%         &=[\gamma_1]*[\gamma_2]*\cdots*[\gamma_n]\\
+%         &=[\alpha] \quad (\text{theo Bổ đề 2.12}).
+%     \end{align*}
+% \end{proof}
+% \begin{proposition}
+%     Giả sử $X=U\cup V$ với $U,V$ là mở trong $X$ và $U\cap V$ khác rỗng, liên thông đường. Nếu $U$ và $V$ là đơn liên thì $X$ là đơn liên.
+% \end{proposition}
+% \begin{proof}
+%     Ta có $U,V$ là liên thông đường và $U\cap V\neq \emptyset$ nên $X=U\cup V$ là liên thông đường.
+    
+%     Lấy $x_0\in U\cap V$, do hai tập mở $U,V$ là đơn liên nên $\pi_1(U,x_0),\pi_1(V,x_0)$ là các nhóm tầm thường. Từ đó, theo Định lý 2.10 ta suy ra $\pi_1(X,x_0)$ là tầm thường và do đó $X$ là đơn liên.
+% \end{proof}
+% \begin{proposition}
+%     Với $n\geq 0$, ký hiệu $N=(0,0,\ldots,1),~S=(0,0,\ldots,-1)\in S^n$ và lần lượt gọi là điểm cực bắc và cực nam của $S^n$. Khi đó $S^n\setminus\{S\}$ và $S^n\setminus\{N\}$ đồng phôi với $\R^n$.
+% \end{proposition}
+% \begin{proof}
+%     Xét các ánh xạ liên tục
+%     \[f:S^n\setminus\{N\}\to \R^n, x=(x_1,\ldots,x_n,x_{n+1})\mapsto \dfrac{1}{1-x_{n+1}}(x_1,\ldots,x_n),\]
+%     \[g:\R^n\to S^n\setminus\{N\}, y =  (y_1,\ldots,y_n)\mapsto (\phi(y)y_1,\ldots,\phi(y)y_n,1-\phi(y))\text{ với }\phi(y)=\dfrac{2}{1+\norm{y}^2}\]
+    
+%     Với mọi $x=(x_1,\ldots,x_n,x_{n+1})\in S^n$ ta có \[\phi(f(x))=\dfrac{2(1-x_{n+1})^2}{(1-x_{n+1})^2+x_1^2+\ldots+x_n^2}=\dfrac{2(1-x_{n+1})^2}{2-2x_{n+1}}=1-x_{n+1},\]
+%     nên 
+%     \begin{align*}
+%     (g\circ f)(x)&=g\left(\dfrac{x_1}{1-x_{n+1}},\ldots, \dfrac{x_n}{1-x_{n+1}}\right)\\
+%     &= \left(\phi(f(x))\dfrac{x_1}{1-x_{n+1}},\ldots,\phi(f(x))\dfrac{x_1}{1-x_{n+1}},1-\phi(f(x))\right)\\
+%     &= (x_1,\ldots,x_n,x_{n+1})=x.
+%     \end{align*}
+%     Với mọi $y=(y_1,\ldots,y_n)\in \R^n$ ta có
+%     \begin{align*}
+%         (f\circ g)(y)&=f(\phi(y)y_1,\ldots,\phi(y)y_n,1-\phi(y))\\
+%         &= \dfrac{1}{1-(1-\phi(y))}\left(\phi(y)y_1,\ldots,\phi(y)y_n \right)\\
+%         &=(y_1,\ldots,y_n)=y.
+%     \end{align*}
+%     Dẫn đến $f$ là một song ánh liên tục với nghịch ảnh $f^{-1}=g$ cũng liên tục, tức $f$ là một đồng phôi giữa $S^n\setminus\{N\}$ và $\R^n$. 
+
+%     Mặt khác ta cũng có phép đồng phôi 
+%     \[S^n\setminus\{N\}\to S^n\setminus\{S\},(x_1,\ldots,x_n,x_{n+1})\mapsto (x_1,\ldots,x_n,-x_{n+1}).\]
+% \end{proof}
+% \begin{corollary}
+%     $S^n\setminus\{N\}$ và $S^n\setminus\{S\}$ là đơn liên.
+% \end{corollary}
+% \begin{proof}
+%     Không gian liên thông $S^n\setminus\{N\}\simeq \R^n$ nên nhóm cơ bản $\pi_1(S^n)\cong \pi_1(\R^n)\cong \{0\}$. Chứng tỏ $S^n\setminus\{N\}$ đơn liên. Tương tự với $S^n\setminus\{S\}$.
+% \end{proof}
+
+% \begin{lemma}
+%     $\R^n\setminus\{p\}$ là liên thông đường với mọi $n\geq 2$.
+% \end{lemma}
+% \begin{proof}
+%     Lấy bất kỳ hai điểm $x,y\in X:=\R^n\setminus\{p\}$, ta cần chỉ ra tồn tại đường cong liên tục $f:I\to X$ nào đó nối $x$ và $y$.
+%     \begin{itemize}
+%         \item Nếu $p\in [x,y]=\{(1-t)x+ty:t\in I\}$ thì $\alpha:I\to X, t\mapsto (1-t)x+ty$ chính là đường cong liên tục nối $x,y$.
+
+%         \item Nếu $p\in [x,y]$, chọn $z\in X$ sao cho $z\notin [x,y]$. Khi đó $\alpha:I\to X, t\mapsto (1-t)x+tz$ là đường liên tục nối $x,z$ và $\beta:I\to X, (1-t)z+ty$ là đường cong liên tục nối $z,y$ trong $X$. Dẫn đến 
+%         \[\alpha*\beta:I\to X, s\mapsto\begin{cases}
+%             \alpha(2s) =  (1-2s)x+(2s)z,\quad s\in [0,1/2]\\
+%             \beta(2s-1) =  (2-2s)z+(2s-1)x,\quad s\in [1/2,1]
+%         \end{cases}\]
+%         là đường liên tục trong $X$ nối $x,z$.
+%     \end{itemize}
+% \end{proof}
+
+% \begin{theorem}
+%     $S^n$ là đơn liên với mọi $n\geq 2$.
+% \end{theorem}
+% \begin{proof}
+%     Với $n\geq 2$, ta có
+%     \begin{itemize}
+%         \item $U=S^n\setminus\{N\}$ và $V=S^n\setminus\{S\}$ là các tập mở của không gian Haussdorff $S^n$ với topo con cảm sinh bởi topo của $\R^{n+1}$.
+
+%         \item $U,V$ là đơn liên (theo Hệ quả $2.15$).
+
+%         \item $U\cap V=S^n\setminus\{S,N\}$ đồng phôi với $\R^n\setminus\{p\}$. Mà $\R^n\setminus\{p\}$ là liên thông đường (theo Bổ đề 2.16) nên $U\cap V$ là liên thông đường.
+%     \end{itemize}
+%     Do đó $S^n$ là đơn liên nếu $n\geq 2$(áp dụng Mệnh đề 2.13).
+% \end{proof}
+% Từ đó dựa vào định nghĩa của đơn liên cho ta hệ quả
+% \begin{corollary}
+%     Nhóm cơ bản của $S^n$ là tầm thường với $n\geq 2$.
+% \end{corollary}
+% \begin{exercise}1.3.
+%     $S^1$ và $S^n$ không cùng kiểu đồng luân với $n\geq 2$.
+% \end{exercise}
+% \begin{proof}
+%     Giả sử phản chứng $S^1$ và $S^n$, với $n\geq 2$, cùng kiểu đồng luân thì nhóm cơ bản của chúng đẳng cấu với nhau, tuy nhiên ta lại có
+%     \[\pi_1(S^n)\cong \begin{cases}
+%         \Z &\text{ nếu }  n=1\\
+%         0 &\text{ nếu }  n\geq 2
+%     \end{cases}\]
+%     Vậy, giả thiết phản chứng là sai.
+% \end{proof}
+% \begin{exercise}1.5.
+%     $\R^2$ và $\R^n$ không đồng phôi với nhau nếu $n\geq 3$.
+% \end{exercise}
+% \begin{proof}
+%     Với $n\geq 3$, giả sử phản chứng tồn tại đồng phôi $f:\R^2\to \R^n$. Khi đó $f$ cảm sinh một đồng phôi $\overline{f}:\R^2\setminus\{0\}\to \R^n\setminus\{f(0)\}$. Mà $\R^2\setminus\{0\}\simeq S^1$ và $\R^n\setminus\{f(0)\}\simeq \R^n\setminus\{0\}\simeq S^{n-1}$ với mọi $n\geq 3$, nên ta có
+%     \[\Z\cong \pi_1(S_1)\cong \pi_1(\R^2\setminus\{p\})\cong \pi_1(\R^n\setminus\{f(p)\})\cong \pi_1(S^{n-1})\cong \{0\}.\]
+%     Mâu thuẫn này bác bỏ giả thiết phản chứng.
+% \end{proof}
+% \begin{exercise}
+%     1.6. Ví dụ về hai không gian có cùng nhóm cơ bản nhưng không đồng luân với nhau.
+% \end{exercise}
+% \begin{solution}
+%     Xét $X=\{p\}$ và $Y=S^2$ là hai không gian có nhóm cơ bản đều tầm thường. Nhưng $S^2$ không cùng kiểu đồng luân với không gian chỉ gồm 1 điểm.
+% \end{solution}
+
+\section{Nhóm cơ bản của một nhóm tôpô}
+
+\begin{definition}
+	Một nhóm tôpô là một nhóm $G$ đồng thời là một không gian topo sao cho luật hợp thành $G\times G \ni (a,b) \mapsto ab\in G$ và phép lấy nghịch đảo $G\ni x\mapsto x^{-1} \in G$ là các ánh xạ liên tục.
+\end{definition}
+\begin{example}
+	$S^1=\{(a,b)\in \R^2:a^2+b^2=1\}$ là một nhóm tôpô với phép nhân $(a,b)\cdot (c,d):= (ad-bc,ac+bd)$.
+	% phần tử trung lập là $e=(1,0)$, nghịch đảo của $(a,b)$ là $(a,b)^{-1}=(a,-b)$.
+\end{example}
+\begin{proof} Đồng nhất $\mathbb{R}^2$ với mặt phẳng phức, ta có
+	$S^1=\{z\in \mathbb{C}\;|\; |z|=1\}$ và luật hợp thành là phép nhân hai số phức. Kiểm tra trực tiếp, ta có $S^1$ là môt nhóm tôpô, có phép lấy nghịch đảo $(a,b)\mapsto (a,-b)$, phần tử trung hòa là $e=(1,0)$.
+\end{proof}
+
+%Một phép nhân trong một không gian topo $X$ là ánh xạ $m:X\times X\to X$, ta kí hiệu $m(a,b)=a\cdot b$. Nếu phần tử $e\in X$ thoả mãn $e\cdot x = x\cdot e = x$ với mọi $x\in X$ thì ta gọi $e$ là phần tử trung lập của $X$. 
+
+%\begin{enumerate}
+ %   \item 
+ %Khi phép nhân trên 
+ 
+ Giả sử $X$ là một nhóm tôpô với liên tục với phần tử trung lập $e$, 
+ %, ta có thể định nghĩa một luật kết hợp mới giữa hai đường cong và
+ và $\alpha,\beta:I\to X$ là hai đường cong trên $X$.
+ Ta định nghĩa $\alpha \cdot \beta$ là ánh xạ $I \to X$
+ \[
+ (\alpha\cdot\beta)(s):=\alpha(s)\cdot \beta(s), \quad \text{ với mọi $s\in I$.
+ }
+ \]
+\begin{lemma} \label{dot}Với các giả thiết như trên,
+	\begin{enumerate}
+		\item[(1)]  $\alpha \cdot \beta$ là một đường cong trên $X$.
+		\item[(2)] Nếu $\alpha,\beta$ là các đường cong đóng chung điểm gốc tại điểm trung lập $e\in X$ thì $\alpha\cdot \beta$ cũng là một đường cong đóng có điểm gốc $e$. 
+	\end{enumerate}
+	\end{lemma}
+	\begin{proof}
+		\begin{enumerate}
+			\item[(1)] Ta có  $\alpha \cdot \beta$ là hợp thành 
+			$I\overset{(\alpha,\beta)}{\longrightarrow} X\times X\overset{m}{\longrightarrow}X$, trong đó $m$ là luật hợp thành của $X$. Vì $(\alpha,\beta)$ và $m$ là các ánh xạ liên tục nên $\alpha\cdot \beta$ cũng liên tục.
+			\item[(2)] Ta có  $(\alpha\cdot\beta)(0)=\alpha(0)\cdot\beta(0)=e\cdot e=e$ và $(\alpha\cdot\beta)(1)=\alpha(1)\cdot\beta(1)=e\cdot e=e$, tức $\alpha\cdot \beta$ cũng là một đường cong đóng có điểm gốc $e$.
+		\end{enumerate}
+		\end{proof}
+
+  %  Nếu $\alpha,\beta$ là các đường cong đóng chung điểm gốc tại điểm trung lập $e\in X$ thì $(\alpha\cdot\beta)(0)=\alpha(0)\cdot\beta(0)=e\cdot e=e$ và $(\alpha\cdot\beta)(1)=\alpha(1)\cdot\beta(1)=e\cdot e=e$, tức $\alpha\cdot \beta$ cũng là một đường cong đóng có điểm gốc $e$. 
+\begin{lemma} 
+	Giả sử $X$ là một nhóm tôpô  và  $e$ là phần tử trung hòa của $X$. Cho $\alpha,\alpha',\beta,\beta'$ là các đường cong đóng trong $X$ tại điểm gốc $e$. Khi đó nếu $\alpha\simeq\alpha'$ và $\beta\simeq\beta'$ thì $\alpha\cdot \beta \simeq \alpha'\cdot \beta'$.
+\end{lemma}
+ %   Hơn nữa, nếu $\alpha,\alpha',\beta,\beta'$ là các đường cong đóng trong $X$ chung điểm gốc $e$ thoả mãn $\alpha\simeq\alpha'$ và $\beta\simeq\beta'$ thì $\alpha\cdot \beta \simeq \alpha'\cdot \beta'$. Thật vậy,
+ \begin{proof}
+ 	Giả sử $H,K:I\times I\to X$ lần lượt là các phép đồng luân tương ứng giữa $\alpha$ với $\alpha'$ và $\beta$ với $\beta'$. Khi đó, ánh xạ 
+    \[L:I\times I\to X, (s,t)\mapsto H(s,t)\cdot K(s,t)\]
+    là liên tục và thoả mãn 
+    \begin{itemize}
+        \item $L(s,0)=H(s,0)\cdot K(s,0)=\alpha(s)\cdot \beta(s) = (\alpha\cdot\beta)(s)$
+
+        \item $L(s,1)=H(s,1)\cdot K(s,1)=\alpha'(s)\cdot \beta'(s)=(\alpha'\cdot \beta')(s)$
+
+        \item $L(0,t)=H(0,t)\cdot K(0,t)=e\cdot e = e$ và $L(0,1)=H(0,1)\cdot K(0,1)=e\cdot e = e$.
+    \end{itemize}
+    Suy ra $L:\alpha\cdot \beta\simeq \alpha'\cdot \beta'$.
+    \end{proof}
+
+%    \item Bây giờ, nếu $X$ được trang bị phép nhân liên tục, ta có thể định nghĩa một phép toán mới giữa các phần tử của nhóm cơ bản $\pi_1(X,e)$ là $[\alpha]\cdot[\beta]=[\alpha\cdot\beta]$. Từ chứng minh ở trên ta thấy phép nhân này không phụ thuộc vào việc chọn phần tử đại diện của lớp đồng luân tương đương $[\alpha],[\beta]$.
+%\end{enumerate}
+\begin{lemma}\label{tich}
+    Cho $X$ là một nhóm tôpô
+    %không gian topo được trang bị phép nhân liên tục và 
+    và $e$ là phần tử trung lập. Khi đó nếu $\alpha,\beta:I\to X$ là các đường cong đóng tại $e$, thì 
+    \[(\alpha*c_e) \cdot (c_e*\beta) = \alpha*\beta,\quad (c_e*\alpha)\cdot (\beta*c_e)= \beta * \alpha\]
+    %với 
+    trong đó $c_e:X\to X, x\mapsto e$.
+\end{lemma}
+\begin{proof}
+    Thật vậy, với $s\in I$ ta có
+    \begin{align*}
+    ((\alpha*c_e) \cdot (c_e*\beta))(s)
+    &=(\alpha*c_e)(s)\cdot (c_e*\beta)(s)\\
+    &=\begin{cases}
+        \alpha(2s)\cdot c_e(2s),\quad s\in [0,1/2]\\
+        c_e(2s-1)\cdot \beta(2s-1)\quad s\in [1/2,1]
+    \end{cases}\\
+    & =\begin{cases}
+      \alpha(2s)\cdot e,\quad s\in [0,1/2]\\
+    	 e\cdot \beta(2s-1),\quad s\in [1/2,1]
+    \end{cases}\\
+    &= (\alpha*\beta)(s)\quad (\text{vì $\alpha(2s)\cdot e=\alpha(2s)$ và $ e\cdot \beta(2s-1)=\beta(2s-1)$ }).
+    \end{align*}
+    Tương tự
+    \begin{align*}
+    ((c_e*\alpha) \cdot (\beta*c_e))(s)
+    &=(c_e*\alpha)(s)\cdot (\beta*c_e)(s)\\
+    &=\begin{cases}
+        c_e(2s)\cdot \beta(2s) =  e\cdot \beta(2s) = \beta(2s),\quad s\in [0,1/2]\\
+        \alpha(2s-1)\cdot c_e(2s-1) =  \alpha(2s-1)\cdot e = \alpha(2s-1),\quad s\in [1/2,1]
+    \end{cases}\\
+    &= (\beta*\alpha)(s)
+    \end{align*}
+\end{proof}
+\begin{proposition}\label{md}
+    Cho $X$ là một nhóm tôpô và $e$ là phần tử trung hòa của $X$. Khi đó
+    \begin{enumerate}
+    	\item[(1)]  $[\alpha]*[\beta]=[\alpha \cdot \beta]$ với mọi $[\alpha],[\beta]\in \pi_1(X,e)$.
+    	\item[(2)] $\pi_1(X,e)$ là abel.
+    \end{enumerate}
+    % không gian topo được trang bị phép nhân liên tục và có phần tử trung lập $e$. 
+  %  Khi đó $\pi_1(X,e)$ là abel. Hơn nữa, $[\alpha]*[\beta]=[\alpha \cdot \beta]$ với mọi $[\alpha],[\beta]\in \pi_1(X,e)$.
+   % với mọi $\omega = [\alpha], \omega' =  \beta]$ thì $\omega*\omega' = \omega \cdot \omega' = [\alpha*\beta]$.
+\end{proposition}
+\begin{proof}
+   % Với mọi đường cong đóng $\alpha,\beta: I\to X$ có điểm gốc tại $e$.
+    %khi đó
+    Theo Bổ đề\ref{tich}, ta có
+    \[\alpha*\beta = (\alpha*c_e)\cdot (c_e*\beta).\]
+    Vì $\alpha*c_e\simeq \alpha $ và $c_e*\beta \simeq\beta$, theo Bổ đề \ref{dot},
+    \[
+     (\alpha*c_e)\cdot (c_e*\beta)\simeq \alpha\cdot \beta.
+     \]
+     Suy ra $[\alpha *\beta]= [\alpha\cdot \beta]$. Do đó
+     \[
+     [\alpha]*[\beta] = [\alpha *\beta]= [\alpha\cdot \beta].
+     \]
+     Vậy ta có (1). 
+     Tương tự
+     \[\beta*\alpha = (c_e*\alpha)\cdot (\beta*c_e)\simeq \alpha \cdot \beta.\]
+     Suy ra $[\beta*\alpha]=[\alpha \cdot \beta]$. 
+     Do đó
+     \[
+     [\beta]*[\alpha]=[\beta* \alpha]= [\alpha \cdot \beta]= [\alpha]*[\beta].
+     \]
+    Vậy $\pi_1(X,e)$ là abel.
+        %    (\underbrace{\alpha*c_e}_{\simeq \alpha})\cdot (\underbrace{c_e*\beta}_{\simeq\beta}) \simeq \alpha\cdot\beta \simeq (\underbrace{c_e*\alpha}_{\simeq\alpha})\cdot (\underbrace{\beta*c_e}_{\simeq\beta}) = \beta*\alpha\]
+    %Từ đó suy ra 
+    %\[[\alpha*\beta] = [\alpha\cdot \beta] = [\beta*\alpha]\]
+    %tức \[[\alpha]*[\beta] = [\alpha]\cdot [\beta] =  [\beta]*[\alpha]\]
+\end{proof}
+%\begin{corollary}
+ %   Nhóm cơ bản của một nhóm topo là abel.
+%\end{corollary}
+\begin{corollary}
+    %Nhóm cơ bản 
+    $\pi_1(S^1,1)$ %của nhóm topo $S^1$ 
+    là abel.
+\end{corollary}
+\begin{proof}
+	Vì $S^1$ là một nhóm tôpô với phần tử trung hòa là 1, theo Mệnh đề \ref{md}, $\pi_1(S^1,1)$ abel.
+	\end{proof}
+	
+\section{Nhóm cơ bản của đường tròn $S^1$}
+	
+	Ta sẽ chứng minh nhóm cơ bản của đường tròn $S^1$ là một nhóm cyclic vô hạn bằng cách xây dựng một đẳng cấu giữa $\varphi: \pi_1(S^1)\to \Z$.
+	% [\alpha]\mapsto \deg(\alpha)$, cụ thể ta sẽ lần lượt chỉ ra
+	%\begin{itemize}
+	%	\item Ánh xạ $\varphi$ được định nghĩa tốt, tức chỉ ra nếu $\alpha \simeq \beta$ thì $\deg(\alpha)=\deg(\beta)$.
+		
+%		\item Ánh xạ $\varphi$ là một đồng cấu, tức chỉ ra $\deg(\alpha*\beta) =  \deg(\alpha) + \deg(\beta)$.
+		
+%		\item Ánh xạ $\varphi$ đơn ánh, tức chỉ ra nếu $\deg(\alpha)=\deg(\beta)$ thì $\alpha\simeq \beta$, tức $[\alpha]=[\beta]$.
+		
+%		\item Ánh xạ $\varphi$ toàn ánh, tức chỉ ra với mỗi số nguyên $n$ đều là bậc của một đường cong đóng nào đó trong $S^1$. 
+%	\end{itemize}
+	
+	
+%	Để tính $\pi_1(S^1)$, ta 
+Xét ánh xạ liên tục \[\xi: \R \to S^1, \quad t\mapsto e^{it} \equiv (\cos t, \sin t).\] 
+	Ta thấy $\xi$ là một toàn cấu từ nhóm $(\R,+)$ lên nhóm nhân $S^1$, có hạt nhân $\ker(\xi)=2\pi\Z$. Do đó, với mỗi $u \in S^1$, tồn tại $t\in \R$ sao cho $u=\xi(t)$. Tức là $\xi^{-1}(u) = t + \ker(\xi) =  \{t + 2\pi n:  n \in \Z\}$.
+	
+	\begin{remark} với $\xi(t) = u$ thì $t$ là góc (đơn vị radian) xác định hướng của $u$ so với trục hoành dương.
+	\end{remark}
+	\begin{proposition}\label{xi}
+	%Ta sẽ chỉ ra toàn cấu 
+	$\xi$ là một ánh xạ phủ.
+	\end{proposition}
+	Mệnh đề \ref{xi} được chứng minh bởi 3 bổ đề sau.
+	\begin{lemma}
+		$\xi$ là một ánh xạ mở.
+	\end{lemma}
+	\begin{proof}
+		Giả sử $U \subset \R$ là một tập con mở, ta cần chỉ ra $\xi(U)$ là mở của $S^1$, hay chỉ ra $F = S^1 \setminus \xi(U)$ là tập đóng trong $S^1$. Thật vậy, với mỗi $t\in U$ thì $\xi^{-1}(\xi(t))=t+2\pi\Z =  \{t+2\pi n:n\in \Z\}$ nên 
+		\begin{align*}
+			\xi^{-1}(\xi(U)) &=  \{t\in \R: \xi(t)\in \xi(U)\} \\
+			&= \{t\in \R: \exists u \in U, \xi(t)=\xi(u)\}\\
+			&= \{t\in \R: \exists u\in U, t = u+2\pi n \in U+2\pi n, n\in \Z\}\\
+			&=\bigcup_{n \in \Z} (U + 2\pi n)
+		\end{align*}
+		là tập mở trong $\R$ (do $U$ mở trong $\R$ và ánh xạ $\R\to \R, t\mapsto t+2\pi n$ là một phép đồng phôi nên $U+2\pi n$ là mở trong $\R$). Do đó phần bù $\R-\xi^{-1}(\xi(U))=\xi^{-1}(S^1)-\xi^{-1}(\xi(U))=\xi^{-1}(S^1-\xi(U))=\xi^{-1}(F)$ là đóng trong $\R$. 
+		
+		Lại có ánh xạ $\xi|_{[0, 2\pi]}$ toàn ánh, nên với mỗi $x \in \R$ tồn tại $x' \in [0, 2\pi]$ sao cho $\xi(x') = \xi(x)$. Do đó nếu chứng minh được
+		\[
+		F = \xi(\xi^{-1}(F)) = \xi(\xi^{-1}(F) \cap [0, 2\pi])\quad (*)
+		\]
+		thì tập $\xi^{-1}(F) \cap [0, 2\pi]$ là compact, nên ảnh của nó qua $\xi$ cũng compact; nghĩa là $F$ là compact, và do đó là tập đóng của $S^1$.
+		
+		Ta chứng minh $(*)$
+		\begin{itemize}
+			\item $F=\xi(\xi^{-1}(F))$
+			\begin{itemize}
+				\item Xét $z\in F$, vì $\xi$ là toàn ánh nên tồn tại $t\in \R$ sao cho $z=\xi(t)$. Lại có $F=S^1\setminus\xi(U)$ nên $\xi(t)\notin \xi(U)$, tức $t\in \xi^{-1}(F)$. Do đó $z=\xi(t)\in \xi(\xi^{-1}(F))$.
+				
+				\item Ngược lại, nếu $z\in \xi(\xi^{-1}(F))$ thì tồn tại $t\in \xi^{-1}(F)$ sao cho $z=\xi(t)$. Suy ra $z=\xi(t)\in F$. 
+			\end{itemize}
+			
+			\item $\xi(\xi^{-1}(F)) = \xi(\xi^{-1}(F) \cap [0, 2\pi])$
+			\begin{itemize}
+				\item Xét $z\in \xi(\xi^{-1}(F))$, tồn tại $t\in \xi^{-1}(F)$ sao cho $z=\xi(t)$. Do $\xi(t+k2\pi)=\xi(t)$ với mọi $k\in \Z$ nên $z=\xi(t-2\pi n)$ với $n$ được chọn sao cho $t-2\pi n\in [0,2\pi]$. Đặt $x'=t-2\pi n \in [0,2\pi]$. Ta có $\xi(x')=\xi(t)\in F$ nên $x'\in \xi^{-1}(F)\cap [0,2\pi]$. Suy ra $z=\xi(x')\in \xi(\xi^{-1}(F)\cap [0,2\pi])$.
+				
+				\item Ngược lại, nếu $z\in \xi(\xi^{-1}(F) \cap [0, 2\pi])$ thì tồn tại $x'\in \xi^{-1}(F)\cap [0,2\pi]$ sao cho $z=\xi(x')$. Vì $x'\in \xi^{-1}(F)$ nên $z=\xi(x')\in \xi(\xi^{-1}(F))$.
+			\end{itemize}
+		\end{itemize}
+	\end{proof}
+	Nhắc lại, một đồng phôi là một song ánh liên tục và là ánh xạ mở.
+	\begin{lemma} Với mọi $t\in \mathbb{R}$, hạn chế
+		%Hạn chế 
+		của $\xi$ trên
+		%lên bất kỳ khoảng mở nào 
+		$(t, t + 2\pi)$ là một đồng phôi $ (t, t + 2\pi)\to S^1 \setminus \{\xi(t)\}$.
+	\end{lemma}
+
+	\begin{proof}
+		 Ta có ánh xạ $\xi|_{(t, t+2\pi)}: (t,t+2\pi)\to S^1 \setminus \{\xi(t)\}$ là một song ánh và liên tục. Theo Bổ đề\ref{2.1}
+		 % lên $S^1 \setminus \{\xi(t)\}$, kết hợp ánh xạ mở 
+		 $\xi$ là ánh xạ mở 
+		 %(theo Bổ đề 2.1) 
+		 nên $\xi|_{(t,t+2\pi)}$ là mở, và do đó là một đồng phôi.
+	\end{proof}
+	
+	\begin{proof}[{\bf Chứng minh Mệnh đề \ref{xi}}]
+%	\begin{corollary}
+	%	\textit{Mỗi điểm $u = \xi(t) \in S^1$ 
+			%có một lân cận mở 
+	%		$V = S^1 \setminus \{u^*\}$, với $u^* = -u$, sao cho ảnh ngược $\xi^{-1}(V)$ là hợp rời rạc của các khoảng mở $I_n = (t + \pi(2n - 1), t + \pi(2n + 1))$, $n \in \Z$, và mỗi khoảng trong đó được ánh xạ đồng phôi bởi $\xi$ lên $V$.}
+	%\end{corollary}
+	%\begin{proof}
+		Mỗi điểm $ u = \xi(t) = e^{it} \in S^1 $, % $u$ có 
+		điểm đối cực $ u^* = e^{i(t+\pi)}  = -u\in S^1$. 
+		Ta có %, nên nó có một lân cận 
+		$ V = S^1 \setminus \{u^*\} $ là là một lân cận mở của $u$ (vì $ S^1 $ là không gian Hausdorff và compact).
+		Hơn nữa% Dẫn đến 
+		\[\xi^{-1}(V)=\{s\in \R: e^{is} \neq e^{i(t + \pi)}\}=\{s\in \R: s \notin (t + \pi) +2\pi \Z\} = \bigsqcup_{n\in \Z} \underbrace{(t + \pi(2n - 1), t + \pi(2n + 1))}_{:=I_n}.\]
+		Theo Bổ đề 2.3, %		Hơn nữa, 
+		mỗi hạn chế $\xi|_{I_n}: I_n \to V$ là một đồng phôi.% (theo mệnh đề 2.2).
+		Suy ra $\xi$ là một ánh xạ phủ.
+	\end{proof}
+	
+%	Vậy $\xi$ là một ánh xạ phủ.
+%	\end{proof}
+	Bây giờ, xét $\alpha: I \to S^1$ là một đường trong $S^1$. 
+	%Với mỗi $s \in I$, tồn tại $\tilde{s} \in \R$ sao cho $\alpha(s) = \xi(\tilde{s}) = e^{i\tilde{s}}$. Nhận xét rằng $\tilde{s}$ là một cách xác định góc giữa $\alpha(s)$ và trục hoành dương nhưng $\tilde{s}$ không được xác định một cách duy nhất bởi $s$. 
+	Ta sẽ chỉ ra rằng, với mỗi $s \in I$, ta có thể chọn $\tilde{s}$ sao cho ánh xạ thực $s \mapsto \tilde{s}$ là liên tục, và thỏa: $a(s) = e^{i\tilde{s}}.$
+	
+	\begin{proposition} Với mọi $J=[s_0,s_1]\subset \R$, $\alpha: J\to S^1$ là một ánh xạ liên tục, và $t_0\in \mathbb{R}$ sao cho $\alpha(s_0) = e^{it_0}$, %	Cho ánh xạ liên tục $\alpha: J=[s_0,s_1]\subset \R \to S^1$ và một số thực $t_0$ sao cho $\alpha(s_0) = e^{it_0}$.
+	%Khi đó 
+	tồn tại duy nhất một ánh xạ liên tục $\tilde{\alpha}: J \to \R$ sao cho $\alpha = \xi \circ \tilde{\alpha}$ và 
+	%$\alpha(s) = (\xi \circ \tilde{\alpha})(s)=e^{i\tilde{\alpha}(s)}$ với mọi $s \in J$ và 
+	$\tilde{\alpha}(s_0) = t_0$.
+	\end{proposition}
+	\begin{proof}
+		\begin{enumerate}
+			\item % Chứng minh 
+			Sự tồn tại
+			\begin{itemize}
+				\item Mệnh đề đúng trong trường hợp $a(J) \subset S^1 \setminus \{y\}$ với một điểm $y \in S^1$.
+				
+				Thật vậy, vì $\alpha(s_0) = e^{it_0} \neq y$ nên tồn tại duy nhất $x \in \xi^{-1}(y)$ sao cho $t_0 \in (x, x + 2\pi)$. Kết hợp với $\xi_x := \xi|_{(x, x + 2\pi)}$ là một đồng phôi lên $S^1 \setminus \{y\}$ (theo mệnh đề 2.2), ta thu được $\tilde{\alpha} = \xi_x^{-1} \circ \alpha$ là ánh xạ cần tìm.
+				
+				\item Bây giờ, giả sử $J = J_1 \cup J_2$ là hợp của hai khoảng con compact có điểm chung $s_*$, và mệnh đề đã đúng với các hạn chế $\alpha_1 = \alpha|_{J_1}$, $\alpha_2 = \alpha|_{J_2}$.
+				Ta chọn $\tilde{\alpha}_1: J_1 \to \R$ sao cho $\tilde{\alpha}_1(s_0) = t_0$ và $\xi \circ \tilde{\alpha}_1 = \alpha_1$.
+				Tiếp theo, chọn $\tilde{\alpha}_2: J_2 \to \R$ sao cho $\xi \circ \tilde{\alpha}_2 = \alpha_2$ và $\tilde{\alpha}_1(s_*) = \tilde{\alpha}_2(s_*)$, điều này khả thi vì $\xi(\tilde{\alpha}_1(s_*)) = \alpha_1(s_*) = \alpha_2(s_*) = \xi(\tilde{\alpha}_2(s_*))$.
+				Cuối cùng, ta định nghĩa $\tilde{\alpha}: J \to \R$ bằng cách nối $\tilde{\alpha}_1$ và $\tilde{\alpha}_2$, tức
+				\[
+				\tilde{\alpha}|_{J_1} = \tilde{\alpha}_1, \quad \tilde{\alpha}|_{J_2} = \tilde{\alpha}_2.
+				\]
+				
+				\item Sự tồn tại của $\tilde{\alpha}$ trong trường hợp tổng quát được suy ra từ hai trường hợp đặc biệt ở trên, vì tính compact của $J$. Với mọi ánh xạ liên tục $a: J \to S^1$, tồn tại một phân hoạch $J = J_1 \cup \cdots \cup J_k$ thành các khoảng liên tiếp sao cho $a(J_i) \ne S^1$ với mọi $i = 1, 2, \dots, k$.
+			\end{itemize}
+			\item % Chứng minh 
+			Tính duy nhất.
+			
+			Giả sử tồn tại hai ánh xạ liên tục $\tilde{\alpha}, \hat{\alpha}: J \to \R$ sao cho $e^{i\tilde{\alpha}(s)} = e^{i\hat{\alpha}(s)}$ với mọi $s \in J$. Khi đó ánh xạ $f:J\to \R, s\mapsto \dfrac{\hat{\alpha}(s) - \tilde{\alpha}(s)}{2\pi}$ là liên tục theo $s$ và 
+			là ánh xạ nhận giá trị nguyên, nên $f$ là hằng. Hơn nữa, vì $\hat{\alpha}(s_0) = \tilde{\alpha}(s_0)$, nên $\hat{\alpha} = \tilde{\alpha}$.
+		\end{enumerate}
+	\end{proof}
+	\begin{remark}
+		Ánh xạ liên tục $\alpha$ trong mệnh đề trên thực chất là một đường trong $S^1$, và theo mệnh đề, với đường cong này ta có thể gán duy nhất một đường cong $\tilde{\alpha}$ trong $\R$. 
+		Hàm $\tilde{\alpha}: J \to \R$ còn được gọi là một \textbf{hàm đo góc} của đường cong $\alpha$.
+		%Khi cố định $t_0$ sao cho $\alpha(s_0) = \xi(t_0)$ và định nghĩa một hàm đo góc $\tilde{\alpha}$ với $\tilde{\alpha}(s_0) = t_0$, thì mọi hàm đo góc khác $\hat{\alpha}$ tương ứng với đường cong $\alpha$, phải bắt đầu tại điểm $t_0 + 2k\pi$, với $k \in \Z$ nào đó, và liên hệ với $\tilde{\alpha}$ theo công thức:
+		%\[
+		%\hat{\alpha}(s) = \tilde{\alpha}(s) + 2k\pi.
+		%\]
+		%Bây giờ, 
+		Nếu $\alpha:I\to S^1$ là một đường cong đóng, % khi đó với mọi hàm đo góc 		$\tilde{\alpha}: I \to \R$ là một hàm đo góc của $\alpha$, 
+		thì % ta có 
+		\[\xi(\tilde{\alpha}(0))=\alpha(0)=\alpha(1)=\xi(\tilde{\alpha}(1))\] dẫn đến  
+		\[\frac{\tilde{\alpha}(1) - \tilde{\alpha}(0)}{2\pi} =k\in \Z.\] 
+		Giá trị này \textbf{không phụ thuộc} vào cách chọn hàm đo góc của $\alpha$. Thật vậy, nếu chọn hàm đo góc $\widehat{\alpha}$ khác của $\alpha$ thì với mọi $s\in I$
+		\[
+		\alpha(s) = e^{i \widehat{\alpha}(s)}= e^{i \widetilde{\alpha}(s)}\Longrightarrow \widehat{\alpha}(s)=\widetilde{\alpha}(s)+2n\pi
+		\]
+		với $n\in \Z$ nào đó. Do đó
+		\[\frac{\widehat{\alpha}(1) - \widehat{\alpha}(0)}{2\pi}= \frac{(\tilde{\alpha}(1)+2n\pi) - (\tilde{\alpha}(0)+2n\pi)}{2\pi}=\frac{\tilde{\alpha}(1) - \tilde{\alpha}(0)}{2\pi}.\]
+	\end{remark}
+	
+
+	\begin{definition}
+		Với $\alpha: I \to S^1$ là một đường cong \textbf{đóng}, với mọi hàm đo góc $\tilde{\alpha}: I \to \R$ của $\alpha$,
+		ta định nghĩa
+		\[
+		\deg(\alpha) := \frac{\tilde{\alpha}(1) - \tilde{\alpha}(0)}{2\pi}.
+		\]
+		Số nguyên $\deg(\alpha)$ được gọi là \textbf{bậc} của đường cong $\alpha$.
+	\end{definition}
+	
+	%  Ta chỉ cần quan tâm tới các đường cong đóng đồng luân (giữ nguyên điểm gốc và điểm ngọn, với mục tiêu tính nhóm cơ bản của S^1 gồm các lớp đồng luân các đường cong tại 1)
+	
+	\begin{proposition}
+		Cho $\alpha, \beta: I \to S^1$ là hai đường cong đóng tại 1. Khi đó
+		
+		\begin{enumerate}
+			\item % Nếu $\alpha$ và $\beta$ có cùng điểm gốc, thì
+			%\[
+			$\deg(\alpha*\beta) = \deg(\alpha) + \deg(\beta)$.
+		%	\]
+			
+			\item % Nếu $\alpha\simeq \beta$ thì 
+			$	\deg(\alpha) = \deg(\beta)$ nếu và chỉ nếu $\alpha\simeq \beta$.
+			%Nếu $\alpha$ và $\beta$ \textbf{đồng luân tự do} thì:
+			%\[
+			%\deg(\alpha) = \deg(\beta).
+			%\]
+			%\item Nếu $\deg(\alpha) = \deg(\beta)$, thì
+			% $\alpha$ và $\beta$ là {đồng luân tự do}. Hơn nữa, nếu
+		%	 $\alpha\simeq \beta$.
+			 % (\textit{đồng luân cùng điểm gốc}), thì $\alpha \cong \beta$ (\textit{tương đương đồng luân giữ nguyên điểm gốc}).
+			
+			\item Với mọi 
+			%điểm $p \in S^1$ và mọi số nguyên 
+			$k \in \Z$, tồn tại một đường cong đóng $\alpha: I \to S^1$ 
+			%với điểm gốc là $p$, 
+			đóng tại 1 sao cho $\deg(\alpha) = k$.
+		\end{enumerate}
+	\end{proposition}
+	
+	\begin{proof}
+		\begin{enumerate}
+			\item %Giả sử $\alpha,\beta:I\to S^1$ có chung điểm gốc, tức $\alpha(0)=\alpha(1)=\beta(0)=\beta(1)$. 
+			
+			% TÊN RIÊNG VIẾT HOA
+			
+			Theo Mệnh đề 2.4, với $t_0\in \R$ thoả mãn $\alpha(0)=e^{it_0}$, tồn tại duy nhất một ánh xạ liên tục $\widetilde{\alpha}:I\to \R$ sao cho $\alpha =(\xi\circ \widetilde{\alpha})$ và %(s)=e^{i\widetilde{\alpha}(s)}$ với mọi $s\in I$ và 
+			$\widetilde{\alpha}(0)=t_0$. Từ đó suy ra 
+			\[\widetilde{\alpha}(1)=\widetilde{\alpha}(0)+2\pi\deg(\alpha)=t_0+2\pi\deg(\alpha).\]
+			
+			Tương tự, với $t_0':=t_0+2\pi\deg(\alpha) \in \R$ %thoả mãn
+			ta thấy $e^{it_0'}=e^{it_0}=\beta(0)$, nên tồn tại duy nhất ánh xạ liên tục $\widetilde{\beta}:I\to \R$ sao cho $\beta =(\xi\circ \widetilde{\beta})$ và %(s)=e^{i\widetilde{\beta}(s)}$ với mọi $s\in I$ và
+			$\widetilde{\beta}(0)=t_0'$. Định nghĩa
+			
+			%Như vậy, ta có thể chọn các hàm đo góc tương ứng của $\alpha$ và $\beta$ là $\widetilde{\alpha}, \widetilde{\beta}: I \to \R$ sao cho: $\widetilde{\alpha}(1) = \widetilde{\beta}(0)$. Từ đó, ta định nghĩa được
+			\[\widetilde{\alpha*\beta}: I \to \R, \quad s\mapsto
+			\begin{cases}
+				\widetilde{\alpha}(2s),\quad s\in [0,1/2]\\
+				\widetilde{\beta}(2s-1),\quad s\in [1/2,1].
+			\end{cases}.\] 
+			Ta có $\widetilde{\alpha*\beta}$ là một ánh xạ liên tục và 
+			%thoả mãn 
+			\[\xi(\circ \widetilde{\alpha*\beta})(s)=e^{i~ \widetilde{\alpha*\beta}(s)}=
+			\begin{cases}
+				e^{i~\widetilde{\alpha}(2s)},\quad s\in [0,1/2]\\
+				e^{i~\widetilde{\beta}(2s-1)},\quad s\in [1/2,1]
+			\end{cases}
+			=\begin{cases}
+				\alpha(2s),\quad s\in [0,1/2]\\
+				\beta(2s-1),\quad s\in [1/2,1]
+			\end{cases} = (\alpha*\beta)(s).
+			\]
+			Chứng tỏ $\widetilde{\alpha*\beta}$ là một hàm đo góc cho đường $\alpha*\beta$. Từ đó% ta có
+			\begin{align*}
+				\deg(\alpha*\beta)&=\dfrac{\widetilde{\alpha*\beta}(1)-\widetilde{\alpha*\beta}(0)}{2\pi}\\
+				&=\dfrac{\widetilde{\beta}(1)-\widetilde{\alpha}(0)}{2\pi}\\
+				&=\dfrac{(\widetilde{\alpha}(1)-\widetilde{\alpha}(0))+(\widetilde{\beta}(1)-\widetilde{\beta}(0))}{2\pi}\quad (\text{vì } \widetilde{\beta}(0)= \widetilde{\alpha}(1))\\
+				&= \deg(\alpha)+\deg(\beta).
+			\end{align*}
+			
+			\item Giả sử $\alpha,\beta:I\to S^1$ là hai đường cong đóng tại 1 và $\alpha\simeq \beta$. 
+			% đồng luân tự do. (Tức tồn tại phép đồng luân $H:I\times I\to S^1$ sao cho $H(s,0)=\alpha(s),H(s,1)=\beta(s)$ với mọi $s\in I$ và $H(0,t)=H(1,t)$ với mọi $t\in I$.)
+			%+ Trường hợp 1: $|\alpha(s) - \beta(s)| < 2$ với mọi $s \in I$.  Tức là các điểm $\alpha(s)$ và $\beta(s)$ không là đối cực của nhau trên đường tròn $S^1$.
+			% TA THỬ XÉT TRƯỜNG HỢP ĐƠN GIẢN NHẤT: \ALPHA(0)=\BETA(0)=1. DO ĐÓ S_0=T_0=0. TRƯƠNG HỢP TỔNG QUÁT SẼ THỰC HIỆN THEO Ý TƯỞNG TƯƠNG TỰ.
+			% Nói riêng, $\alpha(0)$ và $\beta(0)$ không là đối cực của nhau nên tồn tại $s_0,t_0\in \R$ sao cho $|s_0-t_0|<\pi$ sao cho $\alpha(0)=	+ Trườe^{is_0}$ và $\beta(0)=e^{it_0}$. 
+			 %Bây giờ, ta xét trường hợp tổng quát của hai đường cong đóng $\alpha, \beta: I \to S^1$ đồng luân tự do rút về trường hợp đặc biệt trên. Thật vậy, do 
+			Gọi $H: \alpha\simeq \beta$ ta có $H: I \times I \to S^1$ là liên tục và $H(s,0)=\alpha(s), H(s,1)=\beta(s), H(0,t)=H(1,t)=1$.  Vì $I\times I$ compắc nên $H$ liên tục đều. Do đó tồn tại $\delta > 0$ sao cho với mọi $t,t'$ thỏa mãn $|t - t'| < \delta$ thì
+			\[
+			|H(s,t) - H(s,t')| < 2, \quad \forall s \in I.
+			\]
+			Xét phân hoạch %dãy điểm 
+			$0 = t_0 < t_1 < \dots < t_k = 1$ sao cho $t_{i+1} - t_i < \delta$. % và định nghĩa các đường cong đóng $\alpha_0 = \alpha, \alpha_1, \ldots, \alpha_k = \beta $ trong $ S^1$ bằng cách đặt $\alpha_i(s) = H(s, t_i)$.
+			Với mỗi $0\leq i\leq k-1$, ta định nghĩa
+			\[
+			\alpha_i: I\to S^1, \quad \alpha_i(s)= H(s,t_i).
+			\]
+			Ta có $\alpha_i$ là các đường cong đóng tại $1$ của $S^1$ và 
+			%			Khi đó:
+			\[
+			|\alpha_i(s) - \alpha_{i+1}(s)| < 2 \quad \forall s \in I
+			\]
+			trong đó $\alpha_0=\alpha$ và $\alpha_k=\beta$.
+			%			Như ta đã chứng minh ở trên, điều này dẫn đến:
+			Áp dụng Bổ đề~\ref{doi.cuc} ta có 			
+			\[
+			\deg(\alpha) = \deg(\alpha_1) = \dots = \deg(\alpha_{k-1}) = \deg(\beta).
+			\]
+			Bây giờ, 
+		%	\item Xét các hàm đo góc $\widetilde{\alpha}, \widetilde{\beta}: I \to \R$ cho hai đường cong đóng $\alpha$ và $\beta$. Giả thiết
+		ta giả sử $\deg(\alpha) = \deg(\beta)=n$. 
+		Gọi $\widetilde{\alpha}, \widetilde{\beta}: I \to \R$ tương ứng là các hàm đo góc của $\alpha$ và $\beta$, trong đó $\widetilde{\alpha}(0)=\widetilde{\beta}(0)=0$. Ta có
+		% cho ta:
+			\[
+			\widetilde{\alpha}(1) - \widetilde{\alpha}(0) = \widetilde{\beta}(1) - \widetilde{\beta}(0).
+			\]
+		%	Ta định nghĩa đồng luân 
+		Đinh nghĩa $H: I \times I \to \R$ %giữa $\widetilde{\alpha}$ và $\widetilde{\beta}$ bởi:
+			\[
+			H(s,t) = (1 - t)\widetilde{\alpha}(s) + t\widetilde{\beta}(s).
+			\]
+			Ta có $H: \widetilde{\alpha}\simeq \widetilde{\beta}$. 
+			Với mỗi $t \in I$, ta có
+			\[
+			H(1,t) - H(0,t) = (1 - t)\left[ \widetilde{\alpha}(1) - \widetilde{\alpha}(0) \right] + t\left[ \widetilde{\beta}(1) - \widetilde{\beta}(0) \right] = (1 - t)\cdot 2\pi  n + t \cdot 2\pi n = 2\pi n,
+			\]
+			với $n = \deg(\alpha) = \deg(\beta)$.
+			Từ đó, bằng cách đặt $K = \xi \circ H$, kết hợp với $\xi: \R \to S^1$ là ánh xạ phủ, ta thu được ánh xạ liên tục $K: I \times I \to S^1$ thỏa mãn
+			\begin{itemize}
+				\item $K(s, 0) = \alpha(s)\quad \forall s\in I$.
+				\item $K(s, 1) = \beta(s)\quad \forall s\in I$.
+				\item $K(0, t) = K(1, t)=1\quad \forall t \in I$.
+			\end{itemize}
+			
+			Vì vậy, $K$ là một phép đồng luân % tự do giữa hai đường cong đóng
+			từ $\alpha$ tới $\beta$. Hay $\alpha\simeq \beta$.
+			
+			%Hơn nữa, nếu $\alpha$ và $\beta$ có cùng điểm gốc $\alpha(0)=\alpha(1)=\beta(0)=\beta(1)$, ta chọn được các hàm đo góc tương ứng thoả mãn $\widetilde{\alpha}(0) = \widetilde{\beta}(0)$, khi đó:
+			%\[
+			%\widetilde{\alpha}(1) = \widetilde{\alpha}(0)+2\pi\deg(\alpha)=\widetilde{\beta}(0)+2\pi\deg(\beta)=\widetilde{\beta}(1),
+			%\]
+			%và do đó $K: \alpha \simeq \beta$ (đồng luân giữa nguyên điểm gốc).
+			
+			\item %Với mỗi $p\in S^1$, tồn tại $s_0 \in \R$ sao cho $\xi(s_0) = p$. 
+			Với mỗi $k\in \Z$, xét ánh xạ%đường cong đóng 
+			\[
+			\alpha_k: I \to S^1,\quad  s\mapsto \left( \cos(2\pi ks), \sin(2\pi ks) \right).
+			\]
+			Ta thấy $\alpha_k$ là một đường cong đóng tại 1 của $S^1$ và có 
+			%là một đường cong có điểm gốc tại điểm $p$, và nhận được 
+			một hàm đo góc là
+			\[
+			\widetilde{\alpha}(s) = 2\pi k \cdot s.
+			\]
+			Vì vậy, %bậc của $\alpha$ là 
+			\[
+			\deg(\alpha) = \frac{\widetilde{\alpha}(1) - \widetilde{\alpha}(0)}{2\pi} = k.
+			\]
+		\end{enumerate}
+	\end{proof}
+	% TA ĐƯA Ý ĐẶC BIỆT ALPHA, BETA KHÔNG LÀ ĐỐI CỰC, $|\ALPHA(S)-BETA(S)|<2$ VỚI MỌI S THÌ CHÚNG CÓ BẬC BẰNG NHAU
+	\begin{lemma}\label{doi.cuc}
+		Cho $\alpha,\beta:I\to S^1$ là các đường cong đóng tại 1.
+		Khi đó nếu $|\alpha(s)-\beta(s)|<2$ với mọi $s\in I$ thì $\deg (\alpha)=\deg (\beta)$.
+	\end{lemma}
+	\begin{proof}
+		Theo Mệnh đề 2.4, tồn tại các hàm góc $\widetilde{\alpha}, \widetilde{\beta}: I \to \R$ sao cho $\alpha(s)=e^{i\widetilde{\alpha}(s)},\beta(s)=e^{i\widetilde{\beta}(s)}$ với mọi $s\in I$ và $\widetilde{\alpha}(0) =  \widetilde{\beta}(0)=0$. Ta có
+		\[
+		|\alpha(s)-\beta(s)|= |e^{i\widetilde{\alpha}(s)}-e^{i\widetilde{\beta}(s)}|= |e^{i(\widetilde{\alpha}(s)-\widetilde{\beta}(s))}-1|.
+		\]
+		%$\widetilde{\alpha}(0) = s_0, \widetilde{\beta}(0) = t_0$.
+		Do $\alpha(s)$ và $\beta(s)$ không là đối cực của nhau, $|\alpha(s)-\beta(s)|<2$ với mọi $s\in I$, nên
+		$e^{i(\widetilde{\alpha}(s)-\widetilde{\beta}(s))}\not=-1$ với mọi $s$ hay % ta phải có 
+		$\widetilde{\alpha}(s) - \widetilde{\beta}(s) \notin \pi+2\pi\Z$ với mọi $s \in I$. 
+		Ta thấy rằng nếu %			Nếu chứng minh được
+		\[
+		|\widetilde{\alpha}(s) - \widetilde{\beta}(s)| < \pi, \quad \forall s\in I \quad (**)
+		\]
+		thì
+		%	ta sẽ có
+		\begin{align*}
+			|\deg(\alpha)-\deg(\beta)|
+			&=\left|\dfrac{\widetilde{\alpha}(1) - \widetilde{\alpha}(0) - \widetilde{\beta}(1) + \widetilde{\beta}(0)}{2\pi}\right|\\
+			&\leq \dfrac{|\widetilde{\alpha}(1) - \widetilde{\beta}(1)|}{2\pi}+\dfrac{|\widetilde{\alpha}(0) - \widetilde{\beta}(0)|}{2\pi}\\
+			&<\dfrac{\pi}{2\pi} + \dfrac{\pi}{2\pi}=1.
+		\end{align*}
+		Kết hợp với $\deg(\alpha), \deg(\beta) \in \Z$, ta thu được  %suy ra 
+		$\deg(\alpha) = \deg(\beta)$.
+		
+		Ta đi chứng minh $(**)$ luôn đúng. Thật vậy, đặt $\theta(s)=\widetilde{\alpha}(s)-\widetilde{\beta}(s)~\forall s\in I$. % Khi đó 
+		Ta có $\theta$ liên tục, %thoả mãn 
+		$|\theta(0)|=0$ %<\pi$ 
+		và $\theta(s)\notin \pi+2\pi\Z~\forall s\in I$. 			
+		%Ta cần chỉ ra $|\theta(s)|<\pi~\forall s\in I$. 
+		%Giả sử phản chứng, 
+		Phản chứng rằng tồn tại $s_0\in I$ sao cho $|\theta(s_0)|\geq \pi$. Ta có $\theta(s_0)\geq \pi$ hoặc $\theta(s_0)\leq -\pi$.% hai trường hợp sau
+		\begin{itemize}
+			\item Nếu $\theta(s_0)\geq \pi$ thì
+			%	Do $\theta$ là liên tục trên $[0,\theta]$, kết hợp với
+			$\theta(s_0)\geq \pi >\theta(0)$, vì $\theta$ liên tục, theo định lý giá trị trung gian, tồn tại $s'\in [0,s_0]$ sao cho $\theta(s')=\pi \in \pi+2\pi\Z$. Điều này mâu thuẫn với giả thiết $\theta(s)\not\in\pi+2k\Z$.
+			%, mâu thuẫn.
+			\item Nếu $\theta(s_0)\leq -\pi$ thì 				
+			%Do $\theta$ là liên tục trên $[0,\theta]$, kết hợp với
+			$\theta(s_0)\leq -\pi <\theta(0)$. Tương tự, theo định lý giá trị trung gian, tồn tại $s'\in [0,s_0]$ sao cho $\theta(s')=-\pi$. Điều này mâu thuẫn với giả thiết $\theta(s)\not\in\pi+2k\Z$.
+		\end{itemize}
+		Vậy ta có điều phải chứng minh.
+	\end{proof}
+	Mệnh đề trên cho phép ta định nghĩa bậc của một \textbf{lớp đồng luân} $[\alpha]$ của một đường cong đóng $\alpha$ trong không gian $S^1$ mà không phụ thuộc vào phần tử đại diện. Vậy, ta có thể định nghĩa 
+	$\deg [\alpha] =\deg \alpha$. Như vậy ta có 
+	\[
+	\deg: \pi_1(S^1) \to \Z, [\alpha]\mapsto \deg(\alpha).
+	\]
+	
+	\begin{proposition} $\pi_1(S^1)\cong \mathbb{Z}$.
+		%Nhóm cơ bản của đường tròn $ S^1 $ đẳng cấu với nhóm cộng của các số nguyên $ \Z $.
+	\end{proposition}
+	\begin{proof} 
+		Xét ánh xạ $ \deg: \pi_1(S^1) \to \Z $.
+		% liên kết với mỗi lớp đồng luân một bậc. Mục 1 của mệnh đề 2.6 cho chúng ta biết rằng $ n $ là một đồng cấu, mục 3 khẳng định rằng $ n $ là tính chất đơn ánh, và mục 4 cung cấp tính chất toàn ánh. Do đó, $ n $ là một đẳng cấu giữa $ \pi_1(S^1) $ và $ \Z $.
+		Ta có $\deg$ là một đồng cấu, theo Mệnh đề 2.6(1); $\deg $ là một đơn cấu, theo Mệnh đề 2.6 (2) và là một toàn cấu, theo Mệnh đề 2.6(3). Suy ra $\deg $ là một đẳng cấu.
+	\end{proof}
+	\begin{corollary}
+		Nhóm cơ bản của $B^2\setminus\{0\} \cong \Z$.
+	\end{corollary}
+	\begin{proof}
+		Nhận thấy $S^1$ là một co rút của $B^2\setminus\{0\}$ bởi phép đồng luân co rút 
+		\[H:B^2\setminus\{0\}\times I\to B^2\setminus\{0\}, (x,t)\mapsto (1-t)x+t\dfrac{x}{\norm{x}}.\]
+		Cụ thể $H(x,0)=x, H(x,1)=\dfrac{x}{\norm{x}}, H(x,t)=x \forall x\in S^1$.
+		Vậy $\pi_1(B^2\setminus\{0\})\cong \pi_1(S^1)\cong \Z$.
+	\end{proof}
+	
+\subsection{Nhóm cơ bản của $S^n$ với $(n\geq 2)$}
+Ta sẽ chứng minh $\pi_1(S^n)\cong 0$ với $n\geq 2$, từ đó thu được $\pi_1(B^{n+1}\setminus\{0\})\cong \pi_1(S^n)=0$ (tương tự trên ta có đồng luân co rút từ $B^{n+1}$ về $S^n$ là \[H:B^{n+1}\setminus\{0\}\times I\to B^{n+1}\setminus\{0\}, (x,t)\mapsto (1-t)x+t\dfrac{x}{\norm{x}}.\]
+Cụ thể $H(x,0)=x, H(x,1)=\dfrac{x}{\norm{x}}, H(x,t)=x ~\forall x\in S^n$.
+
+\begin{definition}[Không gian đơn liên]
+    Không gian topo $X$ được gọi là đơn liên nếu nó là liên thông đường và có nhóm cơ bản tầm thường.
+\end{definition}
+\begin{theorem}
+    Cho $X=U\cup V$ với $U,V$ là các tập mở của không gian topo $X$ thoả mãn $U\cap V$ là liên thông đường và $x_0\in U\cap V$. Gọi $i:U\hookrightarrow X,~j:V\hookrightarrow X$ là các ánh xạ nhúng. Khi đó nhóm $\pi_1(X,x_0)$ sinh bởi ảnh của các đồng cấu cảm sinh 
+    \[i_*:\pi_1(U,x_0)\to \pi_1(X,x_0)\text{ và } j_*:\pi_1(V,x_0)\to \pi_1(X,x_0).\]
+\end{theorem}
+Để chứng minh định lý trên ta cần hai bổ đề sau
+\begin{lemma}[Phủ Lebesgue]
+    Cho $ X $ là một không gian metric compact có $\mathcal{U} = \{U_\alpha\}_{\alpha\in I}$ là phủ mở. Khi đó tồn tại $\delta > 0$ sao cho với mọi tập con $ A \subset X $ với $\text{diam}(A) < \delta$ thì $ A \subset U_\alpha $  với $\alpha\in I$ nào đó.
+\end{lemma}
+\begin{lemma}
+    Với mọi $\alpha:I\to X$ là một đường trong $X$ và  $P:0=t_0<t_1<\ldots<t_n=1$ là một phân hoạch của $I$. Với mỗi $a,b\in I$, ký hiệu $\lambda_{a,b}:I\to I, t\mapsto (1-t)a+tb$ và $\gamma_i = \alpha\circ \lambda_{t_{i-1},t_i}$. Khi đó \[\alpha\simeq\gamma_1*\gamma_2*\ldots*\gamma_n.\]
+\end{lemma}
+\begin{proof}
+    Ta có 
+    \begin{align*}
+        \gamma_1*\gamma_2*\ldots*\gamma_n 
+        &= (\alpha \circ \lambda_{t_0,t_1})*(\alpha \circ \lambda_{t_1,t_2})*\cdots*(\alpha \circ \lambda_{t_{n-1},t_n})\\
+        &= \alpha \circ (\lambda_{t_0,t_1}*\lambda_{t_1,t_2}*\cdots*\lambda_{t_{n-1},t_n})\\
+        &\simeq \alpha\circ \id_I = \alpha.
+    \end{align*}
+\end{proof}
+Quay trở lại chứng minh Định lý 2.10.
+\begin{proof}
+    Giả sử $\alpha:I\to X=U\cup V$ là một đường cong đóng tại $x_0$. Ta cần chỉ ra 
+    \[[\alpha]=[w_1]*\cdots*[w_n]\] 
+    với $w_i:I\to X$ là các đường cong đóng tại $x_0$ và $w_i(I)$ chứa trong $U$ hoặc $V$. 
+
+    Do $\alpha$ liên tục và $\{U,V\}$ là một phủ mở của $X$ nên $\alpha^{-1}(U), \alpha^{-1}(V)$ là một phủ mở của $I$. Mà $I$ là không gian metric compact, nên theo bổ đề phủ Lebesgue, tồn tại $\delta>0$ sao cho với mọi phân hoạch $P': 0=t'_0<t'_1<\ldots<t'_m=1$ của $I$ có đường kính $\text{diam}(P') <\delta$ thì với mọi $i$ ta có $[t'_{i-1},t'_i]$ chứa trong $\alpha^{-1}(U)$ hoặc $\alpha^{-1}(V)$, tức $\alpha([t'_{i-1},t'_i])$ chứa trong $U$ hoặc $V$. 
+    
+    Gọi $P:0=t_0<t_1<\ldots<t_n=1$ là phân hoạch con của $P'$ thu được bằng cách hợp nhất các khoảng $[t'_{i-1},t'_i]$ và $[t'_i,t'_{i+1}]$ không còn hai tập ảnh liên tiếp $\alpha([t'_{i-1},t'_i])$ và $\alpha([t'_{i},t'_{i+1}])$ cùng nằm trong $U$ và cùng nằm trong $V$. Khi đó tại mỗi điểm nối $t_i$, nếu $\alpha([t_{i-1},t_i])\subset U$ thì $\alpha([t_i,t_{i+1}])\subset V$ và ngược lại. Dẫn đến $\alpha(t_i)\in \alpha([t_{i-1},t_i]) \cap \alpha([t_{i},t_{i+1}])\subset U\cap V$. 
+    
+    Bây giờ, với $x_0 \in U\cap V$ là liên thông đường nên với mỗi $\alpha(t_i)$ nói trên, tồn tại một đường cong $\alpha_i:I\to U\cap V$ sao cho $\alpha_i(0)=x_0, \gamma_i(1)=\alpha(t_i)$. Hơn nữa, vì $\alpha(t_0)=x_0=\alpha(t_n)$ nên ta có thể chọn $\alpha_0,\alpha_n$ cùng là ánh xạ hằng $I\to U\cap V, t\mapsto x_0$. 
+
+    Đặt $\gamma_i = \alpha\circ \lambda_{t_{i-1},t_i}$ và $\alpha_i^{-1}(s)=\alpha_i(1-s)~\forall s\in I$. Mỗi $g_i:=(\alpha_{i-1}*\gamma_i)*\alpha_i^{-1}: I\to X$ là đường cong đóng tại $x_0$ với ảnh chứa trong $U$ hoặc $V$. Khi đó $[g_i]\in \pi_1(U,x_0)$ hoặc $[g_i]\in \pi_1(V,x_0)$ và 
+    \begin{align*}
+        [g_1]*[g_2]*\ldots*[g_n]
+        &=[\alpha_{0}*\gamma_i*\alpha_1^{-1}]*[\alpha_{1}*\gamma_i*\alpha_2^{-1}]*\cdots*[\alpha_{n-1}]*[\gamma_i]*[\alpha_n^{-1}]\\
+        &=[\alpha_{0}]*[\gamma_i]*[\alpha_1^{-1}]*[\alpha_{1}]*[\gamma_i]*[\alpha_2^{-1}]*\cdots*[\alpha_{n-1}]*[\gamma_i]*[\alpha_n^{-1}]\\
+        &=[\varepsilon_{x_0}]*[\gamma_1]*[\gamma_2]*\cdots*[\gamma_n]*[\varepsilon_{x_0}]\\
+        &=[\gamma_1]*[\gamma_2]*\cdots*[\gamma_n]\\
+        &=[\alpha] \quad (\text{theo Bổ đề 2.12}).
+    \end{align*}
+\end{proof}
+\begin{proposition}
+    Giả sử $X=U\cup V$ với $U,V$ là mở trong $X$ và $U\cap V$ khác rỗng, liên thông đường. Nếu $U$ và $V$ là đơn liên thì $X$ là đơn liên.
+\end{proposition}
+\begin{proof}
+    Ta có $U,V$ là liên thông đường và $U\cap V\neq \emptyset$ nên $X=U\cup V$ là liên thông đường.
+    
+    Lấy $x_0\in U\cap V$, do hai tập mở $U,V$ là đơn liên nên $\pi_1(U,x_0),\pi_1(V,x_0)$ là các nhóm tầm thường. Từ đó, theo Định lý 2.10 ta suy ra $\pi_1(X,x_0)$ là tầm thường và do đó $X$ là đơn liên.
+\end{proof}
+\begin{proposition}
+    Với $n\geq 0$, ký hiệu $N=(0,0,\ldots,1),~S=(0,0,\ldots,-1)\in S^n$ và lần lượt gọi là điểm cực bắc và cực nam của $S^n$. Khi đó $S^n\setminus\{S\}$ và $S^n\setminus\{N\}$ đồng phôi với $\R^n$.
+\end{proposition}
+\begin{proof}
+    Xét các ánh xạ liên tục
+    \[f:S^n\setminus\{N\}\to \R^n, x=(x_1,\ldots,x_n,x_{n+1})\mapsto \dfrac{1}{1-x_{n+1}}(x_1,\ldots,x_n),\]
+    \[g:\R^n\to S^n\setminus\{N\}, y =  (y_1,\ldots,y_n)\mapsto (\phi(y)y_1,\ldots,\phi(y)y_n,1-\phi(y))\text{ với }\phi(y)=\dfrac{2}{1+\norm{y}^2}\]
+    
+    Với mọi $x=(x_1,\ldots,x_n,x_{n+1})\in S^n$ ta có \[\phi(f(x))=\dfrac{2(1-x_{n+1})^2}{(1-x_{n+1})^2+x_1^2+\ldots+x_n^2}=\dfrac{2(1-x_{n+1})^2}{2-2x_{n+1}}=1-x_{n+1},\]
+    nên 
+    \begin{align*}
+    (g\circ f)(x)&=g\left(\dfrac{x_1}{1-x_{n+1}},\ldots, \dfrac{x_n}{1-x_{n+1}}\right)\\
+    &= \left(\phi(f(x))\dfrac{x_1}{1-x_{n+1}},\ldots,\phi(f(x))\dfrac{x_1}{1-x_{n+1}},1-\phi(f(x))\right)\\
+    &= (x_1,\ldots,x_n,x_{n+1})=x.
+    \end{align*}
+    Với mọi $y=(y_1,\ldots,y_n)\in \R^n$ ta có
+    \begin{align*}
+        (f\circ g)(y)&=f(\phi(y)y_1,\ldots,\phi(y)y_n,1-\phi(y))\\
+        &= \dfrac{1}{1-(1-\phi(y))}\left(\phi(y)y_1,\ldots,\phi(y)y_n \right)\\
+        &=(y_1,\ldots,y_n)=y.
+    \end{align*}
+    Dẫn đến $f$ là một song ánh liên tục với nghịch ảnh $f^{-1}=g$ cũng liên tục, tức $f$ là một đồng phôi giữa $S^n\setminus\{N\}$ và $\R^n$. 
+
+    Mặt khác ta cũng có phép đồng phôi 
+    \[S^n\setminus\{N\}\to S^n\setminus\{S\},(x_1,\ldots,x_n,x_{n+1})\mapsto (x_1,\ldots,x_n,-x_{n+1}).\]
+\end{proof}
+\begin{corollary}
+    $S^n\setminus\{N\}$ và $S^n\setminus\{S\}$ là đơn liên.
+\end{corollary}
+\begin{proof}
+    Không gian liên thông $S^n\setminus\{N\}\simeq \R^n$ nên nhóm cơ bản $\pi_1(S^n)\cong \pi_1(\R^n)\cong \{0\}$. Chứng tỏ $S^n\setminus\{N\}$ đơn liên. Tương tự với $S^n\setminus\{S\}$.
+\end{proof}
+
+\begin{lemma}
+    $\R^n\setminus\{p\}$ là liên thông đường với mọi $n\geq 2$.
+\end{lemma}
+\begin{proof}
+    Lấy bất kỳ hai điểm $x,y\in X:=\R^n\setminus\{p\}$, ta cần chỉ ra tồn tại đường cong liên tục $f:I\to X$ nào đó nối $x$ và $y$.
+    \begin{itemize}
+        \item Nếu $p\in [x,y]=\{(1-t)x+ty:t\in I\}$ thì $\alpha:I\to X, t\mapsto (1-t)x+ty$ chính là đường cong liên tục nối $x,y$.
+
+        \item Nếu $p\in [x,y]$, chọn $z\in X$ sao cho $z\notin [x,y]$. Khi đó $\alpha:I\to X, t\mapsto (1-t)x+tz$ là đường liên tục nối $x,z$ và $\beta:I\to X, (1-t)z+ty$ là đường cong liên tục nối $z,y$ trong $X$. Dẫn đến 
+        \[\alpha*\beta:I\to X, s\mapsto\begin{cases}
+            \alpha(2s) =  (1-2s)x+(2s)z,\quad s\in [0,1/2]\\
+            \beta(2s-1) =  (2-2s)z+(2s-1)x,\quad s\in [1/2,1]
+        \end{cases}\]
+        là đường liên tục trong $X$ nối $x,z$.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    $S^n$ là đơn liên với mọi $n\geq 2$.
+\end{theorem}
+\begin{proof}
+    Với $n\geq 2$, ta có
+    \begin{itemize}
+        \item $U=S^n\setminus\{N\}$ và $V=S^n\setminus\{S\}$ là các tập mở của không gian Haussdorff $S^n$ với topo con cảm sinh bởi topo của $\R^{n+1}$.
+
+        \item $U,V$ là đơn liên (theo Hệ quả $2.15$).
+
+        \item $U\cap V=S^n\setminus\{S,N\}$ đồng phôi với $\R^n\setminus\{p\}$. Mà $\R^n\setminus\{p\}$ là liên thông đường (theo Bổ đề 2.16) nên $U\cap V$ là liên thông đường.
+    \end{itemize}
+    Do đó $S^n$ là đơn liên nếu $n\geq 2$(áp dụng Mệnh đề 2.13).
+\end{proof}
+Từ đó dựa vào định nghĩa của đơn liên cho ta hệ quả
+\begin{corollary}
+    Nhóm cơ bản của $S^n$ là tầm thường với $n\geq 2$.
+\end{corollary}
+\begin{exercise}1.3.
+    $S^1$ và $S^n$ không cùng kiểu đồng luân với $n\geq 2$.
+\end{exercise}
+\begin{proof}
+    Giả sử phản chứng $S^1$ và $S^n$, với $n\geq 2$, cùng kiểu đồng luân thì nhóm cơ bản của chúng đẳng cấu với nhau, tuy nhiên ta lại có
+    \[\pi_1(S^n)\cong \begin{cases}
+        \Z &\text{ nếu }  n=1\\
+        0 &\text{ nếu }  n\geq 2
+    \end{cases}\]
+    Vậy, giả thiết phản chứng là sai.
+\end{proof}
+\begin{exercise}1.5.
+    $\R^2$ và $\R^n$ không đồng phôi với nhau nếu $n\geq 3$.
+\end{exercise}
+\begin{proof}
+    Với $n\geq 3$, giả sử phản chứng tồn tại đồng phôi $f:\R^2\to \R^n$. Khi đó $f$ cảm sinh một đồng phôi $\overline{f}:\R^2\setminus\{0\}\to \R^n\setminus\{f(0)\}$. Mà $\R^2\setminus\{0\}\simeq S^1$ và $\R^n\setminus\{f(0)\}\simeq \R^n\setminus\{0\}\simeq S^{n-1}$ với mọi $n\geq 3$, nên ta có
+    \[\Z\cong \pi_1(S_1)\cong \pi_1(\R^2\setminus\{p\})\cong \pi_1(\R^n\setminus\{f(p)\})\cong \pi_1(S^{n-1})\cong \{0\}.\]
+    Mâu thuẫn này bác bỏ giả thiết phản chứng.
+\end{proof}
+\begin{exercise}
+    1.6. Ví dụ về hai không gian có cùng nhóm cơ bản nhưng không đồng luân với nhau.
+\end{exercise}
+\begin{solution}
+    Xét $X=\{p\}$ và $Y=S^2$ là hai không gian có nhóm cơ bản đều tầm thường. Nhưng $S^2$ không cùng kiểu đồng luân với không gian chỉ gồm 1 điểm.
+\end{solution}
